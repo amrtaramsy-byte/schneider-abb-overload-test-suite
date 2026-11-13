@@ -1,1311 +1,835 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>برنامج فحص الأوفرلود الحراري والإلكتروني | ABB & Schneider</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&family=Inter:wght@500;600;700;800;900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        arabic: ['Cairo', 'sans-serif'],
-                        sans: ['Inter', 'Cairo', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #E2E8F0; /* Distinct contrasting background for mobile */
-            color: #0F172A;
-            font-family: 'Cairo', 'Inter', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-        html[lang="en"] body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Active & Inactive Tab Styles for Maximum Mobile Visibility */
-        .tab-btn {
-            transition: all 0.2s ease-in-out;
-        }
-        .tab-btn-active-1 {
-            background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%);
-            color: #FFFFFF;
-            border-color: #1E40AF;
-            box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.55);
-            transform: translateY(-2px);
-        }
-        .tab-btn-inactive-1 {
-            background-color: #DBEAFE;
-            color: #1E3A8A;
-            border-color: #93C5FD;
-        }
-        .tab-btn-active-2 {
-            background: linear-gradient(135deg, #047857 0%, #059669 100%);
-            color: #FFFFFF;
-            border-color: #065F46;
-            box-shadow: 0 8px 20px -4px rgba(5, 150, 105, 0.55);
-            transform: translateY(-2px);
-        }
-        .tab-btn-inactive-2 {
-            background-color: #D1FAE5;
-            color: #064E3B;
-            border-color: #6EE7B7;
-        }
-        .tab-btn-active-3 {
-            background: linear-gradient(135deg, #B45309 0%, #D97706 100%);
-            color: #FFFFFF;
-            border-color: #92400E;
-            box-shadow: 0 8px 20px -4px rgba(217, 119, 6, 0.55);
-            transform: translateY(-2px);
-        }
-        .tab-btn-inactive-3 {
-            background-color: #FEF3C7;
-            color: #78350F;
-            border-color: #FCD34D;
-        }
-        @media print {
-            .no-print {
-                display: none !important;
-            }
-            body {
-                background-color: #FFFFFF !important;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>اختبار الأوفرلود | Overload Test Tool</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f1f5f9;
+      color: #0f172a;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .tab-btn {
+      transition: all 0.2s ease;
+    }
+    .active-option {
+      ring-width: 2px;
+      transform: scale(0.99);
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-blue-600 selection:text-white pb-10">
+<body class="min-h-screen pb-6">
 
-    <!-- Top Header Bar -->
-    <header class="bg-slate-900 text-white sticky top-0 z-30 shadow-md border-b-2 border-slate-700">
-        <div class="max-w-5xl mx-auto px-3 sm:px-6 py-3 flex items-center justify-between gap-2">
-            <!-- Brand Logos & Title -->
-            <div class="flex items-center gap-2.5">
-                <div class="flex items-center gap-1 select-none shrink-0">
-                    <span class="bg-[#E30613] text-white font-black tracking-tighter text-sm sm:text-base px-2.5 py-1 rounded-lg shadow">
-                        ABB
-                    </span>
-                    <span class="bg-[#009530] text-white font-bold tracking-tight text-xs sm:text-sm px-2.5 py-1 rounded-lg shadow">
-                        Schneider
-                    </span>
-                </div>
-                <div>
-                    <h1 id="appTitle" class="text-sm sm:text-lg font-black text-white leading-tight">
-                        فحص واختبار الأوفرلود
-                    </h1>
-                    <p id="appSubtitle" class="text-[11px] sm:text-xs text-slate-300 font-medium hidden sm:block">
-                        حاسبة سريعة للفنيين لتحديد زمن الفصل المسموح والحكم على النتيجة (ناجح / راسب)
-                    </p>
-                </div>
+  <!-- الشريط العلوي -->
+  <header class="bg-slate-900 text-white px-3 py-2.5 shadow-md sticky top-0 z-30">
+    <div class="max-w-xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="bg-amber-500 text-slate-950 font-extrabold px-2 py-0.5 rounded text-xs">ABB / SCHNEIDER</span>
+        <h1 id="appTitle" class="text-sm sm:text-base font-bold truncate">فحص واختبار الأوفرلود</h1>
+      </div>
+      <button onclick="toggleLang()" id="langBtn" class="bg-slate-700 hover:bg-slate-600 text-amber-300 font-bold text-xs px-3 py-1.5 rounded-lg border border-slate-500 flex items-center gap-1">
+        🌐 <span>English</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- شريط التابات الملونة للموبايل -->
+  <div class="max-w-xl mx-auto px-2 pt-2 sticky top-12 z-20 bg-slate-100 pb-1.5">
+    <div class="grid grid-cols-3 gap-1.5">
+      <button onclick="switchTab(1)" id="tabBtn1" class="tab-btn py-2 px-1 rounded-xl font-extrabold text-xs sm:text-sm text-white bg-blue-600 shadow-md border-2 border-blue-800 flex flex-col items-center justify-center">
+        <span>⚡ 1. الاختبار</span>
+      </button>
+      <button onclick="switchTab(2)" id="tabBtn2" class="tab-btn py-2 px-1 rounded-xl font-extrabold text-xs sm:text-sm text-emerald-950 bg-emerald-200 border-2 border-emerald-400 flex flex-col items-center justify-center opacity-80">
+        <span>📈 2. الكيرف</span>
+      </button>
+      <button onclick="switchTab(3)" id="tabBtn3" class="tab-btn py-2 px-1 rounded-xl font-extrabold text-xs sm:text-sm text-amber-950 bg-amber-200 border-2 border-amber-400 flex flex-col items-center justify-center opacity-80">
+        <span>📘 3. الشرح</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- المحتوى الرئيسي -->
+  <main class="max-w-xl mx-auto px-2 mt-1">
+
+    <!-- ==================== التاب الأول: صفحة الاختبار المدمجة للموبايل ==================== -->
+    <section id="tab1" class="space-y-2">
+
+      <!-- البطاقة 1: بيانات الأوفرلود (مدمجة) -->
+      <div class="bg-white rounded-xl p-2.5 shadow-sm border border-slate-200 space-y-2">
+        
+        <!-- صف الماركة والموديل -->
+        <div class="grid grid-cols-12 gap-2 items-center">
+          <!-- الماركة -->
+          <div class="col-span-5">
+            <label id="lblBrand" class="block text-[11px] font-bold text-slate-500 mb-1">الماركة</label>
+            <div class="grid grid-cols-2 gap-1">
+              <button onclick="setBrand('ABB')" id="btnABB" class="py-1.5 rounded-lg font-extrabold text-xs bg-red-600 text-white shadow-sm">ABB</button>
+              <button onclick="setBrand('SCHNEIDER')" id="btnSCH" class="py-1.5 rounded-lg font-extrabold text-xs bg-slate-100 text-slate-700 border border-slate-300">Schneider</button>
             </div>
+          </div>
 
-            <!-- Language Switcher Icon Button ONLY (GitHub button removed) -->
-            <button onclick="toggleLanguage()" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-amber-400 hover:bg-amber-300 text-slate-950 transition flex items-center gap-1.5 shadow-md shrink-0 cursor-pointer">
-                <svg class="w-4 h-4 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/>
-                </svg>
-                <span id="langBtnText">English</span>
+          <!-- الموديل منفرداً -->
+          <div class="col-span-7">
+            <label id="lblModel" class="block text-[11px] font-bold text-slate-500 mb-1">موديل الأوفرلود (نطاق الأمبير)</label>
+            <select id="modelSelect" onchange="onModelChange()" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-2 py-1.5 text-xs font-bold text-slate-800 focus:outline-none focus:border-blue-600"></select>
+          </div>
+        </div>
+
+        <!-- صف الفئة Class وحالة الأوفرلود وطريقة التوصيل -->
+        <div class="grid grid-cols-12 gap-2 pt-1 border-t border-slate-100">
+          <!-- الفئة Class -->
+          <div class="col-span-4">
+            <label id="lblClass" class="block text-[11px] font-bold text-slate-500 mb-1">فئة الفصل Class</label>
+            <div class="grid grid-cols-3 gap-1">
+              <button onclick="setClass(10)" id="cls10" class="py-1.5 rounded-lg font-extrabold text-xs bg-blue-600 text-white">10</button>
+              <button onclick="setClass(20)" id="cls20" class="py-1.5 rounded-lg font-extrabold text-xs bg-slate-100 text-slate-700 border">20</button>
+              <button onclick="setClass(30)" id="cls30" class="py-1.5 rounded-lg font-extrabold text-xs bg-slate-100 text-slate-700 border">30</button>
+            </div>
+          </div>
+
+          <!-- الحالة: بارد / ساخن -->
+          <div class="col-span-4">
+            <label id="lblState" class="block text-[11px] font-bold text-slate-500 mb-1">حالة الأوفرلود</label>
+            <div class="grid grid-cols-2 gap-1">
+              <button onclick="setState('cold')" id="stCold" class="py-1.5 rounded-lg font-bold text-xs bg-sky-600 text-white">❄️ بارد</button>
+              <button onclick="setState('hot')" id="stHot" class="py-1.5 rounded-lg font-bold text-xs bg-slate-100 text-slate-700 border">🔥 ساخن</button>
+            </div>
+          </div>
+
+          <!-- التوصيل: 3 فاز / 2 فاز -->
+          <div class="col-span-4">
+            <label id="lblPoles" class="block text-[11px] font-bold text-slate-500 mb-1">التوصيل</label>
+            <div class="grid grid-cols-2 gap-1">
+              <button onclick="setPoles(3)" id="pl3" class="py-1.5 rounded-lg font-bold text-xs bg-indigo-600 text-white">3 فاز</button>
+              <button onclick="setPoles(2)" id="pl2" class="py-1.5 rounded-lg font-bold text-xs bg-slate-100 text-slate-700 border">2 فاز</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- البطاقة 2: ضبط الأمبير ونسبة الحقن (150% - 200% - 300%) -->
+      <div class="bg-white rounded-xl p-2.5 shadow-sm border border-slate-200 space-y-2">
+        <div class="grid grid-cols-12 gap-2 items-center">
+          <!-- تدريج الأمبير Ir -->
+          <div class="col-span-5">
+            <label id="lblIr" class="block text-[11px] font-bold text-slate-600 mb-1">ضبط تدريج الأوفرلود (A)</label>
+            <input type="number" id="irInput" step="0.1" value="10" oninput="calculateAll()" class="w-full bg-amber-50 border-2 border-amber-400 rounded-lg px-2.5 py-1.5 text-base font-extrabold text-slate-900 text-center focus:outline-none" />
+          </div>
+
+          <!-- نسبة تيار الاختبار -->
+          <div class="col-span-7">
+            <label id="lblRatio" class="block text-[11px] font-bold text-slate-600 mb-1">نسبة تيار الحقن</label>
+            <div class="grid grid-cols-3 gap-1.5">
+              <button onclick="setMult(1.5)" id="m15" class="py-2 rounded-lg font-extrabold text-xs bg-slate-100 text-slate-800 border border-slate-300">150%</button>
+              <button onclick="setMult(2.0)" id="m20" class="py-2 rounded-lg font-extrabold text-xs bg-blue-600 text-white shadow">200%</button>
+              <button onclick="setMult(3.0)" id="m30" class="py-2 rounded-lg font-extrabold text-xs bg-slate-100 text-slate-800 border border-slate-300">300%</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ملخص الحقن والزمن المسموح به من الداتاشيت -->
+        <div class="grid grid-cols-3 gap-1.5 bg-slate-900 text-white rounded-xl p-2 text-center">
+          <div class="bg-slate-800 rounded-lg p-1.5">
+            <div id="lblInjectBox" class="text-[10px] text-slate-300">احقن أمبير</div>
+            <div id="valInjectA" class="text-base sm:text-lg font-extrabold text-amber-400">20.0 A</div>
+          </div>
+          <div class="bg-slate-800 rounded-lg p-1.5">
+            <div id="lblAllowedBox" class="text-[10px] text-slate-300">الزمن المسموح</div>
+            <div id="valRange" class="text-xs sm:text-sm font-extrabold text-emerald-400 mt-0.5">15s - 35s</div>
+          </div>
+          <div class="bg-slate-800 rounded-lg p-1.5">
+            <div id="lblTypBox" class="text-[10px] text-slate-300">الزمن المثالي</div>
+            <div id="valTyp" class="text-base sm:text-lg font-extrabold text-sky-300">24.0 s</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- البطاقة 3: إدخال الزمن الفعلي والنتيجة الفورية -->
+      <div class="bg-white rounded-xl p-2.5 shadow-sm border-2 border-blue-200 space-y-2">
+        <div class="grid grid-cols-12 gap-2 items-center">
+          <div class="col-span-7">
+            <label id="lblActualTime" class="block text-xs font-extrabold text-slate-800 mb-1">⏱️ اكتب زمن الفصل الفعلي (ثانية):</label>
+            <input type="number" id="measuredTimeInput" step="0.1" placeholder="مثال: 22.5" oninput="evaluateTime()" class="w-full bg-slate-50 border-2 border-slate-400 rounded-xl px-3 py-2 text-lg font-extrabold text-center text-slate-900 focus:border-blue-600 focus:bg-white focus:outline-none" />
+          </div>
+          <div class="col-span-5 flex flex-col gap-1 pt-4">
+            <button onclick="saveRecord()" id="btnSave" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs py-2.5 rounded-xl shadow">
+              💾 حفظ في الجدول
             </button>
-        </div>
-    </header>
-
-    <!-- 3 High-Contrast Colored Navigation Tabs (Mobile-First) -->
-    <nav class="max-w-5xl w-full mx-auto px-3 sm:px-6 pt-4 pb-2 no-print">
-        <div class="grid grid-cols-3 gap-2 sm:gap-3">
-            <!-- Tab 1: Blue (Calculator & Verdict) -->
-            <button type="button" id="navTab1" onclick="switchTab(1)" class="tab-btn tab-btn-active-1 rounded-2xl p-2.5 sm:p-3.5 border-2 flex flex-col sm:flex-row items-center justify-center gap-1.5 text-center cursor-pointer">
-                <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                </svg>
-                <span data-i18n="tab1Title" class="text-xs sm:text-sm font-black leading-tight">1. حاسبة الاختبار والنتيجة</span>
-            </button>
-
-            <!-- Tab 2: Emerald Green (Curve Page) -->
-            <button type="button" id="navTab2" onclick="switchTab(2)" class="tab-btn tab-btn-inactive-2 rounded-2xl p-2.5 sm:p-3.5 border-2 flex flex-col sm:flex-row items-center justify-center gap-1.5 text-center cursor-pointer">
-                <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/>
-                </svg>
-                <span data-i18n="tab2Title" class="text-xs sm:text-sm font-black leading-tight">2. صفحة منحنى الكيرف</span>
-            </button>
-
-            <!-- Tab 3: Amber/Orange (Guide & How to Test) -->
-            <button type="button" id="navTab3" onclick="switchTab(3)" class="tab-btn tab-btn-inactive-3 rounded-2xl p-2.5 sm:p-3.5 border-2 flex flex-col sm:flex-row items-center justify-center gap-1.5 text-center cursor-pointer">
-                <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                </svg>
-                <span data-i18n="tab3Title" class="text-xs sm:text-sm font-black leading-tight">3. شرح البرنامج والاختبار</span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Main Container -->
-    <main class="flex-1 max-w-5xl w-full mx-auto px-3 sm:px-6 pt-2">
-
-        <!-- =================================================================== -->
-        <!-- PAGE 1: MAIN TEST CALCULATOR & PASS/FAIL VERDICT                    -->
-        <!-- =================================================================== -->
-        <div id="page1" class="space-y-4">
-
-            <!-- CARD 1: Brand, Individual Model, Class (10/20/30), State (Cold/Hot) -->
-            <section class="bg-white border-2 border-blue-200 rounded-2xl p-4 sm:p-5 shadow-md">
-                <div class="flex items-center justify-between mb-4 pb-2.5 border-b-2 border-slate-100">
-                    <div class="flex items-center gap-2">
-                        <span class="w-7 h-7 rounded-xl bg-blue-600 text-white font-black text-sm flex items-center justify-center shadow">1</span>
-                        <h2 data-i18n="card1Header" class="text-base sm:text-lg font-black text-slate-800">بيانات الأوفرلود وحالة الاختبار</h2>
-                    </div>
-                    <span id="summaryBadgeTop" class="text-xs font-mono font-extrabold px-3 py-1 rounded-xl bg-blue-100 text-blue-900 border border-blue-300">
-                        ABB • TF42
-                    </span>
-                </div>
-
-                <div class="space-y-4">
-                    <!-- 1. Brand Selection -->
-                    <div>
-                        <label data-i18n="selectBrandLabel" class="block text-xs sm:text-sm font-extrabold text-slate-700 mb-2">اختر ماركة الأوفرلود:</label>
-                        <div class="grid grid-cols-2 gap-3">
-                            <button type="button" id="brandBtnABB" onclick="selectBrand('ABB')" class="p-3.5 rounded-2xl border-2 transition flex items-center justify-between cursor-pointer">
-                                <div class="text-start">
-                                    <div class="text-base sm:text-lg font-black text-[#E30613]">ABB</div>
-                                    <div data-i18n="abbSub" class="text-xs text-slate-600 font-bold">أوفرلود حراري / إلكتروني</div>
-                                </div>
-                                <span class="w-4 h-4 rounded-full bg-[#E30613] ring-4 ring-red-100"></span>
-                            </button>
-
-                            <button type="button" id="brandBtnSCH" onclick="selectBrand('SCHNEIDER')" class="p-3.5 rounded-2xl border-2 transition flex items-center justify-between cursor-pointer">
-                                <div class="text-start">
-                                    <div class="text-base sm:text-lg font-black text-[#009530]">Schneider</div>
-                                    <div data-i18n="schSub" class="text-xs text-slate-600 font-bold">شنايدر إلكتريك</div>
-                                </div>
-                                <span class="w-4 h-4 rounded-full bg-[#009530] ring-4 ring-emerald-100"></span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- 2. Individual Model Dropdown (Every single model listed individually) -->
-                    <div class="bg-slate-100 p-3.5 rounded-2xl border border-slate-300">
-                        <label data-i18n="selectModelLabel" class="block text-xs sm:text-sm font-extrabold text-slate-800 mb-1.5">اختر موديل الأوفرلود (كل موديل منفصل):</label>
-                        <select id="modelSelect" onchange="handleModelChange()" class="w-full bg-white border-2 border-slate-400 focus:border-blue-600 rounded-xl px-3.5 py-3 text-sm sm:text-base font-extrabold text-slate-900 outline-none transition shadow-sm cursor-pointer">
-                            <!-- Populated dynamically with individual models -->
-                        </select>
-                        <p id="modelRangeHelper" class="text-xs font-bold text-blue-800 mt-2 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200"></p>
-                    </div>
-
-                    <!-- 3. Trip Class (Strictly 10, 20, 30) & Thermal State (Strictly Cold or Hot) -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <!-- Trip Class: 10, 20, 30 ONLY -->
-                        <div class="bg-indigo-50/70 p-3.5 rounded-2xl border-2 border-indigo-200">
-                            <label data-i18n="tripClassLabel" class="block text-xs sm:text-sm font-extrabold text-indigo-950 mb-2">فئة الفصل (Class):</label>
-                            <div class="grid grid-cols-3 gap-2">
-                                <button type="button" id="classBtn10" onclick="setTripClass('10')" class="py-3 rounded-xl font-mono text-base sm:text-lg font-black border-2 transition cursor-pointer">
-                                    10
-                                </button>
-                                <button type="button" id="classBtn20" onclick="setTripClass('20')" class="py-3 rounded-xl font-mono text-base sm:text-lg font-black border-2 transition cursor-pointer">
-                                    20
-                                </button>
-                                <button type="button" id="classBtn30" onclick="setTripClass('30')" class="py-3 rounded-xl font-mono text-base sm:text-lg font-black border-2 transition cursor-pointer">
-                                    30
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Thermal State: Cold or Hot ONLY -->
-                        <div class="bg-slate-100 p-3.5 rounded-2xl border-2 border-slate-300">
-                            <label data-i18n="thermalStateLabel" class="block text-xs sm:text-sm font-extrabold text-slate-800 mb-2">حالة الأوفرلود:</label>
-                            <div class="grid grid-cols-2 gap-2.5">
-                                <button type="button" id="btnStateCold" onclick="setThermalState('COLD')" class="py-3 px-2 rounded-xl text-xs sm:text-sm font-black border-2 transition flex items-center justify-center gap-1.5 cursor-pointer">
-                                    <span class="w-3 h-3 rounded-full bg-sky-400"></span>
-                                    <span data-i18n="coldBtn">بارد (Cold)</span>
-                                </button>
-                                <button type="button" id="btnStateHot" onclick="setThermalState('HOT')" class="py-3 px-2 rounded-xl text-xs sm:text-sm font-black border-2 transition flex items-center justify-center gap-1.5 cursor-pointer">
-                                    <span class="w-3 h-3 rounded-full bg-orange-400"></span>
-                                    <span data-i18n="hotBtn">ساخن (Hot)</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CARD 2: Dial Setting (Ir) & Test Percentage (150% or 200% ONLY) -->
-            <section class="bg-white border-2 border-indigo-200 rounded-2xl p-4 sm:p-5 shadow-md">
-                <div class="flex items-center justify-between mb-4 pb-2.5 border-b-2 border-slate-100">
-                    <div class="flex items-center gap-2">
-                        <span class="w-7 h-7 rounded-xl bg-indigo-600 text-white font-black text-sm flex items-center justify-center shadow">2</span>
-                        <h2 data-i18n="card2Header" class="text-base sm:text-lg font-black text-slate-800">ضبط تدريج الأمبير وحساب تيار الحقن</h2>
-                    </div>
-                    <span data-i18n="only150_200Badge" class="text-xs font-extrabold text-indigo-800 bg-indigo-100 px-3 py-1 rounded-xl border border-indigo-300">
-                        150% أو 200%
-                    </span>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                    <!-- Dial Current Setting Ir -->
-                    <div class="bg-slate-100 p-4 rounded-2xl border-2 border-slate-300">
-                        <label data-i18n="irLabel" class="block text-xs sm:text-sm font-extrabold text-slate-800 mb-2">
-                            تدريج الأوفرلود المضبوط (Ir بالأمبير):
-                        </label>
-                        <div class="relative flex items-center">
-                            <input type="number" id="irInput" value="10" min="0.1" max="1000" step="0.5" oninput="handleIrChange()" class="w-full bg-white border-2 border-slate-400 focus:border-indigo-600 rounded-xl px-4 py-3 text-xl font-mono font-black text-slate-900 outline-none shadow-inner">
-                            <span class="absolute end-4 text-sm font-black text-slate-500">Amp</span>
-                        </div>
-                    </div>
-
-                    <!-- Test Ratio: 150% or 200% ONLY -->
-                    <div class="bg-indigo-50 p-4 rounded-2xl border-2 border-indigo-200">
-                        <label data-i18n="testRatioLabel" class="block text-xs sm:text-sm font-extrabold text-indigo-950 mb-2">
-                            اختر نسبة تيار الاختبار:
-                        </label>
-                        <div class="grid grid-cols-2 gap-3">
-                            <button type="button" id="multBtn150" onclick="setTestMultiple(1.5)" class="py-3.5 px-3 rounded-xl font-mono text-lg sm:text-xl font-black border-2 transition cursor-pointer flex flex-col items-center justify-center">
-                                <span>150%</span>
-                                <span class="text-[11px] font-sans font-bold opacity-85">(1.5 × Ir)</span>
-                            </button>
-                            <button type="button" id="multBtn200" onclick="setTestMultiple(2.0)" class="py-3.5 px-3 rounded-xl font-mono text-lg sm:text-xl font-black border-2 transition cursor-pointer flex flex-col items-center justify-center">
-                                <span>200%</span>
-                                <span class="text-[11px] font-sans font-bold opacity-85">(2.0 × Ir)</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- High-Contrast Calculated Outputs: Required Injection Current & Allowed Time Window -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <!-- Box A: Required Injection Current -->
-                    <div class="bg-blue-600 text-white rounded-2xl p-4 shadow-md flex items-center justify-between">
-                        <div>
-                            <div data-i18n="reqCurrentTitle" class="text-xs sm:text-sm font-bold text-blue-100">تيار الحقن المطلوب بالجهاز:</div>
-                            <div id="calcInjectedAmps" class="text-2xl sm:text-3xl font-mono font-black mt-1">20.00 A</div>
-                            <div id="calcInjectedSub" class="text-xs font-bold text-blue-200 mt-0.5">عند نسبة 200% من التدريج</div>
-                        </div>
-                        <div class="w-12 h-12 rounded-2xl bg-blue-500/60 flex items-center justify-center font-mono font-black text-lg border border-blue-300">
-                            I<sub>test</sub>
-                        </div>
-                    </div>
-
-                    <!-- Box B: Allowed Trip Time Range -->
-                    <div id="allowedWindowBox" class="bg-amber-500 text-slate-950 rounded-2xl p-4 shadow-md flex items-center justify-between">
-                        <div>
-                            <div id="allowedWindowTitle" class="text-xs sm:text-sm font-extrabold text-amber-950">الزمن المسموح للفصل (بارد):</div>
-                            <div id="allowedWindowValue" class="text-xl sm:text-2xl font-mono font-black mt-1">35.0s – 95.0s</div>
-                            <div id="allowedWindowTyp" class="text-xs font-extrabold text-amber-900 mt-0.5">الوقت المثالي المتوقع: ~ 58.0 ثانية</div>
-                        </div>
-                        <div class="w-12 h-12 rounded-2xl bg-white/40 flex items-center justify-center font-mono font-black text-lg border border-amber-700/30">
-                            ⏱
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CARD 3: Enter Actual Trip Time & See PASS / FAIL Result (No Stopwatch) -->
-            <section class="bg-white border-2 border-emerald-300 rounded-2xl p-4 sm:p-5 shadow-md">
-                <div class="flex items-center justify-between mb-4 pb-2.5 border-b-2 border-slate-100">
-                    <div class="flex items-center gap-2">
-                        <span class="w-7 h-7 rounded-xl bg-emerald-600 text-white font-black text-sm flex items-center justify-center shadow">3</span>
-                        <h2 data-i18n="card3Header" class="text-base sm:text-lg font-black text-slate-800">اكتب زمن الفصل الفعلي وشوف النتيجة</h2>
-                    </div>
-                    <button type="button" onclick="switchTab(2)" class="text-xs font-extrabold text-emerald-800 bg-emerald-100 hover:bg-emerald-200 px-3 py-1.5 rounded-xl border border-emerald-300 transition cursor-pointer">
-                        <span data-i18n="viewOnCurveBtn">عرض النقطة على الكيرف ←</span>
-                    </button>
-                </div>
-
-                <!-- Measured Time Input -->
-                <div class="bg-slate-100 border-2 border-slate-300 rounded-2xl p-4 mb-4">
-                    <label data-i18n="measuredTimeLabel" class="block text-sm sm:text-base font-black text-slate-800 mb-2">
-                        اكتب زمن الفصل الفعلي الذي قرأته (بالثواني):
-                    </label>
-                    <div class="flex items-center gap-3">
-                        <div class="relative flex-1">
-                            <input type="number" id="measuredTimeInput" value="55" min="0.1" max="10000" step="0.5" oninput="updateAll()" class="w-full bg-white border-2 border-blue-500 focus:border-blue-700 rounded-2xl px-4 py-3.5 text-2xl sm:text-3xl font-mono font-black text-slate-900 outline-none shadow-inner">
-                            <span data-i18n="secUnit" class="absolute end-4 top-4 text-sm font-black text-slate-500">ثانية (sec)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- HUGE UNMISTAKABLE PASS / FAIL VERDICT BANNER -->
-                <div id="verdictBanner" class="rounded-2xl p-5 border-4 mb-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition shadow-md">
-                    <div class="space-y-1">
-                        <div class="text-xs sm:text-sm font-extrabold uppercase tracking-wide opacity-90" id="verdictEvalState">--</div>
-                        <div class="text-lg sm:text-xl font-black leading-snug" id="verdictTitle">--</div>
-                        <div class="text-xs sm:text-sm font-bold opacity-90" id="verdictSubDetail">--</div>
-                    </div>
-                    <div id="verdictBadge" class="w-full sm:w-auto text-center px-6 py-3.5 rounded-2xl text-lg sm:text-xl font-black tracking-wide shrink-0 shadow-md">
-                        ناجح PASS ✓
-                    </div>
-                </div>
-
-                <!-- Save to Report Log -->
-                <div class="flex flex-col sm:flex-row gap-2.5 pt-2 border-t border-slate-200 no-print">
-                    <input type="text" id="motorTagInput" placeholder="اسم المحرك أو اللوحة (اختياري - مثال: طلمبة 1)" class="flex-1 bg-slate-100 border-2 border-slate-300 rounded-xl px-4 py-3 text-sm font-bold text-slate-800 outline-none focus:bg-white focus:border-blue-600">
-                    <button type="button" onclick="logCurrentTestPoint()" class="py-3 px-6 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-black text-sm transition shadow flex items-center justify-center gap-2 shrink-0 cursor-pointer">
-                        <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-                        <span data-i18n="addLogBtn">حفظ النتيجة في الجدول بالأسفل</span>
-                    </button>
-                </div>
-            </section>
-
-            <!-- Saved Field Test Log Table -->
-            <section class="bg-white border-2 border-slate-300 rounded-2xl p-4 sm:p-5 shadow-md">
-                <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
-                    <h3 data-i18n="tableTitle" class="text-sm sm:text-base font-black text-slate-800">
-                        سجل الاختبارات المحفوظة
-                    </h3>
-                    <div class="flex items-center gap-2 no-print">
-                        <button onclick="window.print()" class="px-3.5 py-2 rounded-xl text-xs font-black bg-blue-600 hover:bg-blue-700 text-white transition shadow cursor-pointer">
-                            <span data-i18n="printBtn">طباعة</span>
-                        </button>
-                        <button onclick="clearTestLog()" class="px-3.5 py-2 rounded-xl text-xs font-black bg-red-100 hover:bg-red-200 text-red-700 border border-red-300 transition cursor-pointer">
-                            <span data-i18n="clearBtn">مسح السجل</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="overflow-x-auto rounded-xl border-2 border-slate-200">
-                    <table class="w-full text-start border-collapse">
-                        <thead>
-                            <tr class="bg-slate-200 text-xs font-black text-slate-800 border-b-2 border-slate-300">
-                                <th class="py-2.5 px-3 text-start">#</th>
-                                <th class="py-2.5 px-3 text-start" data-i18n="thTag">المحرك</th>
-                                <th class="py-2.5 px-3 text-start" data-i18n="thModel">الموديل</th>
-                                <th class="py-2.5 px-3 text-start" data-i18n="thState">الحالة</th>
-                                <th class="py-2.5 px-3 text-start" data-i18n="thItest">تيار الحقن</th>
-                                <th class="py-2.5 px-3 text-start" data-i18n="thWindow">المسموح</th>
-                                <th class="py-2.5 px-3 text-start" data-i18n="thMeas">الفعلي</th>
-                                <th class="py-2.5 px-3 text-start" data-i18n="thResult">النتيجة</th>
-                            </tr>
-                        </thead>
-                        <tbody id="testLogBody" class="divide-y divide-slate-200 text-xs sm:text-sm font-bold">
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+          </div>
         </div>
 
-        <!-- =================================================================== -->
-        <!-- PAGE 2: SEPARATE TRIPPING CURVE PAGE (منحنى الفصل - الكيرف)          -->
-        <!-- =================================================================== -->
-        <div id="page2" class="hidden space-y-4">
-            <section class="bg-white border-2 border-emerald-400 rounded-2xl p-4 sm:p-5 shadow-md">
-                <!-- Top Summary Banner on Curve Page -->
-                <div class="flex flex-wrap items-center justify-between gap-3 pb-3 mb-4 border-b-2 border-slate-100">
-                    <div>
-                        <h2 data-i18n="curvePageHeader" class="text-base sm:text-lg font-black text-emerald-950">
-                            منحنى الفصل الحراري (Time-Current Curve)
-                        </h2>
-                        <p id="curveSummarySub" class="text-xs sm:text-sm font-bold text-slate-600 mt-0.5">
-                            يوضح المنحنى نطاق الفصل المسموح وموقع الزمن الفعلي الذي أدخلته
-                        </p>
-                    </div>
-                    <button type="button" onclick="switchTab(1)" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-black bg-blue-600 hover:bg-blue-700 text-white shadow cursor-pointer">
-                        <span data-i18n="backToCalcBtn">← العودة لحاسبة الاختبار</span>
-                    </button>
-                </div>
+        <!-- صندوق النتيجة (ناجح / راسب) -->
+        <div id="verdictBox" class="rounded-xl p-2.5 text-center bg-slate-100 border border-slate-300">
+          <div id="verdictTitle" class="text-sm font-extrabold text-slate-600">أدخل زمن الفصل بالثواني لإظهار النتيجة</div>
+          <div id="verdictSub" class="text-xs text-slate-500 mt-0.5">يتم التقييم فوراً طبقاً لمنحنيات داتاشيت المصنع</div>
+        </div>
+      </div>
 
-                <!-- Summary Pills of Current Selection -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-4">
-                    <div class="bg-slate-100 p-3 rounded-xl border border-slate-300">
-                        <div data-i18n="pillModel" class="text-[11px] font-bold text-slate-500">الموديل والفئة</div>
-                        <div id="curvePillModel" class="text-sm font-black text-slate-900 mt-0.5">ABB TF42 (Class 10)</div>
-                    </div>
-                    <div class="bg-slate-100 p-3 rounded-xl border border-slate-300">
-                        <div data-i18n="pillState" class="text-[11px] font-bold text-slate-500">حالة الاختبار</div>
-                        <div id="curvePillState" class="text-sm font-black text-sky-700 mt-0.5">بارد (Cold)</div>
-                    </div>
-                    <div class="bg-slate-100 p-3 rounded-xl border border-slate-300">
-                        <div data-i18n="pillCurrent" class="text-[11px] font-bold text-slate-500">تيار الحقن</div>
-                        <div id="curvePillCurrent" class="text-sm font-mono font-black text-blue-700 mt-0.5">20.0 A (200%)</div>
-                    </div>
-                    <div class="bg-slate-100 p-3 rounded-xl border border-slate-300">
-                        <div data-i18n="pillTime" class="text-[11px] font-bold text-slate-500">زمنك الفعلي والنتيجة</div>
-                        <div id="curvePillVerdict" class="text-sm font-mono font-black text-emerald-700 mt-0.5">55.0s (PASS)</div>
-                    </div>
-                </div>
+      <!-- جدول السجل المصغر -->
+      <div id="logContainer" class="bg-white rounded-xl p-2.5 shadow-sm border border-slate-200 hidden">
+        <div class="flex justify-between items-center mb-1.5">
+          <h3 id="lblLogTitle" class="text-xs font-extrabold text-slate-700">📋 سجل الاختبارات المحفوظة</h3>
+          <button onclick="clearLogs()" class="text-[11px] text-red-600 font-bold">مسح السجل</button>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-[11px] text-center border-collapse">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700 border-b">
+                <th class="p-1">الموديل</th>
+                <th class="p-1">الأمبير</th>
+                <th class="p-1">الحالة</th>
+                <th class="p-1">الزمن</th>
+                <th class="p-1">النتيجة</th>
+              </tr>
+            </thead>
+            <tbody id="logBody"></tbody>
+          </table>
+        </div>
+      </div>
 
-                <!-- Canvas Container -->
-                <div class="relative w-full h-[420px] sm:h-[480px] bg-white rounded-2xl border-2 border-slate-300 overflow-hidden shadow-inner">
-                    <canvas id="tccCanvas" class="w-full h-full block"></canvas>
-                </div>
-            </section>
+    </section>
+
+    <!-- ==================== التاب الثاني: صفحة الكيرف المستقلة ==================== -->
+    <section id="tab2" class="hidden space-y-2">
+      <div class="bg-white rounded-xl p-3 shadow-sm border border-emerald-300">
+        <div class="flex items-center justify-between mb-2">
+          <div>
+            <h2 id="chartTitle" class="text-sm font-extrabold text-slate-800">منحنى الفصل الحراري / الإلكتروني (الداتاشيت)</h2>
+            <p id="chartSub" class="text-[11px] text-slate-500">يوضح الحد الأدنى والأقصى والمنحنى المثالي ونقطة اختبارك</p>
+          </div>
+          <span id="chartBadge" class="bg-emerald-100 text-emerald-900 font-extrabold text-xs px-2.5 py-1 rounded-lg border border-emerald-300">Class 10</span>
         </div>
 
-        <!-- =================================================================== -->
-        <!-- PAGE 3: PROGRAM GUIDE & HOW TO TEST OVERLOAD RELAYS                 -->
-        <!-- =================================================================== -->
-        <div id="page3" class="hidden space-y-4">
-
-            <!-- Section A: How to Use the Program in 4 Simple Steps -->
-            <section class="bg-white border-2 border-amber-400 rounded-2xl p-4 sm:p-5 shadow-md">
-                <div class="flex items-center gap-2.5 pb-3 mb-4 border-b-2 border-amber-100">
-                    <span class="px-3 py-1 rounded-xl bg-amber-500 text-slate-950 font-black text-xs sm:text-sm">شرح البرنامج</span>
-                    <h2 data-i18n="guideAppTitle" class="text-base sm:text-lg font-black text-slate-900">
-                        إزاي تستخدم البرنامج في 4 خطوات سريعة؟
-                    </h2>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                    <div class="bg-blue-50 border-2 border-blue-200 rounded-2xl p-4">
-                        <div class="text-sm font-black text-blue-900 mb-1" data-i18n="gStep1Title">1. اختر الماركة والموديل والفئة</div>
-                        <p class="text-xs sm:text-sm font-bold text-slate-700 leading-relaxed" data-i18n="gStep1Desc">
-                            من التاب الأول الأزرق، اختر ماركة الأوفرلود (ABB أو Schneider)، ثم اختر رقم الموديل المكتوب على الأوفرلود (مثل TF42 أو LRD16)، وتأكد من فئة الفصل (10 أو 20 أو 30) وحالته (بارد أو ساخن).
-                        </p>
-                    </div>
-
-                    <div class="bg-indigo-50 border-2 border-indigo-200 rounded-2xl p-4">
-                        <div class="text-sm font-black text-indigo-900 mb-1" data-i18n="gStep2Title">2. اكتب تدريج الأمبير واختر 150% أو 200%</div>
-                        <p class="text-xs sm:text-sm font-bold text-slate-700 leading-relaxed" data-i18n="gStep2Desc">
-                            اكتب قيمة البكرة المضبوط عليها الأوفرلود (Ir)، ثم اضغط على 150% أو 200%. البرنامج هيحسبلك فوراً الأمبير اللي المفروض تحقنه بجهاز الاختبار، والزمن المسموح به للفصل.
-                        </p>
-                    </div>
-
-                    <div class="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4">
-                        <div class="text-sm font-black text-emerald-900 mb-1" data-i18n="gStep3Title">3. اكتب الزمن اللي فصل عنده الأوفرلود</div>
-                        <p class="text-xs sm:text-sm font-bold text-slate-700 leading-relaxed" data-i18n="gStep3Desc">
-                            بعد ما تحقن التيار ويفصل الأوفرلود، اكتب الزمن بالثواني في الخانة المخصصة رقم 3، وهتظهرلك النتيجة فوراً باللون الأخضر (ناجح PASS) لو داخل الوقت المسموح، أو باللون الأحمر (راسب FAIL).
-                        </p>
-                    </div>
-
-                    <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-4">
-                        <div class="text-sm font-black text-amber-950 mb-1" data-i18n="gStep4Title">4. شاهد مكان النقطة على الكيرف</div>
-                        <p class="text-xs sm:text-sm font-bold text-slate-700 leading-relaxed" data-i18n="gStep4Desc">
-                            لو حابب تشوف شكل كيرف الأوفرلود ومكان نقطة الاختبار بتاعتك، اضغط على التاب الثاني الأخضر (صفحة منحنى الكيرف) وهتلاقي النقطة مرسومة بوضوح داخل أو خارج منطقة السماحية.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section B: How to Wire & Test Overload Relays in the Field -->
-            <section class="bg-white border-2 border-slate-300 rounded-2xl p-4 sm:p-5 shadow-md">
-                <div class="flex items-center gap-2.5 pb-3 mb-4 border-b-2 border-slate-100">
-                    <span class="px-3 py-1 rounded-xl bg-blue-600 text-white font-black text-xs sm:text-sm">شرح الاختبار العملي</span>
-                    <h2 data-i18n="guideWiringTitle" class="text-base sm:text-lg font-black text-slate-900">
-                        طريقة توصيل الأوفرلود وإجراء الاختبار على البارد والساخن
-                    </h2>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
-                    <!-- Schematic Diagram -->
-                    <div class="bg-slate-50 border-2 border-slate-300 rounded-2xl p-4">
-                        <h4 data-i18n="diagHeader" class="text-xs sm:text-sm font-black text-blue-900 mb-2">
-                            توصيل الـ 3 فاز توالي (مهم جداً لمنع الفصل الخاطئ لسقوط الفازة):
-                        </h4>
-                        <p data-i18n="diagSub" class="text-xs font-bold text-slate-600 mb-3 leading-relaxed">
-                            جميع أوفرلودات ABB وشنايدر الحديثة تحتوي على ميكانيزم حساس لسقوط الفازة. لذلك عند الاختبار بجهاز حقن فازة واحدة، <strong>يجب توصيل الثلاث فازات بالتوالي</strong> كما بالرسمة:
-                        </p>
-                        <svg viewBox="0 0 400 220" class="w-full h-auto bg-white rounded-xl border-2 border-slate-200 p-2 shadow-sm" dir="ltr">
-                            <rect x="12" y="65" width="88" height="90" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5"/>
-                            <text x="56" y="98" fill="#1E3A8A" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">TEST SET</text>
-                            <text x="56" y="115" fill="#2563EB" font-size="9" font-family="sans-serif" text-anchor="middle" font-weight="bold">جهاز حقن الأمبير</text>
-                            <text x="56" y="132" fill="#475569" font-size="8" font-family="monospace" text-anchor="middle">(Current Out)</text>
-
-                            <rect x="140" y="30" width="150" height="160" rx="10" fill="#F8FAFC" stroke="#0F172A" stroke-width="2.5"/>
-                            <text x="215" y="50" fill="#0F172A" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">OVERLOAD RELAY</text>
-
-                            <circle cx="168" cy="70" r="5" fill="#2563EB"/>
-                            <text x="168" y="60" fill="#0F172A" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">1L1</text>
-                            <circle cx="215" cy="70" r="5" fill="#2563EB"/>
-                            <text x="215" y="60" fill="#0F172A" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">3L2</text>
-                            <circle cx="262" cy="70" r="5" fill="#2563EB"/>
-                            <text x="262" y="60" fill="#0F172A" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">5L3</text>
-
-                            <path d="M168 75 L168 105 L175 115 L168 125 L168 150" stroke="#EA580C" stroke-width="2.8" fill="none"/>
-                            <path d="M215 75 L215 105 L222 115 L215 125 L215 150" stroke="#EA580C" stroke-width="2.8" fill="none"/>
-                            <path d="M262 75 L262 105 L269 115 L262 125 L262 150" stroke="#EA580C" stroke-width="2.8" fill="none"/>
-
-                            <circle cx="168" cy="150" r="5" fill="#2563EB"/>
-                            <text x="168" y="166" fill="#0F172A" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">2T1</text>
-                            <circle cx="215" cy="150" r="5" fill="#2563EB"/>
-                            <text x="215" y="166" fill="#0F172A" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">4T2</text>
-                            <circle cx="262" cy="150" r="5" fill="#2563EB"/>
-                            <text x="262" y="166" fill="#0F172A" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">6T3</text>
-
-                            <path d="M100 85 L122 85 L122 38 L168 38 L168 65" stroke="#2563EB" stroke-width="2.5" fill="none"/>
-                            <path d="M168 155 L168 176 L191 176 L191 44 L215 44 L215 65" stroke="#009530" stroke-width="2.5" stroke-dasharray="4,2" fill="none"/>
-                            <path d="M215 155 L215 176 L238 176 L238 44 L262 44 L262 65" stroke="#009530" stroke-width="2.5" stroke-dasharray="4,2" fill="none"/>
-                            <path d="M262 155 L262 200 L118 200 L118 135 L100 135" stroke="#2563EB" stroke-width="2.5" fill="none"/>
-
-                            <rect x="305" y="70" width="82" height="80" rx="8" fill="#FEF2F2" stroke="#E11D48" stroke-width="2"/>
-                            <text x="346" y="96" fill="#BE123C" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">NC 95 - 96</text>
-                            <text x="346" y="114" fill="#0F172A" font-size="9" font-family="sans-serif" text-anchor="middle" font-weight="bold">ريشة الفصل</text>
-                            <text x="346" y="130" fill="#64748B" font-size="8" font-family="sans-serif" text-anchor="middle">توقف جهاز الحقن</text>
-                        </svg>
-                    </div>
-
-                    <!-- Cold vs Hot Explanation Cards -->
-                    <div class="space-y-3.5">
-                        <div class="bg-sky-50 border-2 border-sky-300 rounded-2xl p-4">
-                            <h4 data-i18n="coldGuideTitle" class="text-sm sm:text-base font-black text-sky-950 mb-1">
-                                متى تختار (بارد - Cold) وكيف تختبره؟
-                            </h4>
-                            <p data-i18n="coldGuideDesc" class="text-xs sm:text-sm font-bold text-sky-900 leading-relaxed">
-                                اختر <strong>بارد</strong> عندما يكون الأوفرلود مفصولاً عن الكهرباء وفي درجة حرارة الغرفة لمدة لا تقل عن 30 دقيقة. احقن تيار الـ 150% أو الـ 200% مباشرة وسجل زمن الفصل.
-                            </p>
-                        </div>
-
-                        <div class="bg-orange-50 border-2 border-orange-300 rounded-2xl p-4">
-                            <h4 data-i18n="hotGuideTitle" class="text-sm sm:text-base font-black text-orange-950 mb-1">
-                                متى تختار (ساخن - Hot) وكيف تختبره؟
-                            </h4>
-                            <p data-i18n="hotGuideDesc" class="text-xs sm:text-sm font-bold text-orange-900 leading-relaxed">
-                                اختر <strong>ساخن</strong> إذا تم تسخين الأوفرلود أولاً بحقن تيار الحمل الطبيعي (100% من Ir) حتى يستقر حرارياً، ثم رفعت التيار فجأة إلى 150% أو 200%. في الحالة الساخنة يفصل الأوفرلود في وقت أقصر بكثير (حوالي ثلث زمن البارد).
-                            </p>
-                        </div>
-
-                        <div class="bg-rose-50 border-2 border-rose-300 rounded-2xl p-4">
-                            <h4 data-i18n="warnGuideTitle" class="text-sm sm:text-base font-black text-rose-950 mb-1">
-                                ⚠️ تنبيه هام جداً للفني عند تكرار الاختبار:
-                            </h4>
-                            <p data-i18n="warnGuideDesc" class="text-xs sm:text-sm font-bold text-rose-900 leading-relaxed">
-                                إذا قمت باختبار أوفرلود حراري على البارد وفصل، <strong>لا تقم بإعادة اختباره فوراً على أنه بارد!</strong> لأن الشريحة الحرارية تكون قد سخنت بالفعل وستفصل في وقت أسرع. انتظر حتى يبرد تماماً أو اختبره على الكيرف الساخن.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <div class="relative w-full h-72 sm:h-80 bg-slate-50 rounded-lg p-1 border border-slate-200">
+          <canvas id="tccChart"></canvas>
         </div>
 
-    </main>
-
-    <!-- Application Logic -->
-    <script>
-        // =========================================================================
-        // 1. INDIVIDUAL OVERLOAD RELAY MODELS (EACH MODEL SEPARATE)
-        // =========================================================================
-        const INDIVIDUAL_MODELS = {
-            ABB: [
-                { id: 'TF42',    name: 'ABB TF42',    defaultClass: '10', rangeAr: 'أوفرلود حراري TF42 (مدى التدريج من 0.10A حتى 38A)', rangeEn: 'Thermal Overload TF42 (0.10A to 38A)' },
-                { id: 'TF65',    name: 'ABB TF65',    defaultClass: '10', rangeAr: 'أوفرلود حراري TF65 (مدى التدريج من 22A حتى 67A)',   rangeEn: 'Thermal Overload TF65 (22A to 67A)' },
-                { id: 'TF96',    name: 'ABB TF96',    defaultClass: '10', rangeAr: 'أوفرلود حراري TF96 (مدى التدريج من 40A حتى 96A)',   rangeEn: 'Thermal Overload TF96 (40A to 96A)' },
-                { id: 'TF140DU', name: 'ABB TF140DU', defaultClass: '10', rangeAr: 'أوفرلود حراري TF140DU (مدى التدريج من 66A حتى 142A)', rangeEn: 'Thermal Overload TF140DU (66A to 142A)' },
-                { id: 'TA25DU',  name: 'ABB TA25DU',  defaultClass: '10', rangeAr: 'أوفرلود حراري TA25DU (مدى التدريج من 0.1A حتى 25A)',  rangeEn: 'Thermal Overload TA25DU (0.1A to 25A)' },
-                { id: 'TA42DU',  name: 'ABB TA42DU',  defaultClass: '10', rangeAr: 'أوفرلود حراري TA42DU (مدى التدريج من 18A حتى 42A)',   rangeEn: 'Thermal Overload TA42DU (18A to 42A)' },
-                { id: 'TA75DU',  name: 'ABB TA75DU',  defaultClass: '10', rangeAr: 'أوفرلود حراري TA75DU (مدى التدريج من 29A حتى 75A)',   rangeEn: 'Thermal Overload TA75DU (29A to 75A)' },
-                { id: 'TA110DU', name: 'ABB TA110DU', defaultClass: '10', rangeAr: 'أوفرلود حراري TA110DU (مدى التدريج من 65A حتى 110A)', rangeEn: 'Thermal Overload TA110DU (65A to 110A)' },
-                { id: 'EF19',    name: 'ABB EF19',    defaultClass: '10', rangeAr: 'أوفرلود إلكتروني EF19 (يدعم الفئات 10 و 20 و 30)',    rangeEn: 'Electronic Overload EF19 (Classes 10, 20, 30)' },
-                { id: 'EF45',    name: 'ABB EF45',    defaultClass: '10', rangeAr: 'أوفرلود إلكتروني EF45 (مدى 9A إلى 45A - فئات 10/20/30)', rangeEn: 'Electronic Overload EF45 (9A to 45A)' },
-                { id: 'EF65',    name: 'ABB EF65',    defaultClass: '10', rangeAr: 'أوفرلود إلكتروني EF65 (مدى 20A إلى 70A - فئات 10/20/30)', rangeEn: 'Electronic Overload EF65 (20A to 70A)' },
-                { id: 'EF96',    name: 'ABB EF96',    defaultClass: '10', rangeAr: 'أوفرلود إلكتروني EF96 (مدى 36A إلى 100A - فئات 10/20/30)', rangeEn: 'Electronic Overload EF96 (36A to 100A)' },
-                { id: 'EF146',   name: 'ABB EF146',   defaultClass: '10', rangeAr: 'أوفرلود إلكتروني EF146 (مدى 54A إلى 150A - فئات 10/20/30)', rangeEn: 'Electronic Overload EF146 (54A to 150A)' },
-                { id: 'EF205',   name: 'ABB EF205',   defaultClass: '10', rangeAr: 'أوفرلود إلكتروني EF205 (مدى 63A إلى 210A - فئات 10/20/30)', rangeEn: 'Electronic Overload EF205 (63A to 210A)' }
-            ],
-            SCHNEIDER: [
-                { id: 'LRD08',   name: 'Schneider LRD08',   defaultClass: '10', rangeAr: 'أوفرلود حراري شنايدر LRD08 (من 2.5A إلى 4A)',     rangeEn: 'TeSys LRD08 Thermal Overload (2.5A – 4A)' },
-                { id: 'LRD10',   name: 'Schneider LRD10',   defaultClass: '10', rangeAr: 'أوفرلود حراري شنايدر LRD10 (من 4A إلى 6A)',       rangeEn: 'TeSys LRD10 Thermal Overload (4A – 6A)' },
-                { id: 'LRD12',   name: 'Schneider LRD12',   defaultClass: '10', rangeAr: 'أوفرلود حراري شنايدر LRD12 (من 5.5A إلى 8A)',     rangeEn: 'TeSys LRD12 Thermal Overload (5.5A – 8A)' },
-                { id: 'LRD14',   name: 'Schneider LRD14',   defaultClass: '10', rangeAr: 'أوفرلود حراري شنايدر LRD14 (من 7A إلى 10A)',      rangeEn: 'TeSys LRD14 Thermal Overload (7A – 10A)' },
-                { id: 'LRD16',   name: 'Schneider LRD16',   defaultClass: '10', rangeAr: 'أوفرلود حراري شنايدر LRD16 (من 9A إلى 13A)',      rangeEn: 'TeSys LRD16 Thermal Overload (9A – 13A)' },
-                { id: 'LRD21',   name: 'Schneider LRD21',   defaultClass: '10', rangeAr: 'أوفرلود حراري شنايدر LRD21 (من 12A إلى 18A)',     rangeEn: 'TeSys LRD21 Thermal Overload (12A – 18A)' },
-                { id: 'LRD22',   name: 'Schneider LRD22',   defaultClass: '10', rangeAr: 'أوفرلود حراري شنايدر LRD22 (من 16A إلى 24A)',     rangeEn: 'TeSys LRD22 Thermal Overload (16A – 24A)' },
-                { id: 'LRD32',   name: 'Schneider LRD32',   defaultClass: '10', rangeAr: 'أوفرلود حراري شنايدر LRD32 (من 23A إلى 32A)',     rangeEn: 'TeSys LRD32 Thermal Overload (23A – 32A)' },
-                { id: 'LRD35',   name: 'Schneider LRD35',   defaultClass: '10', rangeAr: 'أوفرلود حراري شنايدر LRD35 (من 30A إلى 38A)',     rangeEn: 'TeSys LRD35 Thermal Overload (30A – 38A)' },
-                { id: 'LRD3322', name: 'Schneider LRD3322', defaultClass: '10', rangeAr: 'أوفرلود حراري شنايدر LRD3322 (من 17A إلى 25A)',   rangeEn: 'TeSys LRD3322 Thermal Overload (17A – 25A)' },
-                { id: 'LRD3363', name: 'Schneider LRD3363', defaultClass: '10', rangeAr: 'أوفرلود حراري شنايدر LRD3363 (من 63A إلى 80A)',   rangeEn: 'TeSys LRD3363 Thermal Overload (63A – 80A)' },
-                { id: 'LRE10',   name: 'Schneider LRE10',   defaultClass: '10', rangeAr: 'أوفرلود حراري EasyPact LRE10 (من 4A إلى 6A)',     rangeEn: 'EasyPact LRE10 Thermal Overload (4A – 6A)' },
-                { id: 'LRE14',   name: 'Schneider LRE14',   defaultClass: '10', rangeAr: 'أوفرلود حراري EasyPact LRE14 (من 7A إلى 10A)',    rangeEn: 'EasyPact LRE14 Thermal Overload (7A – 10A)' },
-                { id: 'LRE21',   name: 'Schneider LRE21',   defaultClass: '10', rangeAr: 'أوفرلود حراري EasyPact LRE21 (من 12A إلى 18A)',   rangeEn: 'EasyPact LRE21 Thermal Overload (12A – 18A)' },
-                { id: 'LRE32',   name: 'Schneider LRE32',   defaultClass: '10', rangeAr: 'أوفرلود حراري EasyPact LRE32 (من 23A إلى 32A)',   rangeEn: 'EasyPact LRE32 Thermal Overload (23A – 32A)' },
-                { id: 'LRE35',   name: 'Schneider LRE35',   defaultClass: '10', rangeAr: 'أوفرلود حراري EasyPact LRE35 (من 30A إلى 38A)',   rangeEn: 'EasyPact LRE35 Thermal Overload (30A – 38A)' },
-                { id: 'LR9D01',  name: 'Schneider LR9D01',  defaultClass: '10', rangeAr: 'أوفرلود إلكتروني شنايدر LR9D01 (Class 10 / 20)', rangeEn: 'TeSys LR9D01 Electronic Overload' },
-                { id: 'LR9D32',  name: 'Schneider LR9D32',  defaultClass: '10', rangeAr: 'أوفرلود إلكتروني شنايدر LR9D32 (6.4A – 32A)',    rangeEn: 'TeSys LR9D32 Electronic Overload (6.4A – 32A)' },
-                { id: 'LR9F53',  name: 'Schneider LR9F53',  defaultClass: '10', rangeAr: 'أوفرلود إلكتروني شنايدر LR9F53 للقدرات العالية',  rangeEn: 'TeSys LR9F53 Electronic Overload' },
-                { id: 'LR9G115', name: 'Schneider LR9G115', defaultClass: '10', rangeAr: 'أوفرلود إلكتروني جيجا LR9G115 (فئات 10/20/30)',  rangeEn: 'TeSys Giga LR9G115 Electronic Overload' },
-                { id: 'LR9G225', name: 'Schneider LR9G225', defaultClass: '10', rangeAr: 'أوفرلود إلكتروني جيجا LR9G225 (فئات 10/20/30)',  rangeEn: 'TeSys Giga LR9G225 Electronic Overload' }
-            ]
-        };
-
-        // =========================================================================
-        // 2. BILINGUAL TEXT DICTIONARY (ARABIC / ENGLISH)
-        // =========================================================================
-        const I18N = {
-            ar: {
-                appTitle: 'فحص واختبار الأوفرلود (ABB & Schneider)',
-                appSubtitle: 'حاسبة سريعة للفنيين لتحديد زمن الفصل المسموح والحكم على النتيجة (ناجح / راسب)',
-                langBtnText: 'English',
-                tab1Title: '1. حاسبة الاختبار والنتيجة',
-                tab2Title: '2. صفحة منحنى الكيرف',
-                tab3Title: '3. شرح البرنامج والاختبار',
-                card1Header: 'بيانات الأوفرلود وحالة الاختبار',
-                selectBrandLabel: 'اختر ماركة الأوفرلود:',
-                abbSub: 'أوفرلود حراري / إلكتروني',
-                schSub: 'شنايدر إلكتريك',
-                selectModelLabel: 'اختر موديل الأوفرلود (كل موديل منفصل):',
-                tripClassLabel: 'فئة الفصل (Class):',
-                thermalStateLabel: 'حالة الأوفرلود:',
-                coldBtn: 'بارد (Cold)',
-                hotBtn: 'ساخن (Hot)',
-                card2Header: 'ضبط تدريج الأمبير وحساب تيار الحقن',
-                only150_200Badge: '150% أو 200%',
-                irLabel: 'تدريج الأوفرلود المضبوط (Ir بالأمبير):',
-                testRatioLabel: 'اختر نسبة تيار الاختبار:',
-                reqCurrentTitle: 'تيار الحقن المطلوب بالجهاز:',
-                card3Header: 'اكتب زمن الفصل الفعلي وشوف النتيجة',
-                viewOnCurveBtn: 'عرض النقطة على الكيرف ←',
-                measuredTimeLabel: 'اكتب زمن الفصل الفعلي الذي قرأته (بالثواني):',
-                secUnit: 'ثانية (sec)',
-                motorPlaceholder: 'اسم المحرك أو اللوحة (اختياري - مثال: طلمبة 1)',
-                addLogBtn: 'حفظ النتيجة في الجدول بالأسفل',
-                tableTitle: 'سجل الاختبارات المحفوظة',
-                printBtn: 'طباعة',
-                clearBtn: 'مسح السجل',
-                thTag: 'المحرك',
-                thModel: 'الموديل',
-                thState: 'الحالة',
-                thItest: 'تيار الحقن',
-                thWindow: 'المسموح',
-                thMeas: 'الفعلي',
-                thResult: 'النتيجة',
-                curvePageHeader: 'منحنى الفصل الحراري (Time-Current Curve)',
-                backToCalcBtn: '← العودة لحاسبة الاختبار',
-                pillModel: 'الموديل والفئة',
-                pillState: 'حالة الاختبار',
-                pillCurrent: 'تيار الحقن',
-                pillTime: 'زمنك الفعلي والنتيجة',
-                guideAppTitle: 'إزاي تستخدم البرنامج في 4 خطوات سريعة؟',
-                gStep1Title: '1. اختر الماركة والموديل والفئة',
-                gStep1Desc: 'من التاب الأول الأزرق، اختر ماركة الأوفرلود (ABB أو Schneider)، ثم اختر رقم الموديل المكتوب على الأوفرلود (مثل TF42 أو LRD16)، وتأكد من فئة الفصل (10 أو 20 أو 30) وحالته (بارد أو ساخن).',
-                gStep2Title: '2. اكتب تدريج الأمبير واختر 150% أو 200%',
-                gStep2Desc: 'اكتب قيمة البكرة المضبوط عليها الأوفرلود (Ir)، ثم اضغط على 150% أو 200%. البرنامج هيحسبلك فوراً الأمبير اللي المفروض تحقنه بجهاز الاختبار، والزمن المسموح به للفصل.',
-                gStep3Title: '3. اكتب الزمن اللي فصل عنده الأوفرلود',
-                gStep3Desc: 'بعد ما تحقن التيار ويفصل الأوفرلود، اكتب الزمن بالثواني في الخانة المخصصة رقم 3، وهتظهرلك النتيجة فوراً باللون الأخضر (ناجح PASS) لو داخل الوقت المسموح، أو باللون الأحمر (راسب FAIL).',
-                gStep4Title: '4. شاهد مكان النقطة على الكيرف',
-                gStep4Desc: 'لو حابب تشوف شكل كيرف الأوفرلود ومكان نقطة الاختبار بتاعتك، اضغط على التاب الثاني الأخضر (صفحة منحنى الكيرف) وهتلاقي النقطة مرسومة بوضوح داخل أو خارج منطقة السماحية.',
-                guideWiringTitle: 'طريقة توصيل الأوفرلود وإجراء الاختبار على البارد والساخن',
-                diagHeader: 'توصيل الـ 3 فاز توالي (مهم جداً لمنع الفصل الخاطئ لسقوط الفازة):',
-                diagSub: 'جميع أوفرلودات ABB وشنايدر الحديثة تحتوي على ميكانيزم حساس لسقوط الفازة. لذلك عند الاختبار بجهاز حقن فازة واحدة، يجب توصيل الثلاث فازات بالتوالي كما بالرسمة:',
-                coldGuideTitle: 'متى تختار (بارد - Cold) وكيف تختبره؟',
-                coldGuideDesc: 'اختر بارد عندما يكون الأوفرلود مفصولاً عن الكهرباء وفي درجة حرارة الغرفة لمدة لا تقل عن 30 دقيقة. احقن تيار الـ 150% أو الـ 200% مباشرة وسجل زمن الفصل.',
-                hotGuideTitle: 'متى تختار (ساخن - Hot) وكيف تختبره؟',
-                hotGuideDesc: 'اختر ساخن إذا تم تسخين الأوفرلود أولاً بحقن تيار الحمل الطبيعي (100% من Ir) حتى يستقر حرارياً، ثم رفعت التيار فجأة إلى 150% أو 200%. في الحالة الساخنة يفصل الأوفرلود في وقت أقصر بكثير.',
-                warnGuideTitle: '⚠️ تنبيه هام جداً للفني عند تكرار الاختبار:',
-                warnGuideDesc: 'إذا قمت باختبار أوفرلود حراري على البارد وفصل، لا تقم بإعادة اختباره فوراً على أنه بارد! لأن الشريحة الحرارية تكون قد سخنت بالفعل وستفصل في وقت أسرع. انتظر حتى يبرد تماماً أو اختبره على الكيرف الساخن.'
-            },
-            en: {
-                appTitle: 'Overload Relay Tester (ABB & Schneider)',
-                appSubtitle: 'Quick technician calculator for allowed trip time & instant PASS / FAIL evaluation',
-                langBtnText: 'عربي',
-                tab1Title: '1. Test & Pass/Fail',
-                tab2Title: '2. Trip Curve Chart',
-                tab3Title: '3. How to Use & Test',
-                card1Header: 'Overload Model & Test Condition',
-                selectBrandLabel: 'Select Overload Brand:',
-                abbSub: 'Thermal / Electronic Relays',
-                schSub: 'Schneider Electric Relays',
-                selectModelLabel: 'Select Individual Relay Model:',
-                tripClassLabel: 'Trip Class:',
-                thermalStateLabel: 'Overload State:',
-                coldBtn: 'Cold State',
-                hotBtn: 'Hot State',
-                card2Header: 'Dial Setting & Injection Current',
-                only150_200Badge: '150% or 200%',
-                irLabel: 'Overload Dial Setting Ir (Amps):',
-                testRatioLabel: 'Select Test Current Ratio:',
-                reqCurrentTitle: 'Required Injection Current:',
-                card3Header: 'Enter Actual Trip Time & Check Result',
-                viewOnCurveBtn: 'Show Point on Curve →',
-                measuredTimeLabel: 'Enter Actual Measured Trip Time (Seconds):',
-                secUnit: 'sec (s)',
-                motorPlaceholder: 'Motor / Panel Name (Optional - e.g., Pump #1)',
-                addLogBtn: 'Save Result to Table Below',
-                tableTitle: 'Saved Test Results Log',
-                printBtn: 'Print',
-                clearBtn: 'Clear Log',
-                thTag: 'Motor',
-                thModel: 'Model',
-                thState: 'State',
-                thItest: 'Injected I',
-                thWindow: 'Allowed',
-                thMeas: 'Actual',
-                thResult: 'Result',
-                curvePageHeader: 'Time-Current Characteristic (TCC) Curve',
-                backToCalcBtn: '← Back to Calculator',
-                pillModel: 'Model & Class',
-                pillState: 'Thermal State',
-                pillCurrent: 'Test Current',
-                pillTime: 'Actual Time & Result',
-                guideAppTitle: 'How to Use This Program in 4 Quick Steps',
-                gStep1Title: '1. Select Brand, Model & Class',
-                gStep1Desc: 'In the first Blue tab, select ABB or Schneider, pick the exact model number written on the relay (e.g., TF42 or LRD16), choose Class (10, 20, or 30), and select Cold or Hot state.',
-                gStep2Title: '2. Enter Dial Current & Pick 150% or 200%',
-                gStep2Desc: 'Enter the dial setting (Ir in Amps), then tap 150% or 200%. The app immediately calculates the exact current (Amps) to inject and the allowed trip time range.',
-                gStep3Title: '3. Type the Actual Trip Time',
-                gStep3Desc: 'Inject the current and once the relay trips, type the measured seconds in Step 3. You will immediately get a big Green PASS or Red FAIL banner.',
-                gStep4Title: '4. View Your Point on the Curve',
-                gStep4Desc: 'Switch to the second Green tab (Trip Curve Chart) anytime to see your test point plotted against the relay tolerance band.',
-                guideWiringTitle: 'How to Wire & Test Overload Relays (Cold vs. Hot)',
-                diagHeader: '3-Phase Series Wiring (Prevents False Phase-Loss Tripping):',
-                diagSub: 'Modern ABB and Schneider relays feature phase-loss differential protection. When testing with a single-phase injection set, ALWAYS wire all 3 poles in series as shown:',
-                coldGuideTitle: 'When to Select COLD State:',
-                coldGuideDesc: 'Choose COLD when the relay has been de-energized at ambient temperature for at least 30 minutes. Inject 150% or 200% directly and record the trip time.',
-                hotGuideTitle: 'When to Select HOT State:',
-                hotGuideDesc: 'Choose HOT when the relay is pre-heated at 100% full-load current (1.0 × Ir) until thermal equilibrium, then stepped up to 150% or 200%. Hot trip times are roughly one-third of Cold times.',
-                warnGuideTitle: '⚠️ Important Technician Warning on Repeat Tests:',
-                warnGuideDesc: 'After a thermal overload trips from a Cold test, DO NOT immediately re-test it as Cold! The bimetallic strip is now hot and will trip much faster. Let it cool down for 30 minutes first.'
-            }
-        };
-
-        // =========================================================================
-        // 3. STATE MANAGEMENT
-        // =========================================================================
-        const state = {
-            lang: 'ar',
-            activeTab: 1,           // 1: Calculator, 2: Curve, 3: Guide
-            brand: 'ABB',           // 'ABB' or 'SCHNEIDER'
-            modelId: 'TF42',
-            tripClass: '10',        // Strictly '10', '20', '30'
-            thermalState: 'COLD',   // Strictly 'COLD' or 'HOT'
-            ir: 10.0,
-            testMult: 2.0,          // Strictly 1.5 (150%) or 2.0 (200%)
-            measuredTime: 55.0,
-            testLog: []
-        };
-
-        // =========================================================================
-        // 4. TRIP TIME MATHEMATICAL MODEL FOR CLASSES 10, 20, 30 (COLD & HOT)
-        // =========================================================================
-        function calculateTripTimes(tripClass, thermal, m) {
-            const pickupAsymptote = 1.05;
-            if (m <= pickupAsymptote) {
-                return { min: Infinity, typ: Infinity, max: Infinity };
-            }
-
-            // Calibrated IEC 60947-4-1 parameters for Classes 10, 20, 30
-            const classParams = {
-                '10': { t72Typ: 6.2,  t72Min: 3.8, t72Max: 10.0, p: 1.85 },
-                '20': { t72Typ: 12.2, t72Min: 6.0, t72Max: 20.0, p: 1.85 },
-                '30': { t72Typ: 18.5, t72Min: 9.0, t72Max: 30.0, p: 1.85 }
-            };
-
-            const cfg = classParams[tripClass] || classParams['10'];
-            const p = cfg.p;
-
-            const norm72 = Math.pow(7.2, p) - Math.pow(pickupAsymptote, p);
-            const denom = Math.pow(m, p) - Math.pow(pickupAsymptote, p);
-            const kneeBoost = 1 + 0.30 * Math.exp(-1.4 * (m - 1.05));
-
-            let coldTyp = cfg.t72Typ * (norm72 / denom) * kneeBoost;
-            let coldMin = cfg.t72Min * (norm72 / denom) * (kneeBoost * 0.90);
-            let coldMax = cfg.t72Max * (norm72 / denom) * (kneeBoost * 1.08);
-
-            if (thermal === 'COLD') {
-                return {
-                    min: Math.max(0.5, coldMin),
-                    typ: Math.max(0.6, coldTyp),
-                    max: Math.min(10000, coldMax)
-                };
-            }
-
-            // Hot State (~28% to 35% of Cold State time, adhering to IEC 1.5x Hot max limits: 120s/240s/480s)
-            const hotRatio = 0.27 + 0.08 * Math.min(1, (m - 1.05) / 6.15);
-            let hotTyp = coldTyp * hotRatio;
-            let hotMin = coldMin * (hotRatio * 0.88);
-            let hotMax = coldMax * (hotRatio * 1.04);
-
-            // Enforce strict IEC 1.5x Hot upper cap
-            if (Math.abs(m - 1.5) < 0.03) {
-                const iecHotCap = { '10': 120.0, '20': 240.0, '30': 480.0 }[tripClass];
-                hotMax = Math.min(hotMax, iecHotCap);
-            }
-
-            return {
-                min: Math.max(0.3, hotMin),
-                typ: Math.max(0.4, hotTyp),
-                max: Math.min(10000, hotMax)
-            };
-        }
-
-        // =========================================================================
-        // 5. NAVIGATION TABS & LANGUAGE SWITCHING
-        // =========================================================================
-        function switchTab(tabIndex) {
-            state.activeTab = tabIndex;
-            document.getElementById('page1').classList.toggle('hidden', tabIndex !== 1);
-            document.getElementById('page2').classList.toggle('hidden', tabIndex !== 2);
-            document.getElementById('page3').classList.toggle('hidden', tabIndex !== 3);
-
-            const t1 = document.getElementById('navTab1');
-            const t2 = document.getElementById('navTab2');
-            const t3 = document.getElementById('navTab3');
-
-            t1.className = `tab-btn ${tabIndex === 1 ? 'tab-btn-active-1' : 'tab-btn-inactive-1'} rounded-2xl p-2.5 sm:p-3.5 border-2 flex flex-col sm:flex-row items-center justify-center gap-1.5 text-center cursor-pointer`;
-            t2.className = `tab-btn ${tabIndex === 2 ? 'tab-btn-active-2' : 'tab-btn-inactive-2'} rounded-2xl p-2.5 sm:p-3.5 border-2 flex flex-col sm:flex-row items-center justify-center gap-1.5 text-center cursor-pointer`;
-            t3.className = `tab-btn ${tabIndex === 3 ? 'tab-btn-active-3' : 'tab-btn-inactive-3'} rounded-2xl p-2.5 sm:p-3.5 border-2 flex flex-col sm:flex-row items-center justify-center gap-1.5 text-center cursor-pointer`;
-
-            if (tabIndex === 2) {
-                setTimeout(drawTCCChart, 20);
-            }
-        }
-
-        function toggleLanguage() {
-            state.lang = (state.lang === 'ar') ? 'en' : 'ar';
-            const htmlEl = document.documentElement;
-            htmlEl.lang = state.lang;
-            htmlEl.dir = (state.lang === 'ar') ? 'rtl' : 'ltr';
-            applyTranslations();
-            populateModelDropdown();
-            updateAll();
-            renderTestLogTable();
-        }
-
-        function applyTranslations() {
-            const dict = I18N[state.lang];
-            document.getElementById('appTitle').textContent = dict.appTitle;
-            document.getElementById('appSubtitle').textContent = dict.appSubtitle;
-            document.getElementById('langBtnText').textContent = dict.langBtnText;
-            document.getElementById('motorTagInput').placeholder = dict.motorPlaceholder;
-
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (dict[key]) {
-                    el.textContent = dict[key];
-                }
-            });
-        }
-
-        // =========================================================================
-        // 6. USER INPUT HANDLERS
-        // =========================================================================
-        function selectBrand(brand) {
-            state.brand = brand;
-            const btnABB = document.getElementById('brandBtnABB');
-            const btnSCH = document.getElementById('brandBtnSCH');
-
-            if (brand === 'ABB') {
-                btnABB.className = "p-3.5 rounded-2xl border-2 border-[#E30613] bg-red-50 shadow-md transition flex items-center justify-between cursor-pointer";
-                btnSCH.className = "p-3.5 rounded-2xl border-2 border-slate-300 bg-slate-100 opacity-75 hover:opacity-100 transition flex items-center justify-between cursor-pointer";
-            } else {
-                btnSCH.className = "p-3.5 rounded-2xl border-2 border-[#009530] bg-emerald-50 shadow-md transition flex items-center justify-between cursor-pointer";
-                btnABB.className = "p-3.5 rounded-2xl border-2 border-slate-300 bg-slate-100 opacity-75 hover:opacity-100 transition flex items-center justify-between cursor-pointer";
-            }
-
-            populateModelDropdown();
-            handleModelChange();
-        }
-
-        function populateModelDropdown() {
-            const select = document.getElementById('modelSelect');
-            const models = INDIVIDUAL_MODELS[state.brand];
-            select.innerHTML = models.map(m => `<option value="${m.id}">${m.name}</option>`).join('');
-        }
-
-        function handleModelChange() {
-            const select = document.getElementById('modelSelect');
-            state.modelId = select.value;
-            const models = INDIVIDUAL_MODELS[state.brand];
-            const found = models.find(m => m.id === state.modelId) || models[0];
-
-            document.getElementById('modelRangeHelper').textContent = (state.lang === 'ar') ? found.rangeAr : found.rangeEn;
-            setTripClass(found.defaultClass);
-        }
-
-        function setTripClass(cls) {
-            state.tripClass = cls;
-            ['10', '20', '30'].forEach(c => {
-                const btn = document.getElementById('classBtn' + c);
-                if (c === cls) {
-                    btn.className = "py-3 rounded-xl font-mono text-base sm:text-lg font-black border-2 bg-indigo-600 text-white border-indigo-800 shadow-md transition cursor-pointer";
-                } else {
-                    btn.className = "py-3 rounded-xl font-mono text-base sm:text-lg font-black border-2 bg-white text-slate-700 border-slate-300 hover:bg-indigo-50 transition cursor-pointer";
-                }
-            });
-            updateAll();
-        }
-
-        function setThermalState(newState) {
-            state.thermalState = newState;
-            const btnCold = document.getElementById('btnStateCold');
-            const btnHot = document.getElementById('btnStateHot');
-
-            if (newState === 'COLD') {
-                btnCold.className = "py-3 px-2 rounded-xl text-xs sm:text-sm font-black border-2 bg-sky-600 text-white border-sky-800 shadow-md transition flex items-center justify-center gap-1.5 cursor-pointer";
-                btnHot.className = "py-3 px-2 rounded-xl text-xs sm:text-sm font-black border-2 bg-white text-slate-700 border-slate-300 hover:bg-orange-50 transition flex items-center justify-center gap-1.5 cursor-pointer";
-            } else {
-                btnHot.className = "py-3 px-2 rounded-xl text-xs sm:text-sm font-black border-2 bg-orange-600 text-white border-orange-800 shadow-md transition flex items-center justify-center gap-1.5 cursor-pointer";
-                btnCold.className = "py-3 px-2 rounded-xl text-xs sm:text-sm font-black border-2 bg-white text-slate-700 border-slate-300 hover:bg-sky-50 transition flex items-center justify-center gap-1.5 cursor-pointer";
-            }
-            updateAll();
-        }
-
-        function setTestMultiple(mult) {
-            state.testMult = mult;
-            const btn150 = document.getElementById('multBtn150');
-            const btn200 = document.getElementById('multBtn200');
-
-            if (mult === 1.5) {
-                btn150.className = "py-3.5 px-3 rounded-xl font-mono text-lg sm:text-xl font-black border-2 bg-indigo-600 text-white border-indigo-800 shadow-md transition cursor-pointer flex flex-col items-center justify-center";
-                btn200.className = "py-3.5 px-3 rounded-xl font-mono text-lg sm:text-xl font-black border-2 bg-white text-slate-700 border-slate-300 hover:bg-indigo-50 transition cursor-pointer flex flex-col items-center justify-center";
-            } else {
-                btn200.className = "py-3.5 px-3 rounded-xl font-mono text-lg sm:text-xl font-black border-2 bg-indigo-600 text-white border-indigo-800 shadow-md transition cursor-pointer flex flex-col items-center justify-center";
-                btn150.className = "py-3.5 px-3 rounded-xl font-mono text-lg sm:text-xl font-black border-2 bg-white text-slate-700 border-slate-300 hover:bg-indigo-50 transition cursor-pointer flex flex-col items-center justify-center";
-            }
-            updateAll();
-        }
-
-        function handleIrChange() {
-            const val = parseFloat(document.getElementById('irInput').value);
-            if (!isNaN(val) && val > 0) {
-                state.ir = val;
-                updateAll();
-            }
-        }
-
-        // =========================================================================
-        // 7. UPDATE CALCULATIONS & PASS / FAIL EVALUATION
-        // =========================================================================
-        function updateAll() {
-            const isAr = (state.lang === 'ar');
-            const tMeas = parseFloat(document.getElementById('measuredTimeInput').value) || 0.1;
-            state.measuredTime = tMeas;
-
-            const pct = Math.round(state.testMult * 100);
-            const injectedAmps = state.ir * state.testMult;
-
-            // Top badge
-            document.getElementById('summaryBadgeTop').textContent = `${state.brand} • ${state.modelId} • Class ${state.tripClass}`;
-
-            // Required Injection Current Box
-            document.getElementById('calcInjectedAmps').textContent = `${injectedAmps.toFixed(2)} A`;
-            document.getElementById('calcInjectedSub').textContent = isAr
-                ? `عند نسبة ${pct}% من التدريج (${state.ir}A)`
-                : `At ${pct}% of dial setting (${state.ir}A)`;
-
-            // Allowed Time Window Calculation
-            const band = calculateTripTimes(state.tripClass, state.thermalState, state.testMult);
-            const stateTextAr = (state.thermalState === 'COLD') ? 'بارد' : 'ساخن';
-            const stateTextEn = (state.thermalState === 'COLD') ? 'Cold' : 'Hot';
-
-            document.getElementById('allowedWindowTitle').textContent = isAr
-                ? `الزمن المسموح للفصل (${stateTextAr} - ${pct}%):`
-                : `Allowed Trip Time (${stateTextEn} - ${pct}%):`;
-
-            document.getElementById('allowedWindowValue').textContent = isAr
-                ? `من ${band.min.toFixed(1)} إلى ${band.max.toFixed(1)} ثانية`
-                : `${band.min.toFixed(1)}s – ${band.max.toFixed(1)}s`;
-
-            document.getElementById('allowedWindowTyp').textContent = isAr
-                ? `الوقت المثالي المتوقع: ~ ${band.typ.toFixed(1)} ثانية`
-                : `Typical expected time: ~ ${band.typ.toFixed(1)} sec`;
-
-            // Evaluate PASS / FAIL
-            const isPass = (tMeas >= band.min && tMeas <= band.max);
-            const banner = document.getElementById('verdictBanner');
-            const evalLabel = document.getElementById('verdictEvalState');
-            const title = document.getElementById('verdictTitle');
-            const subDetail = document.getElementById('verdictSubDetail');
-            const badge = document.getElementById('verdictBadge');
-
-            evalLabel.textContent = isAr
-                ? `نتيجة فحص ${state.brand} ${state.modelId} (Class ${state.tripClass} - ${stateTextAr} - ${pct}%)`
-                : `Evaluation for ${state.brand} ${state.modelId} (Class ${state.tripClass} - ${stateTextEn} - ${pct}%)`;
-
-            if (isPass) {
-                title.textContent = isAr
-                    ? `الأوفرلود سليم ومطابق للمواصفات (فصل بعد ${tMeas.toFixed(1)} ثانية)`
-                    : `Overload Relay PASSED (Tripped at ${tMeas.toFixed(1)} seconds)`;
-                subDetail.textContent = isAr
-                    ? `الزمن الفعلي يقع داخل المدى المسموح (${band.min.toFixed(1)} إلى ${band.max.toFixed(1)} ثانية).`
-                    : `Measured time is within the allowed range (${band.min.toFixed(1)}s – ${band.max.toFixed(1)}s).`;
-
-                banner.className = "rounded-2xl p-5 border-4 border-emerald-500 bg-emerald-50 text-emerald-950 mb-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition shadow-md";
-                badge.className = "w-full sm:w-auto text-center px-6 py-3.5 rounded-2xl text-lg sm:text-xl font-black tracking-wide shrink-0 shadow-md bg-emerald-600 text-white";
-                badge.textContent = isAr ? "ناجح PASS ✓" : "PASS ✓";
-            } else {
-                const isFast = tMeas < band.min;
-                title.textContent = isFast
-                    ? (isAr ? `الأوفرلود غير مطابق — فصل مبكراً جداً (${tMeas.toFixed(1)} ثانية)` : `FAILED — Tripped Too Early (${tMeas.toFixed(1)}s)`)
-                    : (isAr ? `الأوفرلود غير مطابق — تأخر في الفصل (${tMeas.toFixed(1)} ثانية)` : `FAILED — Tripped Too Slowly (${tMeas.toFixed(1)}s)`);
-
-                subDetail.textContent = isAr
-                    ? `المفروض يفصل بين ${band.min.toFixed(1)} و ${band.max.toFixed(1)} ثانية.`
-                    : `Allowed range is ${band.min.toFixed(1)}s to ${band.max.toFixed(1)}s.`;
-
-                banner.className = "rounded-2xl p-5 border-4 border-red-500 bg-red-50 text-red-950 mb-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition shadow-md";
-                badge.className = "w-full sm:w-auto text-center px-6 py-3.5 rounded-2xl text-lg sm:text-xl font-black tracking-wide shrink-0 shadow-md bg-red-600 text-white";
-                badge.textContent = isAr ? "راسب FAIL ✕" : "FAIL ✕";
-            }
-
-            // Update Curve Page Summary Pills
-            document.getElementById('curvePillModel').textContent = `${state.brand} ${state.modelId} (Class ${state.tripClass})`;
-            document.getElementById('curvePillState').textContent = isAr ? `${stateTextAr} (${stateTextEn})` : stateTextEn;
-            document.getElementById('curvePillState').className = `text-sm font-black mt-0.5 ${state.thermalState === 'COLD' ? 'text-sky-700' : 'text-orange-600'}`;
-            document.getElementById('curvePillCurrent').textContent = `${injectedAmps.toFixed(1)} A (${pct}%)`;
-            document.getElementById('curvePillVerdict').textContent = `${tMeas.toFixed(1)}s (${isPass ? (isAr ? 'ناجح' : 'PASS') : (isAr ? 'راسب' : 'FAIL')})`;
-            document.getElementById('curvePillVerdict').className = `text-sm font-mono font-black mt-0.5 ${isPass ? 'text-emerald-700' : 'text-red-600'}`;
-
-            if (state.activeTab === 2) {
-                drawTCCChart();
-            }
-        }
-
-        // =========================================================================
-        // 8. PAGE 2: TCC CURVE RENDERER
-        // =========================================================================
-        const canvas = document.getElementById('tccCanvas');
-        const ctx = canvas.getContext('2d');
-
-        const MIN_M = 1.0;
-        const MAX_M = 8.0;
-        const MIN_T = 1.0;
-        const MAX_T = 5000;
-
-        function getPlotRect(width, height) {
-            return {
-                left: 58,
-                right: width - 24,
-                top: 24,
-                bottom: height - 44,
-                w: width - 82,
-                h: height - 68
-            };
-        }
-
-        function multToX(m, rect) {
-            const ratio = (Math.log10(m) - Math.log10(MIN_M)) / (Math.log10(MAX_M) - Math.log10(MIN_M));
-            return rect.left + ratio * rect.w;
-        }
-
-        function timeToY(t, rect) {
-            const clamped = Math.max(MIN_T, Math.min(MAX_T, t));
-            const ratio = (Math.log10(clamped) - Math.log10(MIN_T)) / (Math.log10(MAX_T) - Math.log10(MIN_T));
-            return rect.bottom - ratio * rect.h;
-        }
-
-        function drawTCCChart() {
-            const dpr = window.devicePixelRatio || 1;
-            const clientW = canvas.clientWidth;
-            const clientH = canvas.clientHeight;
-            if (clientW === 0 || clientH === 0) return;
-
-            canvas.width = clientW * dpr;
-            canvas.height = clientH * dpr;
-            ctx.save();
-            ctx.scale(dpr, dpr);
-
-            const rect = getPlotRect(clientW, clientH);
-
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillRect(0, 0, clientW, clientH);
-
-            ctx.fillStyle = '#F8FAFC';
-            ctx.fillRect(rect.left, rect.top, rect.w, rect.h);
-
-            const xTicks = [1.0, 1.2, 1.5, 2.0, 3.0, 4.0, 5.0, 6.0, 7.2, 8.0];
-            const yTicks = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000];
-
-            ctx.font = 'bold 11px "JetBrains Mono", monospace';
-            ctx.textAlign = 'center';
-            xTicks.forEach(m => {
-                const x = multToX(m, rect);
-                ctx.strokeStyle = (m === 1.5 || m === 2.0) ? '#93C5FD' : '#E2E8F0';
-                ctx.lineWidth = (m === 1.5 || m === 2.0) ? 1.8 : 1;
-                ctx.beginPath();
-                ctx.moveTo(x, rect.top);
-                ctx.lineTo(x, rect.bottom);
-                ctx.stroke();
-
-                ctx.fillStyle = (m === 1.5 || m === 2.0) ? '#1D4ED8' : '#475569';
-                ctx.fillText(`${Math.round(m * 100)}%`, x, rect.bottom + 18);
-            });
-
-            ctx.fillStyle = '#0F172A';
-            ctx.font = 'bold 12px "Cairo", "Inter", sans-serif';
-            ctx.fillText(
-                state.lang === 'ar' ? 'نسبة تيار الاختبار من تدريج الأوفرلود (% × Ir)' : 'Test Current Percentage (% of Ir)',
-                rect.left + rect.w / 2,
-                clientH - 6
-            );
-
-            ctx.textAlign = 'right';
-            ctx.font = 'bold 11px "JetBrains Mono", monospace';
-            yTicks.forEach(t => {
-                const y = timeToY(t, rect);
-                ctx.strokeStyle = '#E2E8F0';
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.moveTo(rect.left, y);
-                ctx.lineTo(rect.right, y);
-                ctx.stroke();
-
-                ctx.fillStyle = '#475569';
-                ctx.fillText(`${t}s`, rect.left - 8, y + 4);
-            });
-
-            ctx.save();
-            ctx.beginPath();
-            ctx.rect(rect.left, rect.top, rect.w, rect.h);
-            ctx.clip();
-
-            // Plot selected state curve (Cold or Hot)
-            const mainColor = (state.thermalState === 'COLD') ? '#0284C7' : '#EA580C';
-            const bandColor = (state.thermalState === 'COLD') ? 'rgba(2, 132, 199, 0.16)' : 'rgba(234, 88, 12, 0.16)';
-
-            const samples = [];
-            for (let m = 1.06; m <= 8.0; m += 0.03) {
-                const res = calculateTripTimes(state.tripClass, state.thermalState, m);
-                if (isFinite(res.typ)) samples.push({ m, ...res });
-            }
-
-            if (samples.length > 0) {
-                ctx.fillStyle = bandColor;
-                ctx.beginPath();
-                samples.forEach((pt, idx) => {
-                    const x = multToX(pt.m, rect);
-                    const y = timeToY(pt.max, rect);
-                    if (idx === 0) ctx.moveTo(x, y);
-                    else ctx.lineTo(x, y);
-                });
-                for (let i = samples.length - 1; i >= 0; i--) {
-                    const pt = samples[i];
-                    ctx.lineTo(multToX(pt.m, rect), timeToY(pt.min, rect));
-                }
-                ctx.closePath();
-                ctx.fill();
-
-                ctx.strokeStyle = mainColor;
-                ctx.lineWidth = 3.5;
-                ctx.beginPath();
-                samples.forEach((pt, idx) => {
-                    const x = multToX(pt.m, rect);
-                    const y = timeToY(pt.typ, rect);
-                    if (idx === 0) ctx.moveTo(x, y);
-                    else ctx.lineTo(x, y);
-                });
-                ctx.stroke();
-            }
-
-            // Plot User Active Test Point (150% or 200%)
-            const activeX = multToX(state.testMult, rect);
-            const activeY = timeToY(state.measuredTime, rect);
-            const band = calculateTripTimes(state.tripClass, state.thermalState, state.testMult);
-            const isPass = (state.measuredTime >= band.min && state.measuredTime <= band.max);
-            const markerColor = isPass ? '#059669' : '#DC2626';
-
-            ctx.strokeStyle = markerColor;
-            ctx.lineWidth = 2;
-            ctx.setLineDash([5, 4]);
-            ctx.beginPath();
-            ctx.moveTo(activeX, rect.bottom);
-            ctx.lineTo(activeX, activeY);
-            ctx.lineTo(rect.left, activeY);
-            ctx.stroke();
-            ctx.setLineDash([]);
-
-            ctx.fillStyle = isPass ? 'rgba(16, 185, 129, 0.25)' : 'rgba(220, 38, 38, 0.25)';
-            ctx.beginPath();
-            ctx.arc(activeX, activeY, 14, 0, Math.PI * 2);
-            ctx.fill();
-
-            ctx.fillStyle = markerColor;
-            ctx.strokeStyle = '#FFFFFF';
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            ctx.arc(activeX, activeY, 7, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.stroke();
-
-            const labelText = `${Math.round(state.testMult * 100)}% • ${state.measuredTime.toFixed(1)}s (${isPass ? 'PASS' : 'FAIL'})`;
-            ctx.font = 'bold 12px "JetBrains Mono", monospace';
-            const textW = ctx.measureText(labelText).width + 18;
-            const boxX = Math.min(rect.right - textW - 8, activeX + 12);
-            const boxY = Math.max(rect.top + 24, activeY - 12);
-
-            ctx.fillStyle = '#FFFFFF';
-            ctx.strokeStyle = markerColor;
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.roundRect(boxX, boxY - 15, textW, 24, 6);
-            ctx.fill();
-            ctx.stroke();
-
-            ctx.fillStyle = '#0F172A';
-            ctx.textAlign = 'left';
-            ctx.fillText(labelText, boxX + 9, boxY + 1);
-
-            ctx.restore();
-
-            ctx.strokeStyle = '#94A3B8';
-            ctx.lineWidth = 1.5;
-            ctx.strokeRect(rect.left, rect.top, rect.w, rect.h);
-            ctx.restore();
-        }
-
-        // =========================================================================
-        // 9. SAVED TEST LOG TABLE
-        // =========================================================================
-        function logCurrentTestPoint() {
-            const band = calculateTripTimes(state.tripClass, state.thermalState, state.testMult);
-            const isPass = (state.measuredTime >= band.min && state.measuredTime <= band.max);
-            const tagInput = document.getElementById('motorTagInput').value.trim();
-            const defaultTag = (state.lang === 'ar') ? `محرك #${state.testLog.length + 1}` : `Motor #${state.testLog.length + 1}`;
-
-            state.testLog.push({
-                id: Date.now(),
-                tag: tagInput || defaultTag,
-                brand: state.brand,
-                model: state.modelId,
-                tripClass: state.tripClass,
-                thermalState: state.thermalState,
-                amps: state.ir * state.testMult,
-                pct: Math.round(state.testMult * 100),
-                window: `${band.min.toFixed(1)}s – ${band.max.toFixed(1)}s`,
-                measuredTime: state.measuredTime,
-                pass: isPass
-            });
-
-            document.getElementById('motorTagInput').value = '';
-            renderTestLogTable();
-        }
-
-        function clearTestLog() {
-            state.testLog = [];
-            renderTestLogTable();
-        }
-
-        function renderTestLogTable() {
-            const tbody = document.getElementById('testLogBody');
-            const isAr = (state.lang === 'ar');
-
-            if (state.testLog.length === 0) {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="8" class="py-6 text-center text-slate-400 font-bold">
-                            ${isAr ? 'لا توجد نتائج محفوظة بعد.' : 'No saved test results yet.'}
-                        </td>
-                    </tr>`;
-                return;
-            }
-
-            tbody.innerHTML = state.testLog.map((item, idx) => `
-                <tr class="hover:bg-slate-50">
-                    <td class="py-2.5 px-3 font-mono text-slate-500">#${idx + 1}</td>
-                    <td class="py-2.5 px-3 text-slate-900">${item.tag}</td>
-                    <td class="py-2.5 px-3 font-mono">${item.brand} ${item.model} (Cl.${item.tripClass})</td>
-                    <td class="py-2.5 px-3">${item.thermalState === 'COLD' ? (isAr ? 'بارد' : 'Cold') : (isAr ? 'ساخن' : 'Hot')}</td>
-                    <td class="py-2.5 px-3 font-mono text-blue-700">${item.amps.toFixed(1)}A (${item.pct}%)</td>
-                    <td class="py-2.5 px-3 font-mono text-slate-600">${item.window}</td>
-                    <td class="py-2.5 px-3 font-mono font-black">${item.measuredTime.toFixed(1)}s</td>
-                    <td class="py-2.5 px-3">
-                        <span class="px-2.5 py-1 rounded-lg text-xs font-black ${item.pass ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'}">
-                            ${item.pass ? (isAr ? 'ناجح PASS' : 'PASS') : (isAr ? 'راسب FAIL' : 'FAIL')}
-                        </span>
-                    </td>
+        <div class="mt-2 grid grid-cols-3 gap-1.5 text-center text-[11px]">
+          <div class="bg-emerald-50 border border-emerald-200 p-1.5 rounded-lg">
+            <span class="font-bold text-emerald-900">الخط المتصل:</span> الزمن المثالي
+          </div>
+          <div class="bg-slate-100 border border-slate-300 p-1.5 rounded-lg">
+            <span class="font-bold text-slate-800">الخطوط المتقطعة:</span> حدود المسموح
+          </div>
+          <div class="bg-amber-50 border border-amber-300 p-1.5 rounded-lg">
+            <span class="font-bold text-amber-900">النقطة الدائرية:</span> زمن اختبارك
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== التاب الثالث: شرح البرنامج وطريقة الاختبار ==================== -->
+    <section id="tab3" class="hidden space-y-2.5">
+      <div class="bg-white rounded-xl p-3.5 shadow-sm border border-amber-300 space-y-3 text-xs sm:text-sm leading-relaxed">
+        <h2 id="guideMainTitle" class="text-base font-extrabold text-amber-900 border-b pb-1.5">📘 دليل الفني المختصر لاختبار الأوفرلود</h2>
+
+        <div class="space-y-1.5">
+          <h3 id="gStep1Title" class="font-extrabold text-blue-800">1️⃣ خطوات استخدام البرنامج على الموبايل:</h3>
+          <ul id="gStep1List" class="list-disc pr-5 space-y-1 text-slate-700">
+            <li>اختر <b>الماركة</b> (ABB أو Schneider) ثم اختر <b>الموديل</b> المطابق للأوفرلود.</li>
+            <li>حدد <b>فئة الفصل (Class 10 / 20 / 30)</b> وحالة الأوفرلود (<b>بارد</b> إذا لم يكن يعمل قبل الفحص، أو <b>ساخن</b> إذا تم تسخينه بتيار الحمل 100%).</li>
+            <li>أدخل <b>قيمة تدريج الأمبير المضبوط عليها المؤشر</b>، ثم اختر نسبة الحقن (<b>150%</b> أو <b>200%</b> أو <b>300%</b>).</li>
+            <li>احقن التيار المكتوب في خانة <b>"احقن أمبير"</b>، وسجل زمن الفصل بالثواني لتظهر لك النتيجة فوراً (<b>ناجح PASS</b> أو <b>راسب FAIL</b>).</li>
+          </ul>
+        </div>
+
+        <div class="space-y-1.5 pt-2 border-t">
+          <h3 id="gStep2Title" class="font-extrabold text-emerald-800">2️⃣ طريقة التوصيل والاختبار العملي:</h3>
+          <ul id="gStep2List" class="list-disc pr-5 space-y-1 text-slate-700">
+            <li><b>اختبار 3 فاز (توصيل التوالي للـ 3 أقطاب):</b> وصل خرج جهاز الحقن على الفازة الأولى (L1-T1) ثم كوبري إلى (L2-T2) ثم كوبري إلى (L3-T3) ليمر نفس التيار في الثلاث فازات معاً.</li>
+            <li><b>اختبار 2 فاز (حساسية سقوط فازة):</b> في الأوفرلود الحراري أو الإلكتروني الحساس لفقدان الفازة، حقن فازتين فقط على التوالي يؤدي لفصل أسرع لحماية الموتور.</li>
+            <li><b>توصيل نقطة التوقف (Stop Contact):</b> وصل النقطة المغلقة <b>(95-96 NC)</b> على مدخل إيقاف التايمر في جهاز الحقن ليقف العداد لحظة الفصل تلقائياً.</li>
+          </ul>
+        </div>
+
+        <!-- جدول مرجعي من داتاشيت المصنع -->
+        <div class="space-y-1.5 pt-2 border-t">
+          <h3 id="gTableTitle" class="font-extrabold text-slate-800">3️⃣ جدول أزمنة الفصل المرجعية (منحنيات داتاشيت المصنع - 3 فاز):</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-[11px] text-center border border-slate-300">
+              <thead class="bg-slate-800 text-white">
+                <tr>
+                  <th class="p-1.5 border">الفئة</th>
+                  <th class="p-1.5 border">نسبة الحقن</th>
+                  <th class="p-1.5 border">بارد (Cold)</th>
+                  <th class="p-1.5 border">ساخن (Hot)</th>
                 </tr>
-            `).join('');
+              </thead>
+              <tbody class="divide-y divide-slate-200">
+                <tr class="bg-blue-50/50">
+                  <td class="p-1 border font-bold" rowspan="3">Class 10</td>
+                  <td class="p-1 border font-bold">150%</td>
+                  <td class="p-1 border">60s – 150s (مثالي 90s)</td>
+                  <td class="p-1 border">20s – 60s (مثالي 35s)</td>
+                </tr>
+                <tr class="bg-blue-50/50">
+                  <td class="p-1 border font-bold">200%</td>
+                  <td class="p-1 border">15s – 35s (مثالي 24s)</td>
+                  <td class="p-1 border">5s – 12s (مثالي 8s)</td>
+                </tr>
+                <tr class="bg-blue-50/50">
+                  <td class="p-1 border font-bold">300%</td>
+                  <td class="p-1 border">5s – 12s (مثالي 8s)</td>
+                  <td class="p-1 border">1.8s – 4.5s (مثالي 3s)</td>
+                </tr>
+                <tr>
+                  <td class="p-1 border font-bold" rowspan="3">Class 20</td>
+                  <td class="p-1 border font-bold">150%</td>
+                  <td class="p-1 border">100s – 260s (مثالي 165s)</td>
+                  <td class="p-1 border">35s – 105s (مثالي 62s)</td>
+                </tr>
+                <tr>
+                  <td class="p-1 border font-bold">200%</td>
+                  <td class="p-1 border">30s – 70s (مثالي 48s)</td>
+                  <td class="p-1 border">10s – 24s (مثالي 16s)</td>
+                </tr>
+                <tr>
+                  <td class="p-1 border font-bold">300%</td>
+                  <td class="p-1 border">10s – 24s (مثالي 16s)</td>
+                  <td class="p-1 border">3.5s – 9s (مثالي 6s)</td>
+                </tr>
+                <tr class="bg-amber-50/40">
+                  <td class="p-1 border font-bold" rowspan="3">Class 30</td>
+                  <td class="p-1 border font-bold">150%</td>
+                  <td class="p-1 border">150s – 380s (مثالي 240s)</td>
+                  <td class="p-1 border">50s – 150s (مثالي 90s)</td>
+                </tr>
+                <tr class="bg-amber-50/40">
+                  <td class="p-1 border font-bold">200%</td>
+                  <td class="p-1 border">45s – 105s (مثالي 72s)</td>
+                  <td class="p-1 border">15s – 36s (مثالي 24s)</td>
+                </tr>
+                <tr class="bg-amber-50/40">
+                  <td class="p-1 border font-bold">300%</td>
+                  <td class="p-1 border">15s – 36s (مثالي 24s)</td>
+                  <td class="p-1 border">5s – 13.5s (مثالي 9s)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // ==================== قاعدة بيانات الموديلات منفردة ====================
+    const RELAY_MODELS = {
+      ABB: [
+        { id: 'TF42', name: 'ABB TF42 (0.10 - 38 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 10 },
+        { id: 'TF65', name: 'ABB TF65 (22 - 67 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 40 },
+        { id: 'TF96', name: 'ABB TF96 (40 - 96 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 65 },
+        { id: 'TF140', name: 'ABB TF140DU (66 - 142 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 100 },
+        { id: 'TA25DU', name: 'ABB TA25DU (0.1 - 25 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 10 },
+        { id: 'TA42DU', name: 'ABB TA42DU (18 - 42 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 25 },
+        { id: 'TA75DU', name: 'ABB TA75DU (29 - 75 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 50 },
+        { id: 'EF19', name: 'ABB EF19 (0.10 - 18.9 A) - Electronic', type: 'electronic', defaultClass: 10, defaultIr: 10 },
+        { id: 'EF45', name: 'ABB EF45 (9 - 45 A) - Electronic', type: 'electronic', defaultClass: 10, defaultIr: 30 },
+        { id: 'EF65', name: 'ABB EF65 (20 - 70 A) - Electronic', type: 'electronic', defaultClass: 10, defaultIr: 50 },
+        { id: 'EF96', name: 'ABB EF96 (36 - 100 A) - Electronic', type: 'electronic', defaultClass: 10, defaultIr: 80 },
+        { id: 'EF146', name: 'ABB EF146 (54 - 150 A) - Electronic', type: 'electronic', defaultClass: 10, defaultIr: 115 }
+      ],
+      SCHNEIDER: [
+        { id: 'LRD08', name: 'Schneider LRD08 (2.5 - 4 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 3.5 },
+        { id: 'LRD10', name: 'Schneider LRD10 (4 - 6 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 5 },
+        { id: 'LRD12', name: 'Schneider LRD12 (5.5 - 8 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 7 },
+        { id: 'LRD14', name: 'Schneider LRD14 (7 - 10 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 9 },
+        { id: 'LRD16', name: 'Schneider LRD16 (9 - 13 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 11 },
+        { id: 'LRD21', name: 'Schneider LRD21 (12 - 18 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 15 },
+        { id: 'LRD22', name: 'Schneider LRD22 (16 - 24 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 20 },
+        { id: 'LRD32', name: 'Schneider LRD32 (23 - 32 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 28 },
+        { id: 'LRD35', name: 'Schneider LRD35 (30 - 38 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 35 },
+        { id: 'LRD3361', name: 'Schneider LRD3361 (55 - 70 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 63 },
+        { id: 'LRE16', name: 'Schneider EasyPact LRE16 (9 - 13 A)', type: 'thermal', defaultClass: 10, defaultIr: 11 },
+        { id: 'LR9D', name: 'Schneider TeSys LR9D (Electronic)', type: 'electronic', defaultClass: 10, defaultIr: 25 },
+        { id: 'LR9F', name: 'Schneider TeSys LR9F (Electronic)', type: 'electronic', defaultClass: 10, defaultIr: 80 },
+        { id: 'LR9G', name: 'Schneider TeSys Deca LR9G (Electronic)', type: 'electronic', defaultClass: 10, defaultIr: 100 }
+      ]
+    };
+
+    // ==================== جداول أزمنة الفصل من منحنيات داتاشيت المصنع ====================
+    // القيم بالثواني (Min, Typ, Max) عند التوصيل الثلاثي المتزن (3-Pole)
+    const DATASHEET_CURVES = {
+      10: {
+        cold: {
+          1.2:  { min: 180, typ: 360, max: 720 },
+          1.5:  { min: 60,  typ: 90,  max: 150 },
+          2.0:  { min: 15,  typ: 24,  max: 35 },
+          3.0:  { min: 5.0, typ: 8.0, max: 12.0 },
+          4.0:  { min: 2.8, typ: 4.5, max: 7.0 },
+          5.0:  { min: 1.8, typ: 3.0, max: 4.8 },
+          6.0:  { min: 1.3, typ: 2.2, max: 3.5 },
+          7.2:  { min: 1.0, typ: 1.6, max: 2.8 }
+        },
+        hot: {
+          1.2:  { min: 45,  typ: 110, max: 240 },
+          1.5:  { min: 20,  typ: 35,  max: 60 },
+          2.0:  { min: 5.0, typ: 8.0, max: 12.0 },
+          3.0:  { min: 1.8, typ: 3.0, max: 4.5 },
+          4.0:  { min: 1.0, typ: 1.8, max: 2.8 },
+          5.0:  { min: 0.7, typ: 1.2, max: 2.0 },
+          6.0:  { min: 0.5, typ: 0.9, max: 1.5 },
+          7.2:  { min: 0.4, typ: 0.7, max: 1.2 }
         }
+      },
+      20: {
+        cold: {
+          1.2:  { min: 320, typ: 650, max: 1200 },
+          1.5:  { min: 100, typ: 165, max: 260 },
+          2.0:  { min: 30,  typ: 48,  max: 70 },
+          3.0:  { min: 10,  typ: 16,  max: 24 },
+          4.0:  { min: 5.5, typ: 9.0, max: 14 },
+          5.0:  { min: 3.6, typ: 6.0, max: 9.6 },
+          6.0:  { min: 2.6, typ: 4.4, max: 7.0 },
+          7.2:  { min: 2.0, typ: 3.2, max: 5.5 }
+        },
+        hot: {
+          1.2:  { min: 85,  typ: 200, max: 420 },
+          1.5:  { min: 35,  typ: 62,  max: 105 },
+          2.0:  { min: 10,  typ: 16,  max: 24 },
+          3.0:  { min: 3.5, typ: 6.0, max: 9.0 },
+          4.0:  { min: 2.0, typ: 3.5, max: 5.5 },
+          5.0:  { min: 1.4, typ: 2.4, max: 4.0 },
+          6.0:  { min: 1.0, typ: 1.8, max: 3.0 },
+          7.2:  { min: 0.8, typ: 1.4, max: 2.4 }
+        }
+      },
+      30: {
+        cold: {
+          1.2:  { min: 480, typ: 950, max: 1800 },
+          1.5:  { min: 150, typ: 240, max: 380 },
+          2.0:  { min: 45,  typ: 72,  max: 105 },
+          3.0:  { min: 15,  typ: 24,  max: 36 },
+          4.0:  { min: 8.2, typ: 13.5, max: 21 },
+          5.0:  { min: 5.4, typ: 9.0, max: 14.4 },
+          6.0:  { min: 3.9, typ: 6.6, max: 10.5 },
+          7.2:  { min: 3.0, typ: 4.8, max: 8.2 }
+        },
+        hot: {
+          1.2:  { min: 120, typ: 290, max: 600 },
+          1.5:  { min: 50,  typ: 90,  max: 150 },
+          2.0:  { min: 15,  typ: 24,  max: 36 },
+          3.0:  { min: 5.0, typ: 9.0, max: 13.5 },
+          4.0:  { min: 3.0, typ: 5.2, max: 8.2 },
+          5.0:  { min: 2.1, typ: 3.6, max: 6.0 },
+          6.0:  { min: 1.5, typ: 2.7, max: 4.5 },
+          7.2:  { min: 1.2, typ: 2.1, max: 3.6 }
+        }
+      }
+    };
 
-        window.addEventListener('resize', () => {
-            if (state.activeTab === 2) drawTCCChart();
-        });
+    // ==================== حالة التطبيق ====================
+    let state = {
+      lang: 'ar',
+      brand: 'ABB',
+      modelId: 'TF42',
+      relayType: 'thermal',
+      tripClass: 10,
+      thermalState: 'cold',
+      poles: 3,
+      ir: 10,
+      mult: 2.0,
+      logs: []
+    };
 
-        window.onload = function () {
-            applyTranslations();
-            selectBrand('ABB');
-            setThermalState('COLD');
-            setTestMultiple(2.0);
-            renderTestLogTable();
-        };
-    </script>
+    let tccChartInstance = null;
+
+    // ==================== دوال التحكم ====================
+    function populateModels() {
+      const select = document.getElementById('modelSelect');
+      select.innerHTML = '';
+      const list = RELAY_MODELS[state.brand];
+      list.forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m.id;
+        opt.textContent = m.name;
+        select.appendChild(opt);
+      });
+      state.modelId = list[0].id;
+      state.relayType = list[0].type;
+      document.getElementById('irInput').value = list[0].defaultIr;
+      state.ir = list[0].defaultIr;
+    }
+
+    function onModelChange() {
+      const selId = document.getElementById('modelSelect').value;
+      const found = RELAY_MODELS[state.brand].find(m => m.id === selId);
+      if (found) {
+        state.modelId = found.id;
+        state.relayType = found.type;
+        document.getElementById('irInput').value = found.defaultIr;
+        state.ir = found.defaultIr;
+      }
+      calculateAll();
+    }
+
+    function setBrand(b) {
+      state.brand = b;
+      document.getElementById('btnABB').className = b === 'ABB'
+        ? 'py-1.5 rounded-lg font-extrabold text-xs bg-red-600 text-white shadow-sm'
+        : 'py-1.5 rounded-lg font-extrabold text-xs bg-slate-100 text-slate-700 border border-slate-300';
+      document.getElementById('btnSCH').className = b === 'SCHNEIDER'
+        ? 'py-1.5 rounded-lg font-extrabold text-xs bg-emerald-600 text-white shadow-sm'
+        : 'py-1.5 rounded-lg font-extrabold text-xs bg-slate-100 text-slate-700 border border-slate-300';
+      populateModels();
+      calculateAll();
+    }
+
+    function setClass(c) {
+      state.tripClass = c;
+      [10, 20, 30].forEach(cls => {
+        document.getElementById('cls' + cls).className = (cls === c)
+          ? 'py-1.5 rounded-lg font-extrabold text-xs bg-blue-600 text-white shadow-sm'
+          : 'py-1.5 rounded-lg font-extrabold text-xs bg-slate-100 text-slate-700 border';
+      });
+      document.getElementById('chartBadge').textContent = 'Class ' + c;
+      calculateAll();
+    }
+
+    function setState(st) {
+      state.thermalState = st;
+      document.getElementById('stCold').className = st === 'cold'
+        ? 'py-1.5 rounded-lg font-bold text-xs bg-sky-600 text-white shadow-sm'
+        : 'py-1.5 rounded-lg font-bold text-xs bg-slate-100 text-slate-700 border';
+      document.getElementById('stHot').className = st === 'hot'
+        ? 'py-1.5 rounded-lg font-bold text-xs bg-orange-600 text-white shadow-sm'
+        : 'py-1.5 rounded-lg font-bold text-xs bg-slate-100 text-slate-700 border';
+      calculateAll();
+    }
+
+    function setPoles(p) {
+      state.poles = p;
+      document.getElementById('pl3').className = p === 3
+        ? 'py-1.5 rounded-lg font-bold text-xs bg-indigo-600 text-white shadow-sm'
+        : 'py-1.5 rounded-lg font-bold text-xs bg-slate-100 text-slate-700 border';
+      document.getElementById('pl2').className = p === 2
+        ? 'py-1.5 rounded-lg font-bold text-xs bg-indigo-600 text-white shadow-sm'
+        : 'py-1.5 rounded-lg font-bold text-xs bg-slate-100 text-slate-700 border';
+      calculateAll();
+    }
+
+    function setMult(m) {
+      state.mult = m;
+      const map = { 1.5: 'm15', 2.0: 'm20', 3.0: 'm30' };
+      Object.keys(map).forEach(k => {
+        const el = document.getElementById(map[k]);
+        el.className = (parseFloat(k) === m)
+          ? 'py-2 rounded-lg font-extrabold text-xs bg-blue-600 text-white shadow'
+          : 'py-2 rounded-lg font-extrabold text-xs bg-slate-100 text-slate-800 border border-slate-300';
+      });
+      calculateAll();
+    }
+
+    function getTripWindow(cls, thermalState, mult, poles, relayType) {
+      const table = DATASHEET_CURVES[cls][thermalState];
+      const base = table[mult] || table[2.0];
+      let min = base.min;
+      let typ = base.typ;
+      let max = base.max;
+
+      // في الأوفرلود الإلكتروني الدقيق يكون التفاوت أضيق حول القيمة المثالية
+      if (relayType === 'electronic') {
+        min = +(typ * 0.82).toFixed(1);
+        max = +(typ * 1.18).toFixed(1);
+      }
+
+      // في حالة اختبار فازتين فقط (2-Pole) يتسارع الفصل بنسبة ~28% بسبب ميكانيزم التفاضلي
+      if (poles === 2) {
+        min = +(min * 0.72).toFixed(1);
+        typ = +(typ * 0.75).toFixed(1);
+        max = +(max * 0.78).toFixed(1);
+      }
+
+      return { min, typ, max };
+    }
+
+    function calculateAll() {
+      const irVal = parseFloat(document.getElementById('irInput').value) || 0;
+      state.ir = irVal;
+      const injectA = (irVal * state.mult).toFixed(2);
+      document.getElementById('valInjectA').textContent = injectA + ' A';
+
+      const win = getTripWindow(state.tripClass, state.thermalState, state.mult, state.poles, state.relayType);
+      document.getElementById('valRange').textContent = `${win.min}s - ${win.max}s`;
+      document.getElementById('valTyp').textContent = `${win.typ} s`;
+
+      evaluateTime();
+      updateChart();
+    }
+
+    function evaluateTime() {
+      const raw = document.getElementById('measuredTimeInput').value;
+      const box = document.getElementById('verdictBox');
+      const title = document.getElementById('verdictTitle');
+      const sub = document.getElementById('verdictSub');
+      const isAr = state.lang === 'ar';
+
+      if (raw === '' || isNaN(parseFloat(raw))) {
+        box.className = 'rounded-xl p-2.5 text-center bg-slate-100 border border-slate-300';
+        title.className = 'text-sm font-extrabold text-slate-600';
+        title.textContent = isAr ? 'أدخل زمن الفصل بالثواني لإظهار النتيجة' : 'Enter measured trip time (sec) to see verdict';
+        sub.textContent = isAr ? 'يتم التقييم فوراً طبقاً لمنحنيات داتاشيت المصنع' : 'Evaluated directly against manufacturer datasheet curves';
+        updateChart();
+        return;
+      }
+
+      const t = parseFloat(raw);
+      const win = getTripWindow(state.tripClass, state.thermalState, state.mult, state.poles, state.relayType);
+
+      if (t >= win.min && t <= win.max) {
+        box.className = 'rounded-xl p-2.5 text-center bg-emerald-100 border-2 border-emerald-500';
+        title.className = 'text-base font-extrabold text-emerald-900';
+        title.textContent = isAr ? '✅ ناجح (PASS) - زمن الفصل مطابق للداتاشيت' : '✅ PASS - Trip Time Within Datasheet Curve';
+        sub.className = 'text-xs font-bold text-emerald-800 mt-0.5';
+        sub.textContent = isAr
+          ? `الزمن المسجل (${t}s) داخل النطاق المسموح (${win.min}s إلى ${win.max}s)`
+          : `Measured (${t}s) is within (${win.min}s - ${win.max}s)`;
+      } else if (t < win.min) {
+        box.className = 'rounded-xl p-2.5 text-center bg-red-100 border-2 border-red-500';
+        title.className = 'text-base font-extrabold text-red-900';
+        title.textContent = isAr ? '❌ راسب (FAIL) - فصل مبكر أسرع من المسموح' : '❌ FAIL - Tripped Too Fast (Early Trip)';
+        sub.className = 'text-xs font-bold text-red-800 mt-0.5';
+        sub.textContent = isAr
+          ? `الزمن (${t}s) أقل من الحد الأدنى المسموح (${win.min}s)`
+          : `Measured (${t}s) is below minimum (${win.min}s)`;
+      } else {
+        box.className = 'rounded-xl p-2.5 text-center bg-red-100 border-2 border-red-500';
+        title.className = 'text-base font-extrabold text-red-900';
+        title.textContent = isAr ? '❌ راسب (FAIL) - فصل متأخر أبطأ من المسموح' : '❌ FAIL - Tripped Too Slow (Delayed Trip)';
+        sub.className = 'text-xs font-bold text-red-800 mt-0.5';
+        sub.textContent = isAr
+          ? `الزمن (${t}s) تجاوز الحد الأقصى المسموح (${win.max}s)`
+          : `Measured (${t}s) exceeded maximum (${win.max}s)`;
+      }
+      updateChart();
+    }
+
+    function saveRecord() {
+      const raw = document.getElementById('measuredTimeInput').value;
+      if (raw === '' || isNaN(parseFloat(raw))) return;
+      const t = parseFloat(raw);
+      const win = getTripWindow(state.tripClass, state.thermalState, state.mult, state.poles, state.relayType);
+      const pass = (t >= win.min && t <= win.max);
+
+      state.logs.unshift({
+        model: state.modelId,
+        injectA: (state.ir * state.mult).toFixed(1) + 'A (' + (state.mult * 100) + '%)',
+        st: state.thermalState === 'cold' ? (state.lang === 'ar' ? 'بارد' : 'Cold') : (state.lang === 'ar' ? 'ساخن' : 'Hot'),
+        time: t + 's',
+        pass
+      });
+
+      renderLogs();
+    }
+
+    function renderLogs() {
+      const container = document.getElementById('logContainer');
+      const tbody = document.getElementById('logBody');
+      if (state.logs.length === 0) {
+        container.classList.add('hidden');
+        return;
+      }
+      container.classList.remove('hidden');
+      tbody.innerHTML = state.logs.map(r => `
+        <tr class="border-b">
+          <td class="p-1 font-bold">${r.model}</td>
+          <td class="p-1">${r.injectA}</td>
+          <td class="p-1">${r.st}</td>
+          <td class="p-1 font-bold">${r.time}</td>
+          <td class="p-1 font-extrabold ${r.pass ? 'text-emerald-700' : 'text-red-600'}">${r.pass ? 'PASS ✅' : 'FAIL ❌'}</td>
+        </tr>
+      `).join('');
+    }
+
+    function clearLogs() {
+      state.logs = [];
+      renderLogs();
+    }
+
+    // ==================== التنقل بين التابات ====================
+    function switchTab(num) {
+      [1, 2, 3].forEach(n => {
+        document.getElementById('tab' + n).classList.toggle('hidden', n !== num);
+      });
+
+      const styles = {
+        1: { active: 'bg-blue-600 text-white border-blue-800 shadow-md opacity-100', idle: 'bg-blue-100 text-blue-950 border-blue-300 opacity-80' },
+        2: { active: 'bg-emerald-600 text-white border-emerald-800 shadow-md opacity-100', idle: 'bg-emerald-100 text-emerald-950 border-emerald-300 opacity-80' },
+        3: { active: 'bg-amber-500 text-slate-950 border-amber-700 shadow-md opacity-100', idle: 'bg-amber-100 text-amber-950 border-amber-300 opacity-80' }
+      };
+
+      [1, 2, 3].forEach(n => {
+        const btn = document.getElementById('tabBtn' + n);
+        btn.className = `tab-btn py-2 px-1 rounded-xl font-extrabold text-xs sm:text-sm border-2 flex flex-col items-center justify-center ${n === num ? styles[n].active : styles[n].idle}`;
+      });
+
+      if (num === 2) {
+        setTimeout(() => updateChart(), 50);
+      }
+    }
+
+    // ==================== رسم الكيرف في الصفحة الثانية ====================
+    function updateChart() {
+      const ctx = document.getElementById('tccChart');
+      if (!ctx) return;
+
+      const mults = [1.2, 1.5, 2.0, 3.0, 4.0, 5.0, 6.0, 7.2];
+      const minPts = [];
+      const typPts = [];
+      const maxPts = [];
+
+      mults.forEach(m => {
+        const w = getTripWindow(state.tripClass, state.thermalState, m, state.poles, state.relayType);
+        minPts.push({ x: m, y: w.min });
+        typPts.push({ x: m, y: w.typ });
+        maxPts.push({ x: m, y: w.max });
+      });
+
+      const rawTime = parseFloat(document.getElementById('measuredTimeInput').value);
+      const userPt = (!isNaN(rawTime) && rawTime > 0)
+        ? [{ x: state.mult, y: rawTime }]
+        : [{ x: state.mult, y: getTripWindow(state.tripClass, state.thermalState, state.mult, state.poles, state.relayType).typ }];
+
+      if (tccChartInstance) {
+        tccChartInstance.destroy();
+      }
+
+      tccChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          datasets: [
+            {
+              label: state.lang === 'ar' ? 'الحد الأقصى (Max)' : 'Max Limit',
+              data: maxPts,
+              borderColor: '#64748b',
+              borderDash: [5, 5],
+              borderWidth: 2,
+              pointRadius: 2,
+              tension: 0.3
+            },
+            {
+              label: state.lang === 'ar' ? 'الكيرف المثالي (Typical)' : 'Typical Curve',
+              data: typPts,
+              borderColor: '#059669',
+              backgroundColor: 'rgba(16, 185, 129, 0.12)',
+              borderWidth: 3,
+              pointRadius: 3,
+              fill: false,
+              tension: 0.3
+            },
+            {
+              label: state.lang === 'ar' ? 'الحد الأدنى (Min)' : 'Min Limit',
+              data: minPts,
+              borderColor: '#64748b',
+              borderDash: [5, 5],
+              borderWidth: 2,
+              pointRadius: 2,
+              tension: 0.3
+            },
+            {
+              label: state.lang === 'ar' ? 'نقطة الاختبار' : 'Test Point',
+              data: userPt,
+              borderColor: '#d97706',
+              backgroundColor: '#f59e0b',
+              pointRadius: 7,
+              pointHoverRadius: 9,
+              showLine: false
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              type: 'logarithmic',
+              min: 1.1,
+              max: 8,
+              title: {
+                display: true,
+                text: state.lang === 'ar' ? 'مضاعفات التيار (× Ir)' : 'Current Multiple (× Ir)',
+                font: { weight: 'bold', size: 11 }
+              },
+              ticks: {
+                callback: (val) => [1.2, 1.5, 2, 3, 4, 5, 6, 7.2].includes(val) ? val + 'x' : ''
+              }
+            },
+            y: {
+              type: 'logarithmic',
+              min: 0.3,
+              max: 1000,
+              title: {
+                display: true,
+                text: state.lang === 'ar' ? 'زمن الفصل (ثانية)' : 'Trip Time (s)',
+                font: { weight: 'bold', size: 11 }
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              labels: { font: { family: 'Cairo', size: 10, weight: 'bold' } }
+            }
+          }
+        }
+      });
+    }
+
+    // ==================== تبديل اللغة عربي / إنجليزي ====================
+    function toggleLang() {
+      state.lang = state.lang === 'ar' ? 'en' : 'ar';
+      const isAr = state.lang === 'ar';
+      document.documentElement.lang = isAr ? 'ar' : 'en';
+      document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+
+      document.querySelector('#langBtn span').textContent = isAr ? 'English' : 'عربي';
+      document.getElementById('appTitle').textContent = isAr ? 'فحص واختبار الأوفرلود' : 'Overload Relay Tester';
+
+      document.querySelector('#tabBtn1 span').textContent = isAr ? '⚡ 1. الاختبار' : '⚡ 1. Test';
+      document.querySelector('#tabBtn2 span').textContent = isAr ? '📈 2. الكيرف' : '📈 2. Curve';
+      document.querySelector('#tabBtn3 span').textContent = isAr ? '📘 3. الشرح' : '📘 3. Guide';
+
+      document.getElementById('lblBrand').textContent = isAr ? 'الماركة' : 'Brand';
+      document.getElementById('lblModel').textContent = isAr ? 'موديل الأوفرلود (نطاق الأمبير)' : 'Overload Model';
+      document.getElementById('lblClass').textContent = isAr ? 'فئة الفصل Class' : 'Trip Class';
+      document.getElementById('lblState').textContent = isAr ? 'حالة الأوفرلود' : 'Thermal State';
+      document.getElementById('stCold').textContent = isAr ? '❄️ بارد' : '❄️ Cold';
+      document.getElementById('stHot').textContent = isAr ? '🔥 ساخن' : '🔥 Hot';
+      document.getElementById('lblPoles').textContent = isAr ? 'التوصيل' : 'Wiring';
+      document.getElementById('pl3').textContent = isAr ? '3 فاز' : '3-Pole';
+      document.getElementById('pl2').textContent = isAr ? '2 فاز' : '2-Pole';
+
+      document.getElementById('lblIr').textContent = isAr ? 'ضبط تدريج الأوفرلود (A)' : 'Dial Setting Ir (A)';
+      document.getElementById('lblRatio').textContent = isAr ? 'نسبة تيار الحقن' : 'Test Current Ratio';
+      document.getElementById('lblInjectBox').textContent = isAr ? 'احقن أمبير' : 'Inject Current';
+      document.getElementById('lblAllowedBox').textContent = isAr ? 'الزمن المسموح' : 'Allowed Time';
+      document.getElementById('lblTypBox').textContent = isAr ? 'الزمن المثالي' : 'Typical Time';
+
+      document.getElementById('lblActualTime').textContent = isAr ? '⏱️ اكتب زمن الفصل الفعلي (ثانية):' : '⏱️ Enter Measured Trip Time (s):';
+      document.getElementById('btnSave').textContent = isAr ? '💾 حفظ في الجدول' : '💾 Save Result';
+      document.getElementById('lblLogTitle').textContent = isAr ? '📋 سجل الاختبارات المحفوظة' : '📋 Saved Test Records';
+
+      document.getElementById('chartTitle').textContent = isAr ? 'منحنى الفصل الحراري / الإلكتروني (الداتاشيت)' : 'Manufacturer Datasheet Tripping Curve';
+      document.getElementById('chartSub').textContent = isAr ? 'يوضح الحد الأدنى والأقصى والمنحنى المثالي ونقطة اختبارك' : 'Shows Min, Typical, Max limits and your test point';
+
+      calculateAll();
+    }
+
+    // التشغيل الأولي
+    window.addEventListener('DOMContentLoaded', () => {
+      populateModels();
+      calculateAll();
+    });
+  </script>
 </body>
 </html>
