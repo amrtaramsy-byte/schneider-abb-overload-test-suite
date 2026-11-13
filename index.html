@@ -1,0 +1,2538 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><script data-bard-client-injected="true">(function(firebaseConfig, initialAuthToken, appId) {
+        window.__firebase_config = firebaseConfig;
+        window.__initial_auth_token = initialAuthToken;
+        window.__app_id = appId;
+            })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","eyJhbGciOiJSUzI1NiIsImtpZCI6IjExNjRiNzdiNDMzZDdhMDAyMWI4NjE4YjhjYTU3ZTMyZGI5MWUxMTMiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1mYnN2Y0BiYXJkLWZyb250ZW5kLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiaHR0cHM6Ly9pZGVudGl0eXRvb2xraXQuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJ1aWQiOiIwNjE5MDAxOTU5OTMwNzU5ODQ2MCIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLWZic3ZjQGJhcmQtZnJvbnRlbmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJjbGFpbXMiOnsiYXBwSWQiOiJjXzAzMzRkMDE5OGI4ZDU1ZmRfaW5kZXguaHRtbC0yNzIifSwiZXhwIjoxNzk0NTY4MjEyLCJpYXQiOjE3OTQ1NjQ2MTIsImFsZyI6IlJTMjU2In0.INUe0gvQc8BL7dfeH_oWaMLLBS8OnAt32wiIfLqe7oHW-ayWNzRIm5JBAODfi3syhw9_TTHhU2QTMyDcaYXF903YAHfEohZT1Sei2_fV3HYf6sHuIOvmzLiQUGdrA0Ubfv_L70SHkSgF-TGwZwX5yobMfikgDElPGt1BDKR56UP-yBa9p7tXPmdSezk829g5jz-Eu5pZzaD_053IEH1_3AUfHzJHdvMJY3lvRRkSVaJIeBGNR27LQlCeuRvR9NxqDrfNCwD2QLmw3z662nmaeh9su5oJ7FC0vxDj2y7PpRJcd15Tjp_1DWzP71G-XfVg7sD1pRBXMPqal3hRt-DW4g","c_0334d0198b8d55fd_index.html-272")</script><script data-bard-client-injected="true">
+  document.addEventListener('input', (event) => {
+    if (event.target && (event.target.isContentEditable || event.target.hasAttribute('contenteditable'))) {
+      const clonedDoc = document.cloneNode(true);
+      const injectedScripts = clonedDoc.querySelectorAll('[data-bard-client-injected="true"]');
+      injectedScripts.forEach(el => el.remove());
+      window.parent.postMessage({
+        type: 'inlineEdit',
+        html: '<!DOCTYPE html>\n' + clonedDoc.documentElement.outerHTML
+      }, '*');
+    }
+  });
+</script><script data-bard-client-injected="true">(function(){'use strict';window.addEventListener("message",a=>{a.data&&a.data.type==="SUPPLEMENTAL_DATA_UPDATE"&&window.dispatchEvent(new CustomEvent("supplementaldataupdate",{detail:a.data.data}))});}).call(this);
+</script><script data-bard-client-injected="true">(function(){'use strict';var k=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,d){if(a==Array.prototype||a==Object.prototype)return a;a[b]=d.value;return a};function m(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var b=0;b<a.length;++b){var d=a[b];if(d&&d.Math==Math)return d}throw Error("Cannot find global object");}var q=m(this);
+function r(a,b){if(b)a:{var d=q;a=a.split(".");for(var c=0;c<a.length-1;c++){var e=a[c];if(!(e in d))break a;d=d[e]}a=a[a.length-1];c=d[a];b=b(c);b!=c&&b!=null&&k(d,a,{configurable:!0,writable:!0,value:b})}}function t(a){function b(c){return a.next(c)}function d(c){return a.throw(c)}return new Promise(function(c,e){function f(g){g.done?c(g.value):Promise.resolve(g.value).then(b,d).then(f,e)}f(a.next())})}function u(a){return t(a())}
+r("Object.values",function(a){return a?a:function(b){var d=[],c;for(c in b)Object.prototype.hasOwnProperty.call(b,c)&&d.push(b[c]);return d}});r("Array.prototype.includes",function(a){return a?a:function(b,d){var c=this;c instanceof String&&(c=String(c));var e=c.length;d=d||0;for(d<0&&(d=Math.max(d+e,0));d<e;d++){var f=c[d];if(f===b||Object.is(f,b))return!0}return!1}});/*
+
+ MIT License
+
+ Copyright (c) 2017-2023 W.Y.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+*/
+function v(a,b){var d=a.style;b.backgroundColor&&(d.backgroundColor=b.backgroundColor);b.width&&(d.width=`${b.width}px`);b.height&&(d.height=`${b.height}px`);var c=b.style;c!=null&&Object.keys(c).forEach(e=>{d[e]=c[e]})};var aa=(()=>{var a=0;return()=>{a+=1;return`u${`0000${(Math.random()*1679616<<0).toString(36)}`.slice(-4)}${a}`}})();function w(a){var b=[];for(let d=0,c=a.length;d<c;d++)b.push(a[d]);return b}let y=null;function z(a={}){return y?y:a.u?y=a.u:y=w(window.getComputedStyle(document.documentElement))}function A(a,b){return(a=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(b))?parseFloat(a.replace("px","")):0}
+function B(a,b={}){var d;if(!(d=b.width)){d=A(a,"border-left-width");var c=A(a,"border-right-width");d=a.clientWidth+d+c}(b=b.height)||(b=A(a,"border-top-width"),c=A(a,"border-bottom-width"),b=a.clientHeight+b+c);return{width:d,height:b}}function C(a){return new Promise((b,d)=>{var c=new Image;c.onload=()=>{c.decode().then(()=>{requestAnimationFrame(()=>b(c))})};c.onerror=d;c.crossOrigin="anonymous";c.decoding="async";c.src=a})}
+function ba(a){return u(function*(){return Promise.resolve().then(()=>(new XMLSerializer).serializeToString(a)).then(encodeURIComponent).then(b=>`data:image/svg+xml;charset=utf-8,${b}`)})}
+function ca(a,b,d){return u(function*(){var c=document.createElementNS("http://www.w3.org/2000/svg","svg"),e=document.createElementNS("http://www.w3.org/2000/svg","foreignObject");c.setAttribute("width",`${b}`);c.setAttribute("height",`${d}`);c.setAttribute("viewBox",`0 0 ${b} ${d}`);e.setAttribute("width","100%");e.setAttribute("height","100%");e.setAttribute("x","0");e.setAttribute("y","0");e.setAttribute("externalResourcesRequired","true");c.appendChild(e);e.appendChild(a);return ba(c)})}
+var D=(a,b)=>{if(a instanceof b)return!0;a=Object.getPrototypeOf(a);return a===null?!1:a.constructor.name===b.name||D(a,b)};function da(a,b){return z(b).map(d=>{var c=a.getPropertyValue(d),e=a.getPropertyPriority(d);return`${d}: ${c}${e?" !important":""};`}).join(" ")}
+function E(a,b,d,c){a=window.getComputedStyle(a,d);var e=a.getPropertyValue("content");if(e!==""&&e!=="none"){var f=aa();try{b.className=`${b.className} ${f}`}catch(h){return}e=document.createElement("style");var g=e.appendChild;d=`.${f}:${d}`;a.cssText?(c=a.getPropertyValue("content"),c=`${a.cssText} content: '${c.replace(/'|"/g,"")}';`):c=da(a,c);g.call(e,document.createTextNode(`${d}{${c}}`));b.appendChild(e)}};function F(a){return a.search(/^(data:)/)!==-1}function G(a,b,d){return u(function*(){var c=yield fetch(a,b);if(c.status===404)throw Error(`Resource "${c.url}" not found`);var e=yield c.blob();return new Promise((f,g)=>{var h=new FileReader;h.onerror=g;h.onloadend=()=>{try{f(d({v:c,result:h.result}))}catch(l){g(l)}};h.readAsDataURL(e)})})}const H={};function ea(a,b,d){var c=a.replace(/\?.*/,"");d&&(c=a);/ttf|otf|eot|woff2?/i.test(c)&&(c=c.replace(/.*\//,""));return b?`[${b}]${c}`:c}
+function I(a,b,d){return u(function*(){var c=ea(a,b,d.F);if(H[c]!=null)return H[c];d.B&&(a+=(/\?/.test(a)?"&":"?")+(new Date).getTime());try{let f=yield G(a,d.l,({v:g,result:h})=>{b||(b=g.headers.get("Content-Type")||"");return h.split(/,/)[1]});var e=`data:${b};base64,${f}`}catch(f){e=d.o||""}return H[c]=e})};const J={R:"application/font-woff",S:"application/font-woff",O:"application/font-truetype",C:"application/vnd.ms-fontobject",J:"image/png",H:"image/jpeg",G:"image/jpeg",D:"image/gif",N:"image/tiff",M:"image/svg+xml",P:"image/webp"};function K(a){return(a=/\.([^./]*?)$/g.exec(a))?a[1]:""};function fa(a){return u(function*(){var b=a.toDataURL();return b==="data:,"?a.cloneNode(!1):C(b)})}function ha(a,b){return u(function*(){if(a.currentSrc){var d=document.createElement("canvas");let c=d.getContext("2d");d.width=a.clientWidth;d.height=a.clientHeight;c==null||c.drawImage(a,0,0,d.width,d.height);d=d.toDataURL();return C(d)}d=a.poster;d=yield I(d,J[K(d).toLowerCase()]||"",b);return C(d)})}
+function ia(a,b){return u(function*(){try{let d;if(a==null?0:(d=a.contentDocument)==null?0:d.body)return yield L(a.contentDocument.body,b,!0)}catch(d){}return a.cloneNode(!1)})}function ja(a,b){return u(function*(){return D(a,HTMLCanvasElement)?fa(a):D(a,HTMLVideoElement)?ha(a,b):D(a,HTMLIFrameElement)?ia(a,b):a.cloneNode(a.tagName!=null&&a.tagName.toUpperCase()==="SVG")})}
+function ka(a,b,d){return u(function*(){if(b.tagName!=null&&b.tagName.toUpperCase()==="SVG")return b;var c=[];if(a.tagName!=null&&a.tagName.toUpperCase()==="SLOT"&&a.assignedNodes)c=w(a.assignedNodes());else{let e;if(D(a,HTMLIFrameElement)&&((e=a.contentDocument)==null?0:e.body))c=w(a.contentDocument.body.childNodes);else{let f;c=w(((f=a.shadowRoot)!=null?f:a).childNodes)}}if(c.length===0||D(a,HTMLVideoElement))return b;yield c.reduce((e,f)=>e.then(()=>L(f,d)).then(g=>{g&&b.appendChild(g)}),Promise.resolve());
+return b})}function la(a,b,d){var c=b.style;if(c){var e=window.getComputedStyle(a);e.cssText?(c.cssText=e.cssText,c.transformOrigin=e.transformOrigin):z(d).forEach(f=>{var g=e.getPropertyValue(f);f==="font-size"&&g.endsWith("px")&&(g=`${Math.floor(parseFloat(g.substring(0,g.length-2)))-.1}px`);D(a,HTMLIFrameElement)&&f==="display"&&g==="inline"&&(g="block");f==="d"&&b.getAttribute("d")&&(g=`path(${b.getAttribute("d")})`);c.setProperty(f,g,e.getPropertyPriority(f))})}}
+function ma(a,b){D(a,HTMLSelectElement)&&(b=Array.from(b.children).find(d=>a.value===d.getAttribute("value")))&&b.setAttribute("selected","")}
+function na(a,b){return u(function*(){var d=a.querySelectorAll?a.querySelectorAll("use"):[];if(d.length===0)return a;var c={};for(var e=0;e<d.length;e++){var f=d[e].getAttribute("xlink:href");if(f){let g=document.querySelector(f);a.querySelector(f)||!g||c[f]||(c[f]=yield L(g,b,!0))}}d=Object.values(c);if(d.length){c=document.createElementNS("http://www.w3.org/1999/xhtml","svg");c.setAttribute("xmlns","http://www.w3.org/1999/xhtml");c.style.position="absolute";c.style.width="0";c.style.height="0";
+c.style.overflow="hidden";c.style.display="none";e=document.createElementNS("http://www.w3.org/1999/xhtml","defs");c.appendChild(e);for(f=0;f<d.length;f++)e.appendChild(d[f]);a.appendChild(c)}return a})}
+function L(a,b,d){return u(function*(){return d||!b.filter||b.filter(a)?Promise.resolve(a).then(c=>ja(c,b)).then(c=>ka(a,c,b)).then(c=>{D(c,Element)&&(la(a,c,b),E(a,c,":before",b),E(a,c,":after",b),D(a,HTMLTextAreaElement)&&(c.textContent=a.value),D(a,HTMLInputElement)&&c.setAttribute("value",a.value),ma(a,c));return c}).then(c=>na(c,b)):null})};const M=/url\((['"]?)([^'"]+?)\1\)/g,oa=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,pa=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function qa(a){var b=[];a.replace(M,(d,c,e)=>{b.push(e);return d});return b.filter(d=>!F(d))}
+function ra(a,b,d,c){return u(function*(){try{let e=d?(new URL(b,d||void 0)).toString():b,f;f=yield I(e,J[K(b).toLowerCase()]||"",c);return a.replace(new RegExp(`(url\\(['"]?)(${b.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1")})(['"]?\\))`,"g"),`$1${f}$3`)}catch(e){}return a})}function sa(a,{K:b}){return b?a.replace(pa,d=>{for(;;){let [c,,e]=oa.exec(d)||[];if(!e)return"";if(e===b)return`src: ${c};`}}):a}
+function N(a,b,d){return u(function*(){if(a.search(M)===-1)return a;var c=sa(a,d);return qa(c).reduce((e,f)=>e.then(g=>ra(g,f,b,d)),Promise.resolve(c))})};function O(a,b,d){return u(function*(){var c,e=(c=b.style)==null?void 0:c.getPropertyValue(a);return e?(c=yield N(e,null,d),b.style.setProperty(a,c,b.style.getPropertyPriority(a)),!0):!1})}function ta(a,b){return u(function*(){(yield O("background",a,b))||(yield O("background-image",a,b));(yield O("mask",a,b))||(yield O("-webkit-mask",a,b))||(yield O("mask-image",a,b))||(yield O("-webkit-mask-image",a,b))})}
+function ua(a,b){return u(function*(){var d=D(a,HTMLImageElement);if(d&&!F(a.src)||D(a,SVGImageElement)&&!F(a.href.baseVal)){var c=d?a.src:a.href.baseVal,e=yield I(c,J[K(c).toLowerCase()]||"",b);yield new Promise((f,g)=>{a.onload=f;a.onerror=b.h?(...h)=>{try{f(b.h(...h))}catch(l){g(l)}}:g;a.decode&&(a.decode=f);a.loading==="lazy"&&(a.loading="eager");d?(a.srcset="",a.src=e):a.href.baseVal=e})}})}
+function va(a,b){return u(function*(){var d=w(a.childNodes).map(c=>P(c,b));yield Promise.all(d).then(()=>a)})}function P(a,b){return u(function*(){D(a,Element)&&(yield ta(a,b),yield ua(a,b),yield va(a,b))})};const Q={};function R(a){return u(function*(){var b=Q[a];if(b!=null)return b;b=yield(yield fetch(a)).text();b={url:a,cssText:b};return Q[a]=b})}function S(a,b){return u(function*(){var d=a.cssText,c=/url\(["']?([^"')]+)["']?\)/g,e=(d.match(/url\([^)]+\)/g)||[]).map(f=>u(function*(){var g=f.replace(c,"$1");g.startsWith("https://")||(g=(new URL(g,a.url)).href);return G(g,b.l,({result:h})=>{d=d.replace(f,`url(${h})`);return[f,h]})}));return Promise.all(e).then(()=>d)})}
+function T(a){if(a==null)return[];var b=[];a=a.replace(/(\/\*[\s\S]*?\*\/)/gi,"");for(var d=RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");;){var c=d.exec(a);if(c===null)break;b.push(c[0])}a=a.replace(d,"");d=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi;for(c=RegExp("((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})","gi");;){let e=d.exec(a);if(e===null)if(e=c.exec(a),e===null)break;else d.lastIndex=c.lastIndex;else c.lastIndex=
+d.lastIndex;b.push(e[0])}return b}
+function wa(a,b){return u(function*(){var d=[],c=[];a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach((f,g)=>{if(f.type===CSSRule.IMPORT_RULE){let h=g+1;f=R(f.href).then(l=>S(l,b)).then(l=>T(l).forEach(p=>{try{e.insertRule(p,p.startsWith("@import")?h+=1:e.cssRules.length)}catch(x){}})).catch(()=>{});c.push(f)}})}catch(f){let g=a.find(h=>h.href==null)||document.styleSheets[0];e.href!=null&&c.push(R(e.href).then(h=>S(h,b)).then(h=>T(h).forEach(l=>{g.insertRule(l,g.cssRules.length)})).catch(()=>
+{}))}});return Promise.all(c).then(()=>{a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach(f=>{d.push(f)})}catch(f){}});return d})})}function xa(a){return a.filter(b=>b.type===CSSRule.FONT_FACE_RULE).filter(b=>b.style.getPropertyValue("src").search(M)!==-1)}function ya(a,b){return u(function*(){if(a.ownerDocument==null)throw Error("Provided element is not within a Document");var d=yield wa(w(a.ownerDocument.styleSheets),b);return xa(d)})}
+function za(a){function b(c){(c.style.fontFamily||getComputedStyle(c).fontFamily).split(",").forEach(e=>{d.add(e.trim().replace(/["']/g,""))});Array.from(c.children).forEach(e=>{e instanceof HTMLElement&&b(e)})}var d=new Set;b(a);return d}function Aa(a,b){return u(function*(){var d=yield ya(a,b),c=za(a);return(yield Promise.all(d.filter(e=>c.has(e.style.fontFamily.trim().replace(/["']/g,""))).map(e=>N(e.cssText,e.parentStyleSheet?e.parentStyleSheet.href:null,b)))).join("\n")})}
+function Ba(a,b){return u(function*(){var d=b.m!=null?b.m:b.A?null:yield Aa(a,b);if(d){let c=document.createElement("style");c.appendChild(document.createTextNode(d));a.firstChild?a.insertBefore(c,a.firstChild):a.appendChild(c)}})};function Ca(a,b={}){return u(function*(){var {width:d,height:c}=B(a,b),e=yield L(a,b,!0);yield Ba(e,b);yield P(e,b);v(e,b);return yield ca(e,d,c)})}
+function Da(a,b={}){return u(function*(){var {width:d,height:c}=B(a,b),e=yield Ca(a,b);e=yield C(e);var f=document.createElement("canvas"),g=f.getContext("2d"),h=b.I||window.devicePixelRatio||1,l=b.j||d,p=b.i||c;f.width=l*h;f.height=p*h;!b.L&&(f.width>16384||f.height>16384)&&(f.width>16384&&f.height>16384?f.width>f.height?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384):f.width>16384?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384));
+f.style.width=`${l}`;f.style.height=`${p}`;b.backgroundColor&&(g.fillStyle=b.backgroundColor,g.fillRect(0,0,f.width,f.height));g.drawImage(e,0,0,f.width,f.height);return f})}function Ea(a,b={}){return u(function*(){return(yield Da(a,b)).toDataURL()})};const Fa=["gemini.google.com","corp.google.com","proxy.googlers.com"];function V(a){a=Number(a.replace(/px$/,""));return Number.isFinite(a)?a:0}function W(){return document.body.querySelectorAll('[class*="animate"]').length>0}function X(a,b){var d=document.createElement("canvas");d.width=a;d.height=b;return d.toDataURL("image/png")}const Y=X(1,1);
+function Z(a,b){return u(function*(){var d=Math.max(b?b.width:a.offsetWidth,1),c=Math.max(b?b.height:a.offsetHeight,1),e=HTMLCanvasElement.prototype.toDataURL;b&&(HTMLCanvasElement.prototype.toDataURL=function(f,g){var h;if(h=this.isConnected&&a.contains(this)){{let n=this.getBoundingClientRect();if(n.width===0||n.height===0)h=!1;else if(window.getComputedStyle(this).position==="fixed")h=n.bottom>0&&n.top<b.height&&n.right>0&&n.left<b.width;else{h=a.getBoundingClientRect();var l=n.top-h.top,p=n.left-
+h.left,x=n.right-h.left;h=n.bottom-h.top>b.scrollTop&&l<b.scrollTop+b.height&&x>b.scrollLeft&&p<b.scrollLeft+b.width}}h=!h}return h?"data:,":e.call(this,f,g)});try{let f=window.getComputedStyle(a),g=b?`${V(f.marginTop)-b.scrollTop}px`:void 0,h=b?`${V(f.marginLeft)-b.scrollLeft}px`:void 0,l=`${Math.max(a.offsetWidth,d)}px`,p,x=`${Math.max(a.offsetHeight,c+((p=b==null?void 0:b.scrollTop)!=null?p:0))}px`;return yield Ea(a,Object.assign({},{width:d,height:c,j:d,i:c},b?{style:{width:l,height:x,marginTop:g,
+marginLeft:h,marginBlockStart:g,marginInlineStart:h}}:{},{A:!0,filter:n=>{if(n.tagName==="IMG"){let U=n.getAttribute("src");if(!U||U.trim()===""||n.style.display==="none")return!1}return!0},o:Y,h:()=>Y}))}catch(f){return X(d,c)}finally{HTMLCanvasElement.prototype.toDataURL=e}})}
+function Ga(){return u(function*(){var a=document.body.offsetWidth,b=document.body.offsetHeight,d=document.body.cloneNode(!0);d.querySelectorAll('[class*="animate"]').forEach(c=>{c.classList.remove(...Array.from(c.classList).filter(e=>e.startsWith("animate")))});d.style.width=`${a}px`;d.style.height=`${b}px`;return d})}
+function Ha(a){return u(function*(){var b={width:window.innerWidth||document.documentElement.clientWidth||document.body.offsetWidth,height:window.innerHeight||document.documentElement.clientHeight||document.body.offsetHeight,scrollTop:window.scrollY||document.documentElement.scrollTop||document.body.scrollTop||0,scrollLeft:window.scrollX||document.documentElement.scrollLeft||document.body.scrollLeft||0},d=document.body;if(W()){let c=yield Ga();d=c;document.body.appendChild(c)}b=yield Z(d,b);W()&&
+document.body.removeChild(d);window.parent.postMessage({type:"SEND_SCREENSHOT",image:b,topOffset:0},a.origin)})}function Ia(a){return u(function*(){var b={type:"SEND_SCREENSHOT_FOR_DATA_VISUALIZATION",image:yield Z(document.body),topOffset:0};window.parent.postMessage(b,a.origin)})}window.addEventListener("message",a=>u(function*(){if(Fa.some(d=>a.origin.includes(d))){var b=a.data;b&&(b.type==="MAKE_SCREENSHOT"&&(yield Ha(a)),b.type==="MAKE_SCREENSHOT_FOR_DATA_VISUALIZATION"&&(yield Ia(a)))}}));
+})();</script><script data-bard-client-injected="true">(function() {
+  // Ensure this script is executed only once
+  if (window.firebaseAuthBridgeScriptLoaded) {
+    return;
+  }
+  window.firebaseAuthBridgeScriptLoaded = true;
+
+  let nextTokenPromiseId = 0;
+
+  // Stores { resolve, reject } for ongoing token requests
+  const pendingTokenPromises = {};
+
+  // Listen for messages from the Host Application
+  window.addEventListener('message', function(event) {
+
+    const messageData = event.data;
+
+  if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+      const { success, token, error, promiseId } = messageData ?? {};
+      if (pendingTokenPromises[promiseId]) {
+        if (success) {
+          pendingTokenPromises[promiseId].resolve(token);
+        } else {
+          pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+        }
+        delete pendingTokenPromises[promiseId];
+      }
+    }
+  });
+
+  // Expose a function for the Generated App to request a new Firebase token
+  window.requestNewFirebaseToken = function() {
+    const currentPromiseId = nextTokenPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingTokenPromises[currentPromiseId] = { resolve, reject };
+    });
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'REQUEST_NEW_FIREBASE_TOKEN',
+        promiseId: currentPromiseId
+      }, '*');
+    } else {
+      pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+      delete pendingTokenPromises[currentPromiseId];
+    }
+    return promise;
+  };
+})();</script><script data-bard-client-injected="true">
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+  if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+    try {
+      Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+        get: function() {
+          return undefined; // Or throw an error
+        },
+        configurable: false
+      });
+    } catch (error) {
+      console.error("Error defining prototype getter:", error);
+    }
+  }
+})();
+
+(function() {
+  const pendingMediaResolvers = {};
+  let nextMediaPromiseId = 0;
+
+  function requestMediaPermissions(constraints) {
+    const mediaPromiseId = nextMediaPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingMediaResolvers[mediaPromiseId] = (granted) => {
+        delete pendingMediaResolvers[mediaPromiseId];
+        resolve(granted);
+      };
+    });
+
+    window.parent.postMessage({
+      type: 'requestMediaPermission',
+      constraints: constraints,
+      promiseId: mediaPromiseId,
+    }, '*');
+
+    return promise;
+  }
+
+  let originalGetUserMedia = realOriginalGetUserMedia;
+
+  function interceptGetUserMedia() {
+    if (navigator.mediaDevices) {
+      Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+        value: function(constraints) {
+          return requestMediaPermissions(constraints).then((granted) => {
+            if (granted) {
+              if (originalGetUserMedia) {
+                return originalGetUserMedia(constraints);
+              } else {
+                throw new Error("Original getUserMedia not available.");
+              }
+            } else {
+              throw new DOMException('Permission denied', 'NotAllowedError');
+            }
+          });
+        },
+        writable: false,
+        configurable: false
+      });
+    }
+  }
+
+  interceptGetUserMedia();
+
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'childList' && mutation.addedNodes) {
+        mutation.addedNodes.forEach(node => {
+          if (node === navigator.mediaDevices) {
+            interceptGetUserMedia();
+          }
+        });
+      }
+    }
+  });
+
+  function interceptSpeechRecognition() {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+      return;
+    }
+
+    const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const SpeechRecognitionWrapper = function(...args) {
+      const recognizer = new OriginalSpeechRecognition(...args);
+      const originalStart = recognizer.start.bind(recognizer);
+
+      recognizer.start = function() {
+        requestMediaPermissions({ audio: true }).then(granted => {
+          if (granted) {
+            originalStart();
+          } else {
+            const errorEvent = new SpeechRecognitionErrorEvent('error');
+            errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+            recognizer.dispatchEvent(errorEvent);
+          }
+        });
+      };
+
+      return recognizer;
+    };
+
+    SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+    SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+    if (window.SpeechRecognition) {
+      window.SpeechRecognition = SpeechRecognitionWrapper;
+    }
+    if (window.webkitSpeechRecognition) {
+      window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+    }
+  }
+
+  interceptSpeechRecognition();
+
+  window.addEventListener('message', function(event) {
+    if (event.data) {
+      if (event.data.type === 'resolveMediaPermission') {
+        const { promiseId, granted } = event.data;
+        if (pendingMediaResolvers[promiseId]) {
+          pendingMediaResolvers[promiseId](granted);
+        }
+      }
+    }
+  });
+
+})();</script><script ws-interception-config="{&quot;parentOrigin&quot;:&quot;https://gemini.google.com&quot;,&quot;proxiedDomains&quot;:[]}" data-bard-client-injected="true">(function(){'use strict';var u=typeof Object.defineProperties=="function"?Object.defineProperty:function(b,d,e){if(b==Array.prototype||b==Object.prototype)return b;b[d]=e.value;return b};function v(b){b=["object"==typeof globalThis&&globalThis,b,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var d=0;d<b.length;++d){var e=b[d];if(e&&e.Math==Math)return e}throw Error("Cannot find global object");}var w=v(this);
+function y(b,d){if(d)a:{var e=w;b=b.split(".");for(var h=0;h<b.length-1;h++){var k=b[h];if(!(k in e))break a;e=e[k]}b=b[b.length-1];h=e[b];d=d(h);d!=h&&d!=null&&u(e,b,{configurable:!0,writable:!0,value:d})}}function z(b){function d(h){return b.next(h)}function e(h){return b.throw(h)}return new Promise(function(h,k){function m(n){n.done?h(n.value):Promise.resolve(n.value).then(d,e).then(m,k)}m(b.next())})}y("globalThis",function(b){return b||w});/*
+
+ Copyright The Closure Library Authors.
+ SPDX-License-Identifier: Apache-2.0
+*/
+function A(b,d){function e(){}e.prototype=d.prototype;b.j=d.prototype;b.prototype=new e;b.prototype.constructor=b;b.h=function(h,k,m){for(var n=Array(arguments.length-2),p=2;p<arguments.length;p++)n[p-2]=arguments[p];return d.prototype[k].apply(h,n)}};function B(b,d,e="*"){function h(a){if(typeof a==="string")return F.encode(a).buffer;if(a instanceof ArrayBuffer)return a.slice(0);if(ArrayBuffer.isView(a))return a.buffer.slice(a.byteOffset,a.byteOffset+a.byteLength);throw Error("Invalid data type");}function k(a){a=h(a);var f={type:"send",data:new Uint8Array(a)},g;(g=r)==null||g.postMessage(f,[a])}function m(){if(!r)throw Error("Data port not captured yet.");r.onmessage=a=>{if(a.data.type==="message"){a=new MessageEvent("message",{data:G.decode(a.data.data)});
+let f;(f=c.onmessage)==null||f.call(c,a);c.dispatchEvent(a)}}}function n(){if(!t)throw Error("Control port not captured yet.");t.onmessage=a=>{switch(a.data.type){case "open":l=1;var f=new Event("open"),g;(g=c.onopen)==null||g.call(c,f);c.dispatchEvent(f);q.forEach(H=>{k(H)});q=[];break;case "close":g=a.data;l=3;g=new CloseEvent("close",{code:g.code,reason:g.reason,wasClean:g.wasClean});(f=c.onclose)==null||f.call(c,g);c.dispatchEvent(g);break;case "error":l=3;f=new Event("error");let x;(x=c.onerror)==
+null||x.call(c,f);c.dispatchEvent(f)}}}function p(a){return z(function*(){var f=new MessageChannel;t=f.port1;var g=new MessageChannel;r=g.port1;n();m();window.parent.postMessage({type:"websocket_open",portOrdering:["control","data"],url:b,protocols:a||[],connectionId:I},e,[f.port2,g.port2])}())}var c=Reflect.construct(EventTarget,[],new.target);c.CONNECTING=0;c.OPEN=1;c.CLOSING=2;c.CLOSED=3;c.url=b;c.binaryType="arraybuffer";c.protocol="";c.i="";var l=0,t=null,r=null,q=[],F=new TextEncoder,G=new TextDecoder;
+c.onopen=null;c.onmessage=null;c.onclose=null;c.onerror=null;Object.defineProperty(c,"readyState",{get:()=>l,enumerable:!0,configurable:!0});Object.defineProperty(c,"bufferedAmount",{get:()=>{var a=0;q.forEach(f=>{a+=typeof f==="string"?f.length:f.byteLength});return a},enumerable:!0,configurable:!0});var I=function(){var a;return((a=globalThis.crypto)==null?0:a.randomUUID)?globalThis.crypto.randomUUID():"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,f=>{var g=Math.random()*16|0;return(f===
+"x"?g:g&3|8).toString(16)})}();c.send=a=>{if(l===1)a instanceof Blob?a.arrayBuffer().then(f=>{k(f)}):k(a);else if(l===0)if(typeof a==="string")q.push(a);else if(a instanceof ArrayBuffer||ArrayBuffer.isView(a))q.push(h(a));else throw Error("Sending Blob is not supported before the connection is open.");else console.debug("WebSocket send called in CLOSING or CLOSED state; ignored.")};c.close=(a=1E3,f="")=>{if(l!==2&&l!==3){l=2;a={type:"close",code:a,reason:f,wasClean:a===1E3};var g;(g=t)==null||g.postMessage(a)}};
+Promise.resolve().then(()=>p(d));return c}A(B,EventTarget);var C=document.currentScript,D=C==null?void 0:C.getAttribute("ws-interception-config");if(!D)throw Error("WebSocket Interceptor: Missing ws-interception-config attribute in the script tag.");var E=JSON.parse(D);if(!E.parentOrigin||typeof E.parentOrigin!=="string")throw Error("WebSocket Interceptor: Invalid parentOrigin in ws-interception-config");
+(function(b){var d=Object.getOwnPropertyDescriptor(window,"WebSocket");if(!d||d.writable||d.configurable)d=Object.assign(function(e,h){try{let k=(new URL(e)).hostname;if(b.proxiedDomains.some(m=>k===m||k.endsWith(`.${m}`)))return new B(e,h,b.parentOrigin)}catch(k){throw window.parent.postMessage({type:"websocket_blocked",url:e,reason:"blocked_invalid_url"},b.parentOrigin),new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");}window.parent.postMessage({type:"websocket_blocked",
+url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");},{CONNECTING:0,OPEN:1,CLOSING:2,CLOSED:3}),Object.defineProperty(window,"WebSocket",{value:d,writable:!1,configurable:!1})})({proxiedDomains:E.proxiedDomains||[],parentOrigin:E.parentOrigin});}).call(this);
+</script><script data-bard-client-injected="true">((function(modelInformation) {
+  const originalFetch = window.fetch;
+  // TODO: b/421908508 - Move these out of the script and match all generative AI model calls.
+  let googleLlmBaseApiUrls = [
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageTransformModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent',
+  ];
+  modelInformation.deprecatedTextModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+    );
+  });
+  modelInformation.deprecatedImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predict',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predictLongRunning',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+  modelInformation.deprecatedGenerateImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+  modelInformation.deprecatedImageTransformModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+
+  const pendingFetchResolvers = {};
+  let nextPromiseId = 0;
+
+  function handleStringInput(input, optionsArgument) {
+    const actualUrl = input;
+    const fetchCallArgs = [actualUrl, optionsArgument];
+    const effectiveOptions = optionsArgument || {};
+    const bodyForApiKeyCheck = effectiveOptions.body;
+    const bodyForPostMessage = effectiveOptions.body;
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  function handleRequestInput(input, optionsArgument) {
+    const actualUrl = input.url;
+    const fetchCallArgs = [input, optionsArgument];
+    const effectiveOptions = { method: input.method, headers: new Headers(input.headers) };
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (optionsArgument) {
+      if (optionsArgument.method) effectiveOptions.method = optionsArgument.method;
+      if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers);
+      if ('body' in optionsArgument) {
+        bodyForApiKeyCheck = optionsArgument.body;
+        bodyForPostMessage = optionsArgument.body;
+      } else {
+        bodyForApiKeyCheck = undefined;
+        bodyForPostMessage = input.body;
+      }
+    } else {
+      bodyForApiKeyCheck = undefined;
+      bodyForPostMessage = input.body;
+    }
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  window.fetch = function(input, optionsArgument) {
+    let actualUrl;
+    let fetchCallArgs;
+    let effectiveOptions = {};
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (typeof input === 'string') {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument));
+    } else if (input instanceof Request) {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument));
+    } else {
+      return originalFetch.apply(window, [input, optionsArgument]);
+    }
+
+    effectiveOptions.method = effectiveOptions.method || 'GET';
+    if (!effectiveOptions.headers) {
+      effectiveOptions.headers = new Headers();
+    }
+
+
+    if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) {
+      let apiKeyIsNull = true;
+
+      const regex = new RegExp("models/([^:]+)");
+      const modelNameMatch = actualUrl.match(regex);
+      const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified';
+
+
+      try {
+        const urlObject = new URL(actualUrl);  // Use URL object for robust parsing
+        const apiKeyParam = urlObject.searchParams.get('key');
+        if (apiKeyParam) {
+          apiKeyIsNull = false;
+        }
+      } catch (e) {
+        // Continue checks even if URL parsing fails
+      }
+
+      if (apiKeyIsNull && effectiveOptions.headers) {
+        const h = new Headers(effectiveOptions.headers);
+        const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key');
+        if (apiKeyHeaderValue) {
+          apiKeyIsNull = false;
+          return originalFetch.apply(window, fetchCallArgs);
+        }
+      }
+
+      if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') {
+        try {
+          const bodyData = JSON.parse(bodyForApiKeyCheck);
+          if (bodyData && bodyData.apiKey) {
+            apiKeyIsNull = false;
+            return originalFetch.apply(window, fetchCallArgs);
+          }
+        } catch (e) {
+          // Ignore JSON parsing errors
+        }
+      }
+
+      if(apiKeyIsNull) {
+        const promiseId = nextPromiseId++;
+        const promise = new Promise((resolve) => {
+          pendingFetchResolvers[promiseId] = (resolvedResponse) => {
+            delete pendingFetchResolvers[promiseId];
+            resolve(resolvedResponse);
+          };
+        });
+
+        let serializedBodyForPostMessage;
+        if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) {
+            serializedBodyForPostMessage = bodyForPostMessage;
+        } else if (bodyForPostMessage instanceof ReadableStream) {
+            serializedBodyForPostMessage = null;
+        } else {
+            try {
+                serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage);
+            } catch (e) {
+                serializedBodyForPostMessage = null;
+            }
+        }
+
+        const messageOptions = {
+            method: effectiveOptions.method,
+            headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()),
+            body: serializedBodyForPostMessage
+        };
+
+        window.parent.postMessage({
+          type: 'requestFetch',
+          url: actualUrl,
+          modelName: modelName,
+          options: messageOptions,
+          promiseId: promiseId,
+        }, '*');
+
+        return promise;
+      }
+      return originalFetch.apply(window, fetchCallArgs);
+    }
+    return originalFetch.apply(window, fetchCallArgs);
+  };
+
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.type === 'resolveFetch') {
+      const { promiseId, response } = event.data;
+      if (pendingFetchResolvers[promiseId]) {
+        try {
+          const reconstructedResponse = new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: new Headers(response.headers),
+          });
+          pendingFetchResolvers[promiseId](reconstructedResponse);
+        } catch (error) {
+          pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" }));
+        }
+      }
+    }
+  });
+
+}))({"textModelName":"gemini-3-flash-preview","imageModelName":"imagen-4.0-generate-001","imageEditModelName":"gemini-3.1-flash-image","imageTransformModelName":"gemini-3-pro-image","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash","gemini-2.5-flash-preview-04-17","gemini-2.5-flash-preview-05-20","gemini-2.5-flash-preview-09-2025"],"deprecatedImageModelNames":["imagen-3.0-generate-001","imagen-3.0-generate-002"],"deprecatedGenerateImageModelNames":["gemini-2.5-flash-image-preview","gemini-2.5-flash-image","gemini-3.1-flash-image-preview"],"deprecatedImageTransformModelNames":["gemini-3-pro-image-preview-11-2025"]})</script><script data-bard-client-injected="true">(function() {
+  function normalizeSlug(str) {
+    try {
+      return str
+        .trim()
+        .toLowerCase()
+        .replace(/[^p{L}p{N}s_-]/gu, '')
+        .replace(/s+/g, '-');
+    } catch (e) {
+      return str
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9s_-]/g, '')
+        .replace(/s+/g, '-');
+    }
+  }
+
+  function findTargetElement(hash) {
+    if (!hash || hash === '#') {
+      return null;
+    }
+    const rawId = hash.startsWith('#') ? hash.slice(1) : hash;
+    let decodedId = rawId;
+    try {
+      decodedId = decodeURIComponent(rawId);
+    } catch (e) {
+      // Ignore URI malformed errors.
+    }
+
+    // 1. Direct ID match (raw and decoded).
+    let target = document.getElementById(rawId) || document.getElementById(decodedId);
+    if (target) {
+      return target;
+    }
+
+    // 2. Name attribute match (<a name="...">).
+    try {
+      if (typeof CSS !== 'undefined' && CSS.escape) {
+        target =
+          document.querySelector('[name="' + CSS.escape(rawId) + '"]') ||
+          document.querySelector('[name="' + CSS.escape(decodedId) + '"]');
+      } else {
+        const namedElements = document.getElementsByName(rawId);
+        if (namedElements && namedElements.length > 0) {
+          return namedElements[0];
+        }
+      }
+    } catch (e) {
+      // Ignore querySelector syntax errors.
+    }
+    if (target) {
+      return target;
+    }
+
+    // 3. Match heading text by slug (for Markdown TOCs where headings lack explicit IDs).
+    const targetSlug = normalizeSlug(decodedId);
+    if (targetSlug) {
+      for (const heading of document.querySelectorAll('h1, h2, h3, h4, h5, h6')) {
+        if (normalizeSlug(heading.textContent || '') === targetSlug) {
+          return heading;
+        }
+      }
+    }
+
+    return null;
+  }
+
+  document.addEventListener('click', function(event) {
+    const target = event.target;
+    const anchor = target && typeof target.closest === 'function' ? target.closest('a') : null;
+    if (!anchor) {
+      return;
+    }
+
+    const href = anchor.getAttribute('href');
+    if (
+      !href ||
+      href.trim().toLowerCase().startsWith('javascript:') ||
+      anchor.hasAttribute('download')
+    ) {
+      return;
+    }
+
+    // Check if the link is an in-page hash / anchor link.
+    if (href.startsWith('#')) {
+      event.preventDefault();
+      const targetElement = findTargetElement(href);
+      if (targetElement) {
+        targetElement.scrollIntoView({behavior: 'smooth', block: 'start'});
+      }
+      return;
+    }
+
+    // Check if the URL has the same origin/pathname but with a hash.
+    try {
+      const url = new URL(anchor.href, window.location.href);
+      if (
+        url.hash &&
+        url.origin === window.location.origin &&
+        url.pathname === window.location.pathname
+      ) {
+        event.preventDefault();
+        const targetElement = findTargetElement(url.hash);
+        if (targetElement) {
+          targetElement.scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+        return;
+      }
+    } catch (e) {
+      // Fall through if URL parsing fails.
+    }
+
+    // For all external or full navigation links, prevent iframe-level navigation
+    // (which breaks in AGSA WebView or sandboxed iframes) and ensure they open
+    // safely in a new tab/window.
+    if (anchor.target !== '_blank') {
+      event.preventDefault();
+      window.open(anchor.href, '_blank', 'noopener,noreferrer');
+    }
+  }, {capture: true});
+})();</script><script data-bard-client-injected="true">(function(){'use strict';function a(){window.parent.postMessage({type:"interaction"},"*")}window.addEventListener("click",a,{capture:!0,passive:!0});window.addEventListener("touchstart",a,{capture:!0,passive:!0});window.addEventListener("keydown",a,{capture:!0,passive:!0});}).call(this);
+</script><script data-bard-client-injected="true">(function() {
+  const originalConsoleLog = console.log;
+  const originalConsoleError = console.error;
+
+    /**
+   * Normalizes an error event or a promise rejection reason into a structured error object.
+   * @param {*} errorEventOrReason The error object or reason.
+   * @return {object} Structured error data { message, name, stack }.
+   */
+  function getErrorObject(errorEventOrReason) {
+    if (errorEventOrReason instanceof Error) {
+      return {
+        message: errorEventOrReason.message,
+        name: errorEventOrReason.name,
+        stack: errorEventOrReason.stack,
+      };
+    }
+    // Fallback for non-Error objects.
+    try {
+      return {
+        message: JSON.stringify(errorEventOrReason),
+        name: 'UnknownErrorType',
+        stack: null,
+      };
+    } catch (e) {
+      return {
+        message: String(errorEventOrReason),
+        name: 'UnknownErrorTypeNonStringifiable',
+        stack: null,
+      };
+    }
+  }
+
+  /**
+   * Converts an array of arguments (from log/error) into a single string.
+   * Handles Error objects specially to include their message and stack.
+   * @param {Array<*>} args - Arguments passed to console methods.
+   * @return {string} A string representation of the arguments.
+   */
+  function stringifyArgs(args) {
+    return args
+      .map((arg) => {
+        if (arg instanceof Error) {
+          const {message, stack} = arg;
+          return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+        }
+        if (typeof arg === 'object' && arg !== null) {
+          try {
+            return JSON.stringify(arg);
+          } catch (error) {
+            return '[Circular Object]';
+          }
+        } else {
+          return String(arg);
+        }
+      })
+      .join(' ');
+  }
+
+  console.log = function(...args) {
+    const logString = stringifyArgs(args);
+    window.parent.postMessage({ type: 'log', message: logString }, '*');
+    originalConsoleLog.apply(console, args);
+  };
+
+  console.error = function(...args) {
+    let errorData;
+    if (args.length > 0 && args[0] instanceof Error) {
+      const err = args[0];
+      // If the first arg is an Error, capture its details.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        ...getErrorObject(err),
+        rawArgsString: stringifyArgs(args.slice(1)),
+        timestamp: new Date().toISOString(),
+      };
+    } else {
+      // If not an Error object, treat all args as a general error message.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        message: stringifyArgs(args),
+        name: 'ConsoleLoggedError',
+        stack: null,
+        timestamp: new Date().toISOString(),
+      };
+    }
+    window.parent.postMessage(errorData, '*');
+    originalConsoleError.apply(console, args);
+  };
+
+  // Listen for global unhandled synchronous errors.
+  window.addEventListener('error', function(event) {
+    const errorDetails = event.error ? getErrorObject(event.error) : {
+      message: event.message,
+      name: 'GlobalError',
+      stack: null,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+    };
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'global',
+      ...errorDetails,
+      message: errorDetails.message || event.message,
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+  // Listen for unhandled promise rejections (asynchronous errors).
+  window.addEventListener('unhandledrejection', function(event) {
+    const errorDetails = getErrorObject(event.reason);
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'unhandledrejection',
+      ...errorDetails,
+      message: errorDetails.message || 'Unhandled Promise Rejection',
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جهاز اختبار ومنحنيات الأوفرلود الحراري والإلكتروني | ABB &amp; Schneider</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&amp;family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        arabic: ['Cairo', 'sans-serif'],
+                        sans: ['Inter', 'Cairo', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        abb: {
+                            red: '#E30613',
+                            light: '#FEF2F2'
+                        },
+                        schneider: {
+                            green: '#009530',
+                            light: '#ECFDF5'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F4F7FB;
+            color: #0F172A;
+            font-family: 'Cairo', 'Inter', sans-serif;
+        }
+        html[lang="en"] body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #E2E8F0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94A3B8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748B;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background-color: #FFFFFF !important;
+            }
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Inter, Cairo, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:JetBrains Mono, monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.end-3{inset-inline-end:0.75rem}.top-0{top:0px}.top-3{top:0.75rem}.z-30{z-index:30}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-1{margin-top:0.25rem;margin-bottom:0.25rem}.my-5{margin-top:1.25rem;margin-bottom:1.25rem}.mb-1{margin-bottom:0.25rem}.mb-1\.5{margin-bottom:0.375rem}.mb-2{margin-bottom:0.5rem}.mb-2\.5{margin-bottom:0.625rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-1\.5{margin-top:0.375rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-1{height:0.25rem}.h-2\.5{height:0.625rem}.h-3{height:0.75rem}.h-3\.5{height:0.875rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-7{height:1.75rem}.h-\[420px\]{height:420px}.h-auto{height:auto}.h-full{height:100%}.max-h-\[90vh\]{max-height:90vh}.min-h-screen{min-height:100vh}.w-2\.5{width:0.625rem}.w-20{width:5rem}.w-3{width:0.75rem}.w-3\.5{width:0.875rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-7{width:1.75rem}.w-\[1px\]{width:1px}.w-full{width:100%}.max-w-4xl{max-width:56rem}.max-w-\[1550px\]{max-width:1550px}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.border-collapse{border-collapse:collapse}.cursor-crosshair{cursor:crosshair}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;user-select:none}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.divide-y > :not([hidden]) ~ :not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px * var(--tw-divide-y-reverse))}.divide-slate-200 > :not([hidden]) ~ :not([hidden]){--tw-divide-opacity:1;border-color:rgb(226 232 240 / var(--tw-divide-opacity, 1))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-amber-200{--tw-border-opacity:1;border-color:rgb(253 230 138 / var(--tw-border-opacity, 1))}.border-blue-200{--tw-border-opacity:1;border-color:rgb(191 219 254 / var(--tw-border-opacity, 1))}.border-blue-400{--tw-border-opacity:1;border-color:rgb(96 165 250 / var(--tw-border-opacity, 1))}.border-blue-500{--tw-border-opacity:1;border-color:rgb(59 130 246 / var(--tw-border-opacity, 1))}.border-emerald-200{--tw-border-opacity:1;border-color:rgb(167 243 208 / var(--tw-border-opacity, 1))}.border-orange-200{--tw-border-opacity:1;border-color:rgb(254 215 170 / var(--tw-border-opacity, 1))}.border-orange-200\/80{border-color:rgb(254 215 170 / 0.8)}.border-orange-300{--tw-border-opacity:1;border-color:rgb(253 186 116 / var(--tw-border-opacity, 1))}.border-red-200{--tw-border-opacity:1;border-color:rgb(254 202 202 / var(--tw-border-opacity, 1))}.border-sky-200{--tw-border-opacity:1;border-color:rgb(186 230 253 / var(--tw-border-opacity, 1))}.border-sky-200\/80{border-color:rgb(186 230 253 / 0.8)}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.border-slate-300{--tw-border-opacity:1;border-color:rgb(203 213 225 / var(--tw-border-opacity, 1))}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.border-\[\#E30613\]{--tw-border-opacity:1;border-color:rgb(227 6 19 / var(--tw-border-opacity, 1))}.border-emerald-300{--tw-border-opacity:1;border-color:rgb(110 231 183 / var(--tw-border-opacity, 1))}.border-indigo-200{--tw-border-opacity:1;border-color:rgb(199 210 254 / var(--tw-border-opacity, 1))}.border-red-300{--tw-border-opacity:1;border-color:rgb(252 165 165 / var(--tw-border-opacity, 1))}.bg-\[\#009530\]{--tw-bg-opacity:1;background-color:rgb(0 149 48 / var(--tw-bg-opacity, 1))}.bg-\[\#E30613\]{--tw-bg-opacity:1;background-color:rgb(227 6 19 / var(--tw-bg-opacity, 1))}.bg-amber-50{--tw-bg-opacity:1;background-color:rgb(255 251 235 / var(--tw-bg-opacity, 1))}.bg-amber-500{--tw-bg-opacity:1;background-color:rgb(245 158 11 / var(--tw-bg-opacity, 1))}.bg-blue-100{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.bg-blue-50\/70{background-color:rgb(239 246 255 / 0.7)}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.bg-emerald-50{--tw-bg-opacity:1;background-color:rgb(236 253 245 / var(--tw-bg-opacity, 1))}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.bg-indigo-500{--tw-bg-opacity:1;background-color:rgb(99 102 241 / var(--tw-bg-opacity, 1))}.bg-orange-100{--tw-bg-opacity:1;background-color:rgb(255 237 213 / var(--tw-bg-opacity, 1))}.bg-orange-50{--tw-bg-opacity:1;background-color:rgb(255 247 237 / var(--tw-bg-opacity, 1))}.bg-orange-50\/80{background-color:rgb(255 247 237 / 0.8)}.bg-orange-500{--tw-bg-opacity:1;background-color:rgb(249 115 22 / var(--tw-bg-opacity, 1))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242 / var(--tw-bg-opacity, 1))}.bg-sky-100{--tw-bg-opacity:1;background-color:rgb(224 242 254 / var(--tw-bg-opacity, 1))}.bg-sky-50{--tw-bg-opacity:1;background-color:rgb(240 249 255 / var(--tw-bg-opacity, 1))}.bg-sky-50\/80{background-color:rgb(240 249 255 / 0.8)}.bg-sky-500{--tw-bg-opacity:1;background-color:rgb(14 165 233 / var(--tw-bg-opacity, 1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-slate-900\/60{background-color:rgb(15 23 42 / 0.6)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/80{background-color:rgb(255 255 255 / 0.8)}.bg-emerald-100{--tw-bg-opacity:1;background-color:rgb(209 250 229 / var(--tw-bg-opacity, 1))}.bg-red-50\/60{background-color:rgb(254 242 242 / 0.6)}.bg-slate-50\/60{background-color:rgb(248 250 252 / 0.6)}.bg-red-600{--tw-bg-opacity:1;background-color:rgb(220 38 38 / var(--tw-bg-opacity, 1))}.p-1{padding:0.25rem}.p-1\.5{padding:0.375rem}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-3\.5{padding:0.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-3{padding-bottom:0.75rem}.pb-4{padding-bottom:1rem}.pt-3{padding-top:0.75rem}.text-center{text-align:center}.text-start{text-align:start}.font-mono{font-family:JetBrains Mono, monospace}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.leading-relaxed{line-height:1.625}.leading-snug{line-height:1.375}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.tracking-tighter{letter-spacing:-0.05em}.tracking-wide{letter-spacing:0.025em}.text-\[\#009530\]{--tw-text-opacity:1;color:rgb(0 149 48 / var(--tw-text-opacity, 1))}.text-\[\#E30613\]{--tw-text-opacity:1;color:rgb(227 6 19 / var(--tw-text-opacity, 1))}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6 / var(--tw-text-opacity, 1))}.text-amber-800{--tw-text-opacity:1;color:rgb(146 64 14 / var(--tw-text-opacity, 1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-blue-700{--tw-text-opacity:1;color:rgb(29 78 216 / var(--tw-text-opacity, 1))}.text-blue-800{--tw-text-opacity:1;color:rgb(30 64 175 / var(--tw-text-opacity, 1))}.text-blue-900{--tw-text-opacity:1;color:rgb(30 58 138 / var(--tw-text-opacity, 1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-emerald-700{--tw-text-opacity:1;color:rgb(4 120 87 / var(--tw-text-opacity, 1))}.text-emerald-800{--tw-text-opacity:1;color:rgb(6 95 70 / var(--tw-text-opacity, 1))}.text-emerald-900{--tw-text-opacity:1;color:rgb(6 78 59 / var(--tw-text-opacity, 1))}.text-orange-700{--tw-text-opacity:1;color:rgb(194 65 12 / var(--tw-text-opacity, 1))}.text-orange-800{--tw-text-opacity:1;color:rgb(154 52 18 / var(--tw-text-opacity, 1))}.text-orange-900{--tw-text-opacity:1;color:rgb(124 45 18 / var(--tw-text-opacity, 1))}.text-orange-950{--tw-text-opacity:1;color:rgb(67 20 7 / var(--tw-text-opacity, 1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}.text-sky-700{--tw-text-opacity:1;color:rgb(3 105 161 / var(--tw-text-opacity, 1))}.text-sky-800{--tw-text-opacity:1;color:rgb(7 89 133 / var(--tw-text-opacity, 1))}.text-sky-900{--tw-text-opacity:1;color:rgb(12 74 110 / var(--tw-text-opacity, 1))}.text-sky-950{--tw-text-opacity:1;color:rgb(8 47 73 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-emerald-950{--tw-text-opacity:1;color:rgb(2 44 34 / var(--tw-text-opacity, 1))}.text-indigo-700{--tw-text-opacity:1;color:rgb(67 56 202 / var(--tw-text-opacity, 1))}.text-red-950{--tw-text-opacity:1;color:rgb(69 10 10 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.accent-blue-600{accent-color:#2563eb}.opacity-80{opacity:0.8}.opacity-75{opacity:0.75}.shadow{--tw-shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.outline-none{outline:2px solid transparent;outline-offset:2px}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.selection\:bg-blue-600 *::selection{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.selection\:text-white *::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.selection\:bg-blue-600::selection{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.selection\:text-white::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:border-blue-300:hover{--tw-border-opacity:1;border-color:rgb(147 197 253 / var(--tw-border-opacity, 1))}.hover\:bg-amber-100:hover{--tw-bg-opacity:1;background-color:rgb(254 243 199 / var(--tw-bg-opacity, 1))}.hover\:bg-blue-100:hover{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.hover\:bg-blue-50:hover{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.hover\:bg-blue-50\/60:hover{background-color:rgb(239 246 255 / 0.6)}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216 / var(--tw-bg-opacity, 1))}.hover\:bg-emerald-700:hover{--tw-bg-opacity:1;background-color:rgb(4 120 87 / var(--tw-bg-opacity, 1))}.hover\:bg-orange-100:hover{--tw-bg-opacity:1;background-color:rgb(255 237 213 / var(--tw-bg-opacity, 1))}.hover\:bg-red-100:hover{--tw-bg-opacity:1;background-color:rgb(254 226 226 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-200:hover{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-300:hover{--tw-bg-opacity:1;background-color:rgb(203 213 225 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-900:hover{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-50:hover{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.hover\:text-slate-900:hover{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.hover\:text-red-600:hover{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}.hover\:opacity-100:hover{opacity:1}.focus\:border-blue-600:focus{--tw-border-opacity:1;border-color:rgb(37 99 235 / var(--tw-border-opacity, 1))}.focus\:bg-white:focus{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.focus\:ring-0:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}@media (min-width: 640px){.sm\:block{display:block}.sm\:h-\[460px\]{height:460px}.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:grid-cols-6{grid-template-columns:repeat(6, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}.sm\:flex-nowrap{flex-wrap:nowrap}.sm\:p-6{padding:1.5rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-base{font-size:1rem;line-height:1.5rem}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}}@media (min-width: 768px){.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}@media (min-width: 1024px){.lg\:col-span-12{grid-column:span 12 / span 12}.lg\:col-span-5{grid-column:span 5 / span 5}.lg\:col-span-7{grid-column:span 7 / span 7}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}}@media (min-width: 1280px){.xl\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}}</style></head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-blue-600 selection:text-white">
+
+    <!-- Top Navigation Bar (Bright & Friendly) -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-[1550px] mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+            <!-- Brand Logos & App Title -->
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-1.5 select-none">
+                    <span class="bg-[#E30613] text-white font-black tracking-tighter text-base sm:text-lg px-2.5 py-1 rounded-lg shadow-sm">
+                        ABB
+                    </span>
+                    <span class="bg-[#009530] text-white font-bold tracking-tight text-sm sm:text-base px-2.5 py-1 rounded-lg shadow-sm">
+                        Schneider
+                    </span>
+                </div>
+                <div class="h-7 w-[1px] bg-slate-200 hidden sm:block"></div>
+                <div>
+                    <h1 id="appTitle" class="text-base sm:text-lg font-extrabold text-slate-800 leading-tight">دليل ومنحنيات اختبار الأوفرلود (البارد والساخن)</h1>
+                    <p id="appSubtitle" class="text-xs text-slate-500 font-medium">حاسبة سريعة للفنيين ومنحنيات الفصل الحراري والإلكتروني لماركات ABB و Schneider</p>
+                </div>
+            </div>
+
+            <!-- Action Buttons & Language Switcher -->
+            <div class="flex flex-wrap items-center gap-2 no-print">
+                <!-- Language Toggle Button -->
+                <button onclick="toggleLanguage()" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 transition flex items-center gap-2 shadow-sm">
+                    <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+                    </svg>
+                    <span id="langBtnText">English</span>
+                </button>
+
+                <!-- Wiring Guide Modal Button -->
+                <button onclick="toggleWiringModal(true)" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 transition flex items-center gap-1.5 shadow-sm">
+                    <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span data-i18n="wiringBtn">طريقة التوصيل والاختبار</span>
+                </button>
+
+                <!-- Download HTML for GitHub Button -->
+                <button onclick="downloadThisApp()" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 hover:bg-slate-900 text-white transition flex items-center gap-1.5 shadow-sm" title="Download index.html for GitHub">
+                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    <span data-i18n="downloadHtmlBtn">تحميل ملف GitHub</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-[1550px] w-full mx-auto px-4 sm:px-6 py-5 grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- Right/Left Control Column (5 Cols on Desktop for easy reading) -->
+        <div class="lg:col-span-5 space-y-5">
+
+            <!-- STEP 1: Choose Brand, Model & Test State -->
+            <section class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-7 h-7 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center shadow-sm">1</span>
+                        <h2 data-i18n="step1Title" class="text-base font-extrabold text-slate-800">اختر الماركة والموديل وحالة الاختبار</h2>
+                    </div>
+                    <span id="relayClassBadge" class="text-xs font-mono font-bold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200">ABB • Class 10</span>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Brand Selection Buttons (ABB vs Schneider) -->
+                    <div>
+                        <label data-i18n="selectBrandLabel" class="block text-xs font-bold text-slate-600 mb-2">ماركة الأوفرلود (Brand):</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button type="button" id="brandBtnABB" onclick="selectBrand('ABB')" class="p-3 rounded-xl border-2 border-[#E30613] bg-red-50/60 transition flex items-center justify-between shadow-sm">
+                                <div class="text-start">
+                                    <div class="text-sm font-black text-[#E30613]">ABB</div>
+                                    <div data-i18n="abbDesc" class="text-[11px] text-slate-500 font-medium">سلسلة TF / TA / EF</div>
+                                </div>
+                                <span class="w-3 h-3 rounded-full bg-[#E30613]"></span>
+                            </button>
+
+                            <button type="button" id="brandBtnSCH" onclick="selectBrand('SCHNEIDER')" class="p-3 rounded-xl border-2 border-slate-200 bg-slate-50/60 opacity-75 hover:opacity-100 transition flex items-center justify-between">
+                                <div class="text-start">
+                                    <div class="text-sm font-black text-[#009530]">Schneider Electric</div>
+                                    <div data-i18n="schDesc" class="text-[11px] text-slate-500 font-medium">سلسلة LRD / LR9D / LRE</div>
+                                </div>
+                                <span class="w-3 h-3 rounded-full bg-[#009530]"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Relay Model Dropdown -->
+                    <div>
+                        <label data-i18n="selectModelLabel" class="block text-xs font-bold text-slate-600 mb-1.5">موديل الأوفرلود (Model):</label>
+                        <select id="modelSelect" onchange="handleModelChange()" class="w-full bg-slate-50 border border-slate-300 focus:border-blue-600 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm font-bold text-slate-800 outline-none transition shadow-sm"><option value="ABB_TF">ABB TF42 / TF65 / TF96 / TF140 (حراري - Class 10)</option><option value="ABB_TA">ABB TA25DU / TA42DU / TA75DU (حراري - Class 10A)</option><option value="ABB_EF10">ABB EF19 / EF45 / EF65 / EF96 (إلكتروني - Class 10E)</option><option value="ABB_EF20">ABB EF19 / EF45 / EF65 / EF96 (إلكتروني - Class 20E)</option><option value="ABB_EF30">ABB EF19 / EF45 / EF65 / EF96 (إلكتروني - Class 30E)</option></select>
+                        <p id="modelHelperText" class="text-xs text-slate-500 mt-1.5 font-medium">أوفرلود حراري ثنائي المعدن (Bimetallic) حساس لسقوط الفازة</p>
+                    </div>
+
+                    <!-- Trip Class Selector (Auto-selected by model, or manually adjustable) -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label data-i18n="tripClassLabel" class="block text-xs font-bold text-slate-600 mb-1.5">فئة الفصل (Trip Class):</label>
+                            <select id="tripClassSelect" onchange="updateAll()" class="w-full bg-slate-50 border border-slate-300 focus:border-blue-600 rounded-xl px-3 py-2.5 text-sm font-mono font-bold text-slate-800 outline-none transition">
+                                <option value="10A">Class 10A (شنايدر LRD / ABB TA)</option>
+                                <option value="10" selected="">Class 10 (ABB TF / إلكتروني)</option>
+                                <option value="20">Class 20 (أحمال ثقيلة)</option>
+                                <option value="30">Class 30 (مراوح وطلمبات كبيرة)</option>
+                            </select>
+                        </div>
+
+                        <!-- Pole / Phase Mode -->
+                        <div>
+                            <label data-i18n="wiringModeLabel" class="block text-xs font-bold text-slate-600 mb-1.5">توصيلة الأقطاب (الفازات):</label>
+                            <select id="phaseModeSelect" onchange="handlePhaseSelect()" class="w-full bg-slate-50 border border-slate-300 focus:border-blue-600 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-800 outline-none transition">
+                                <option value="3P" data-i18n="phase3Option">3 فاز متزن (3 أقطاب توالي)</option>
+                                <option value="2P" data-i18n="phase2Option">سقوط فازة (قطبين فقط توالي)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Thermal State Toggle (Cold / Hot / Both) -->
+                    <div>
+                        <label data-i18n="thermalStateLabel" class="block text-xs font-bold text-slate-600 mb-2">حالة الأوفرلود قبل الاختبار (بارد أم ساخن؟):</label>
+                        <div class="grid grid-cols-3 gap-2 bg-slate-100 p-1.5 rounded-xl border border-slate-200">
+                            <button type="button" id="btnStateCold" onclick="setThermalState('COLD')" class="py-2.5 px-2 rounded-lg text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5 text-slate-600 hover:text-slate-900">
+                                <span class="w-2.5 h-2.5 rounded-full bg-sky-500"></span>
+                                <span data-i18n="coldBtn">على البارد (Cold)</span>
+                            </button>
+                            <button type="button" id="btnStateHot" onclick="setThermalState('HOT')" class="py-2.5 px-2 rounded-lg text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5 text-slate-600 hover:text-slate-900">
+                                <span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
+                                <span data-i18n="hotBtn">على الساخن (Hot)</span>
+                            </button>
+                            <button type="button" id="btnStateBoth" onclick="setThermalState('BOTH')" class="py-2.5 px-2 rounded-lg text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5 bg-white text-indigo-700 shadow-sm border border-indigo-200">
+                                <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+                                <span data-i18n="bothBtn">البارد والساخن معاً</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 2: Set Current & Required Injection Calculator -->
+            <section class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-7 h-7 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center shadow-sm">2</span>
+                        <h2 data-i18n="step2Title" class="text-base font-extrabold text-slate-800">ضبط تدريج الأمبير وحساب تيار الحقن</h2>
+                    </div>
+                    <span data-i18n="step2Badge" class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">حساب تلقائي</span>
+                </div>
+
+                <!-- Dial Setting (Ir) & Multiplier Inputs -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                        <label data-i18n="irLabel" class="block text-xs font-bold text-slate-700 mb-1">تدريج الأوفرلود المضبوط (Ir):</label>
+                        <div class="relative flex items-center">
+                            <input type="number" id="irInput" value="10.0" min="0.1" max="1000" step="0.5" oninput="handleIrChange()" class="w-full bg-white border-2 border-slate-300 focus:border-blue-600 rounded-xl px-3 py-2 text-lg font-mono font-extrabold text-slate-900 outline-none">
+                            <span class="absolute end-3 text-xs font-bold text-slate-500">Amp</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50/70 p-3.5 rounded-xl border border-blue-200">
+                        <label data-i18n="injectedAmpsLabel" class="block text-xs font-bold text-blue-900 mb-1">التيار المطلوب حقنه بالجهاز (Itest):</label>
+                        <div class="relative flex items-center">
+                            <input type="number" id="testAmpsInput" value="30.0" min="0.1" max="10000" step="0.5" oninput="handleAmpsInput()" class="w-full bg-white border-2 border-blue-400 focus:border-blue-600 rounded-xl px-3 py-2 text-lg font-mono font-extrabold text-blue-700 outline-none">
+                            <span class="absolute end-3 text-xs font-bold text-blue-600">Amp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Test Multipliers for Technicians -->
+                <div class="mb-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <label data-i18n="quickMultLabel" class="text-xs font-bold text-slate-600">اختر نسبة تيار الاختبار السريعة (أضعاف تدريج الأوفرلود):</label>
+                        <span class="text-xs font-mono font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded" id="currentMultBadge">2.00 × Ir</span>
+                    </div>
+                    <div class="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                        <button type="button" onclick="setQuickMultiple(1.05)" class="p-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition text-center">
+                            <div class="font-mono font-bold text-xs text-slate-800">1.05×</div>
+                            <div data-i18n="m105" class="text-[10px] text-slate-500">لا يفصل</div>
+                        </button>
+                        <button type="button" onclick="setQuickMultiple(1.20)" class="p-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition text-center">
+                            <div class="font-mono font-bold text-xs text-slate-800">1.20×</div>
+                            <div data-i18n="m120" class="text-[10px] text-slate-500">بداية الفصل</div>
+                        </button>
+                        <button type="button" onclick="setQuickMultiple(1.50)" class="p-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition text-center">
+                            <div class="font-mono font-bold text-xs text-slate-800">1.50×</div>
+                            <div data-i18n="m150" class="text-[10px] text-slate-500">اختبار ساخن</div>
+                        </button>
+                        <button type="button" onclick="setQuickMultiple(3.00)" class="p-2 rounded-xl border-2 border-blue-500 bg-blue-50/70 hover:bg-blue-100 transition text-center">
+                            <div class="font-mono font-extrabold text-xs text-blue-700">3.00×</div>
+                            <div data-i18n="m300" class="text-[10px] text-blue-700 font-bold">شائع بالموقع</div>
+                        </button>
+                        <button type="button" onclick="setQuickMultiple(5.00)" class="p-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition text-center">
+                            <div class="font-mono font-bold text-xs text-slate-800">5.00×</div>
+                            <div data-i18n="m500" class="text-[10px] text-slate-500">تيار عالي</div>
+                        </button>
+                        <button type="button" onclick="setQuickMultiple(7.20)" class="p-2 rounded-xl border border-orange-300 bg-orange-50 hover:bg-orange-100 transition text-center">
+                            <div class="font-mono font-bold text-xs text-orange-800">7.20×</div>
+                            <div data-i18n="m720" class="text-[10px] text-orange-700 font-semibold">قفشة الموتور</div>
+                        </button>
+                    </div>
+
+                    <!-- Fine Multiplier Slider -->
+                    <div class="mt-3 flex items-center gap-3">
+                        <span data-i18n="fineMultLabel" class="text-xs font-bold text-slate-500 shrink-0">ضبط دقيق للنسبة:</span>
+                        <input type="range" id="multSlider" min="1.05" max="10.0" step="0.05" value="3.00" oninput="handleSliderInput()" class="w-full accent-blue-600 cursor-pointer">
+                        <input type="number" id="testMultInput" value="3.00" min="1.0" max="10.0" step="0.05" oninput="handleMultInput()" class="w-20 bg-slate-100 border border-slate-300 rounded-lg px-2 py-1 text-xs font-mono font-bold text-center text-slate-800">
+                    </div>
+                </div>
+
+                <!-- Expected Cold & Hot Time Cards (Clear & Bright) -->
+                <div class="grid grid-cols-2 gap-3">
+                    <!-- Cold Expected Box -->
+                    <div class="bg-sky-50/80 border-2 border-sky-200 rounded-xl p-3.5">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-extrabold text-sky-800 flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-sky-500"></span>
+                                <span data-i18n="coldExpectTitle">زمن الفصل (على البارد)</span>
+                            </span>
+                        </div>
+                        <div id="coldExpectedTyp" class="text-xl font-mono font-black text-sky-950 my-1">103.6 ثانية</div>
+                        <div id="coldExpectedRange" class="text-xs font-semibold text-sky-700 bg-white/80 px-2 py-1 rounded-lg border border-sky-200/80">المسموح: 59.6 إلى 174.8 ث</div>
+                    </div>
+
+                    <!-- Hot Expected Box -->
+                    <div class="bg-orange-50/80 border-2 border-orange-200 rounded-xl p-3.5">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-extrabold text-orange-900 flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
+                                <span data-i18n="hotExpectTitle">زمن الفصل (على الساخن)</span>
+                            </span>
+                        </div>
+                        <div id="hotExpectedTyp" class="text-xl font-mono font-black text-orange-950 my-1">27.3 ثانية</div>
+                        <div id="hotExpectedRange" class="text-xs font-semibold text-orange-800 bg-white/80 px-2 py-1 rounded-lg border border-orange-200/80">المسموح: 14.1 إلى 48.4 ث</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 3: Stopwatch Timer & Instant Pass/Fail Verdict -->
+            <section class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-7 h-7 rounded-full bg-emerald-600 text-white font-bold text-sm flex items-center justify-center shadow-sm">3</span>
+                        <h2 data-i18n="step3Title" class="text-base font-extrabold text-slate-800">ساعة الإيقاف ونتيجة الاختبار</h2>
+                    </div>
+                    <span data-i18n="step3Sub" class="text-xs text-slate-500 font-medium">سجل زمن الفصل الفعلي</span>
+                </div>
+
+                <!-- Stopwatch & Measured Input -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 mb-4">
+                    <label data-i18n="measuredTimeLabel" class="block text-xs font-bold text-slate-700 mb-2">زمن الفصل الفعلي المقاس (بالثواني) — أدخله يدوياً أو شغل التايمر:</label>
+                    <div class="flex flex-wrap sm:flex-nowrap items-center gap-2">
+                        <div class="relative flex-1 w-full">
+                            <input type="number" id="measuredTimeInput" value="25.0" min="0.1" max="10000" step="0.1" oninput="updateAll()" class="w-full bg-white border-2 border-slate-300 focus:border-blue-600 rounded-xl px-3.5 py-2.5 text-xl font-mono font-black text-slate-900 outline-none">
+                            <span data-i18n="secUnit" class="absolute end-3 top-3 text-xs font-bold text-slate-400">ثانية (s)</span>
+                        </div>
+                        <button type="button" id="stopwatchBtn" onclick="toggleStopwatch()" class="px-4 py-3 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition flex items-center justify-center gap-2 shrink-0 shadow-sm">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                            <span id="stopwatchBtnText">تشغيل التايمر</span>
+                        </button>
+                        <button type="button" onclick="resetStopwatch()" title="تصفير التايمر" class="p-3 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 transition">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Large Clear Pass/Fail Banner -->
+                <div id="verdictBanner" class="rounded-2xl p-4 border-2 border-red-300 bg-red-50 text-red-950 mb-4 flex items-center justify-between gap-3 transition">
+                    <div>
+                        <div class="text-xs font-bold opacity-80" id="verdictEvalState">التقييم حسب كيرف الاختبار (على البارد) عند 2.00×Ir</div>
+                        <div class="text-base sm:text-lg font-black mt-0.5" id="verdictTitle">غير مطابق (فصل سريع جداً) — أقل من الحد الأدنى (59.6 ث)</div>
+                    </div>
+                    <span id="verdictBadge" class="px-4 py-2 rounded-xl text-sm font-black tracking-wide shrink-0 shadow-sm bg-red-600 text-white">راسب FAIL ✕</span>
+                </div>
+
+                <!-- Optional Motor / Equipment Name + Save to Table Button -->
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <input type="text" id="motorTagInput" placeholder="اسم المحرك أو اللوحة (مثال: طلمبة مياه 1)" class="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-slate-800 outline-none focus:bg-white focus:border-blue-600">
+                    <button type="button" onclick="logCurrentTestPoint()" class="py-2.5 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm transition shadow-sm flex items-center justify-center gap-2 shrink-0">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        <span data-i18n="addLogBtn">تسجيل في جدول التقرير</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Left/Right Curve Column: Interactive Bright TCC Chart & Quick Reference Cards (7 Cols) -->
+        <div class="lg:col-span-7 flex flex-col space-y-5">
+
+            <!-- Interactive Time-Current Curve Card -->
+            <section class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex-1 flex flex-col">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-3 pb-3 border-b border-slate-100">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h2 data-i18n="chartTitle" class="text-base sm:text-lg font-extrabold text-slate-800">منحنى الفصل الحراري (الوقت مع التيار TCC Curve)</h2>
+                            <span id="activeCurveTitleBadge" class="text-xs font-mono font-bold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200">ABB • Class 10 • Ir = 10A</span>
+                        </div>
+                        <p data-i18n="chartSub" class="text-xs text-slate-500 mt-0.5 font-medium">اضغط في أي مكان على المنحنى أو حرك الماوس لقراءة زمن الفصل على البارد والساخن مباشرة</p>
+                    </div>
+
+                    <!-- Graph Controls -->
+                    <div class="flex flex-wrap items-center gap-2 no-print">
+                        <div class="inline-flex rounded-xl bg-slate-100 p-1 border border-slate-200">
+                            <button type="button" id="axisMultBtn" onclick="setXAxisMode('MULT')" class="px-3 py-1 rounded-lg text-xs font-bold bg-white text-blue-700 shadow-sm transition">
+                                <span data-i18n="axisMult">الأضعاف (×Ir)</span>
+                            </button>
+                            <button type="button" id="axisAmpsBtn" onclick="setXAxisMode('AMPS')" class="px-3 py-1 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-900 transition">
+                                <span data-i18n="axisAmps">الأمبير (Amps)</span>
+                            </button>
+                        </div>
+
+                        <label class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200 cursor-pointer select-none">
+                            <input type="checkbox" id="showBandToggle" checked="" onchange="drawTCCChart()" class="rounded text-blue-600 focus:ring-0">
+                            <span data-i18n="showBandLabel">نطاق السماحية</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Clear Color Legend -->
+                <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-bold mb-3 px-1">
+                    <div class="flex flex-wrap items-center gap-4">
+                        <span class="inline-flex items-center gap-1.5 text-sky-700">
+                            <span class="w-4 h-1 rounded bg-sky-500 inline-block"></span>
+                            <span data-i18n="legendCold">كيرف البارد (Cold)</span>
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 text-orange-700">
+                            <span class="w-4 h-1 rounded bg-orange-500 inline-block"></span>
+                            <span data-i18n="legendHot">كيرف الساخن (Hot)</span>
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 text-emerald-700">
+                            <span class="w-3.5 h-3.5 rounded-full bg-emerald-500 inline-block border-2 border-white shadow"></span>
+                            <span data-i18n="legendPoint">نقطة الاختبار الحالية</span>
+                        </span>
+                    </div>
+                    <div id="cursorReadout" class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-lg border border-slate-200">حرك الماوس على الرسم لقراءة الوقت</div>
+                </div>
+
+                <!-- Bright Canvas Container -->
+                <div class="relative w-full h-[420px] sm:h-[460px] bg-white rounded-2xl border-2 border-slate-200 overflow-hidden shadow-inner">
+                    <canvas id="tccCanvas" class="w-full h-full cursor-crosshair block" width="903" height="501"></canvas>
+                </div>
+
+                <!-- Simplified Technician Summary Cards for Standard Checkpoints -->
+                <div class="mt-4 pt-3 border-t border-slate-100">
+                    <div class="flex items-center justify-between mb-2.5">
+                        <span data-i18n="stdPointsTitle" class="text-xs font-extrabold text-slate-700">نقاط الفحص القياسية للأوفرلود (اضغط على أي بطاقة لتجربتها على الكيرف):</span>
+                        <span id="iecPhaseSummary" class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">توصيل 3 فاز طبيعي</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2.5">
+                        <!-- Card A: 1.05x -->
+                        <div onclick="setQuickMultiple(1.05); setThermalState('COLD');" class="bg-slate-50 hover:bg-blue-50/60 border border-slate-200 hover:border-blue-300 rounded-xl p-3 cursor-pointer transition">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-mono font-extrabold text-slate-800">1.05 × Ir</span>
+                                <span data-i18n="coldTag" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-sky-100 text-sky-800">بارد</span>
+                            </div>
+                            <div class="text-sm font-mono font-black text-blue-700 mt-1" id="iecCardAAmps">10.50 A</div>
+                            <p data-i18n="cardADesc" class="text-[11px] text-slate-600 mt-1 leading-snug">تيار عدم الفصل: يجب أن <strong>يتحمل ولا يفصل</strong> لمدة ساعتين على الأقل.</p>
+                        </div>
+
+                        <!-- Card B: 1.20x -->
+                        <div onclick="setQuickMultiple(1.20); setThermalState('HOT');" class="bg-slate-50 hover:bg-blue-50/60 border border-slate-200 hover:border-blue-300 rounded-xl p-3 cursor-pointer transition">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-mono font-extrabold text-slate-800">1.20 × Ir</span>
+                                <span data-i18n="hotTag" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-100 text-orange-800">ساخن</span>
+                            </div>
+                            <div class="text-sm font-mono font-black text-blue-700 mt-1" id="iecCardBAmps">12.00 A</div>
+                            <p data-i18n="cardBDesc" class="text-[11px] text-slate-600 mt-1 leading-snug">بداية الفصل الحراري: <strong>يجب أن يفصل</strong> خلال أقل من ساعتين.</p>
+                        </div>
+
+                        <!-- Card C: 1.50x -->
+                        <div onclick="setQuickMultiple(1.50); setThermalState('HOT');" class="bg-slate-50 hover:bg-blue-50/60 border border-slate-200 hover:border-blue-300 rounded-xl p-3 cursor-pointer transition">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-mono font-extrabold text-slate-800">1.50 × Ir</span>
+                                <span data-i18n="hotTag2" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-100 text-orange-800">ساخن</span>
+                            </div>
+                            <div class="text-sm font-mono font-black text-blue-700 mt-1" id="iecCardCAmps">15.00 A</div>
+                            <p id="iecCardCDesc" class="text-[11px] text-slate-600 mt-1 leading-snug">يفصل في أقل من <strong>120 ثانية</strong> وهو ساخن.</p>
+                        </div>
+
+                        <!-- Card D: 7.20x -->
+                        <div onclick="setQuickMultiple(7.20); setThermalState('COLD');" class="bg-slate-50 hover:bg-blue-50/60 border border-slate-200 hover:border-blue-300 rounded-xl p-3 cursor-pointer transition">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-mono font-extrabold text-slate-800">7.20 × Ir</span>
+                                <span data-i18n="coldTag2" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-sky-100 text-sky-800">بارد</span>
+                            </div>
+                            <div class="text-sm font-mono font-black text-blue-700 mt-1" id="iecCardDAmps">72.00 A</div>
+                            <p id="iecCardDDesc" class="text-[11px] text-slate-600 mt-1 leading-snug">اختبار قفشة المحرك (بارد): يفصل بين <strong>4 إلى 10 ثواني</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Bottom Full-Width Section: Field Test Sheet Table -->
+        <div class="lg:col-span-12">
+            <section class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+                    <div>
+                        <h2 data-i18n="tableTitle" class="text-base sm:text-lg font-extrabold text-slate-800">جدول نتائج فحص الأوفرلود (تقرير الفحص الميداني)</h2>
+                        <p data-i18n="tableSub" class="text-xs text-slate-500 font-medium">يمكنك تسجيل أكثر من أوفرلود ومقارنتها وطباعة التقرير أو تصديره لملف إكسيل</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 no-print">
+                        <button onclick="loadDemoLog()" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
+                            <span data-i18n="sampleBtn">تحميل أمثلة جاهزة</span>
+                        </button>
+                        <button onclick="exportCSV()" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition flex items-center gap-1.5 shadow-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            <span data-i18n="excelBtn">تصدير إكسيل (CSV)</span>
+                        </button>
+                        <button onclick="window.print()" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white transition flex items-center gap-1.5 shadow-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                            <span data-i18n="printBtn">طباعة التقرير</span>
+                        </button>
+                        <button onclick="clearTestLog()" class="px-3 py-2 rounded-xl text-xs font-bold bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 transition">
+                            <span data-i18n="clearBtn">مسح الجدول</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto rounded-xl border border-slate-200">
+                    <table class="w-full text-start border-collapse">
+                        <thead>
+                            <tr class="bg-slate-100 text-xs font-bold text-slate-700 border-b border-slate-200">
+                                <th class="py-3 px-3 text-start">#</th>
+                                <th class="py-3 px-3 text-start" data-i18n="thTag">المعدة / المحرك</th>
+                                <th class="py-3 px-3 text-start" data-i18n="thModel">الماركة والموديل</th>
+                                <th class="py-3 px-3 text-start" data-i18n="thState">حالة الاختبار</th>
+                                <th class="py-3 px-3 text-start" data-i18n="thPoles">التوصيل</th>
+                                <th class="py-3 px-3 text-start" data-i18n="thIr">تدريج Ir</th>
+                                <th class="py-3 px-3 text-start" data-i18n="thItest">تيار الحقن</th>
+                                <th class="py-3 px-3 text-start" data-i18n="thWindow">الزمن المسموح</th>
+                                <th class="py-3 px-3 text-start" data-i18n="thMeas">الزمن الفعلي</th>
+                                <th class="py-3 px-3 text-start" data-i18n="thResult">النتيجة</th>
+                                <th class="py-3 px-3 text-center no-print" data-i18n="thDel">حذف</th>
+                            </tr>
+                        </thead>
+                        <tbody id="testLogBody" class="divide-y divide-slate-200 text-xs sm:text-sm font-medium">
+                    <tr>
+                        <td colspan="11" class="py-8 text-center text-slate-400 font-bold">
+                            لا توجد نقاط مسجلة بعد. اضغط على "تسجيل في جدول التقرير" أو "تحميل أمثلة جاهزة".
+                        </td>
+                    </tr></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Simplified Technician Wiring & Procedure Modal -->
+    <div id="wiringModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm items-center justify-center p-4 hidden">
+        <div class="bg-white border border-slate-200 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-5 sm:p-6">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+                <div class="flex items-center gap-2.5">
+                    <span class="px-2.5 py-1 rounded-lg bg-amber-500 text-white font-bold text-xs">دليل الفني</span>
+                    <h3 data-i18n="modalTitle" class="text-base sm:text-lg font-extrabold text-slate-800">طريقة توصيل جهاز حقن التيار وإجراء الاختبار (البارد والساخن)</h3>
+                </div>
+                <button onclick="toggleWiringModal(false)" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600">
+                    ✕
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-5">
+                <!-- Clear Bright Schematic Diagram -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4">
+                    <h4 data-i18n="modalDiagTitle" class="text-xs sm:text-sm font-extrabold text-blue-800 mb-2">رسمة توصيل الـ 3 فاز توالي (بجهاز حقن أحادي الوجه):</h4>
+                    <p data-i18n="modalDiagDesc" class="text-xs text-slate-600 mb-3 leading-relaxed">لضمان مرور نفس الأمبير في الثلاث فازات، قم بعمل كوبري (جمبر) من خروج الفازة الأولى (2T1) إلى دخول الثانية (3L2)، ومن خروج الثانية (4T2) إلى دخول الثالثة (5L3)، ووصل ريشة الفصل المغلقة NC (95-96) لإيقاف التايمر:</p>
+                    <svg viewBox="0 0 400 220" class="w-full h-auto bg-white rounded-xl border border-slate-200 p-2 shadow-sm" dir="ltr">
+                        <!-- Injection Set -->
+                        <rect x="12" y="65" width="88" height="90" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"></rect>
+                        <text x="56" y="98" fill="#1E3A8A" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">TEST SET</text>
+                        <text x="56" y="114" fill="#2563EB" font-size="9" font-family="sans-serif" text-anchor="middle" font-weight="bold">جهاز حقن الأمبير</text>
+                        <text x="56" y="132" fill="#475569" font-size="8" font-family="monospace" text-anchor="middle">(I OUT)</text>
+
+                        <!-- Overload Block -->
+                        <rect x="140" y="30" width="150" height="160" rx="10" fill="#F8FAFC" stroke="#0F172A" stroke-width="2"></rect>
+                        <text x="215" y="50" fill="#0F172A" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">ABB / SCHNEIDER</text>
+
+                        <!-- Terminals L1 L2 L3 -->
+                        <circle cx="168" cy="70" r="4.5" fill="#2563EB"></circle>
+                        <text x="168" y="61" fill="#334155" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">1L1</text>
+                        <circle cx="215" cy="70" r="4.5" fill="#2563EB"></circle>
+                        <text x="215" y="61" fill="#334155" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">3L2</text>
+                        <circle cx="262" cy="70" r="4.5" fill="#2563EB"></circle>
+                        <text x="262" y="61" fill="#334155" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">5L3</text>
+
+                        <!-- Heaters -->
+                        <path d="M168 75 L168 105 L175 115 L168 125 L168 150" stroke="#EA580C" stroke-width="2.5" fill="none"></path>
+                        <path d="M215 75 L215 105 L222 115 L215 125 L215 150" stroke="#EA580C" stroke-width="2.5" fill="none"></path>
+                        <path d="M262 75 L262 105 L269 115 L262 125 L262 150" stroke="#EA580C" stroke-width="2.5" fill="none"></path>
+
+                        <!-- Terminals T1 T2 T3 -->
+                        <circle cx="168" cy="150" r="4.5" fill="#2563EB"></circle>
+                        <text x="168" y="166" fill="#334155" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">2T1</text>
+                        <circle cx="215" cy="150" r="4.5" fill="#2563EB"></circle>
+                        <text x="215" y="166" fill="#334155" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">4T2</text>
+                        <circle cx="262" cy="150" r="4.5" fill="#2563EB"></circle>
+                        <text x="262" y="166" fill="#334155" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">6T3</text>
+
+                        <!-- Wires -->
+                        <path d="M100 85 L122 85 L122 38 L168 38 L168 65" stroke="#2563EB" stroke-width="2.5" fill="none"></path>
+                        <path d="M168 155 L168 176 L191 176 L191 44 L215 44 L215 65" stroke="#009530" stroke-width="2.5" stroke-dasharray="4,2" fill="none"></path>
+                        <path d="M215 155 L215 176 L238 176 L238 44 L262 44 L262 65" stroke="#009530" stroke-width="2.5" stroke-dasharray="4,2" fill="none"></path>
+                        <path d="M262 155 L262 200 L118 200 L118 135 L100 135" stroke="#2563EB" stroke-width="2.5" fill="none"></path>
+
+                        <!-- NC Contact 95-96 -->
+                        <rect x="305" y="70" width="82" height="80" rx="8" fill="#FEF2F2" stroke="#E11D48" stroke-width="1.8"></rect>
+                        <text x="346" y="96" fill="#BE123C" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">NC 95 - 96</text>
+                        <text x="346" y="114" fill="#0F172A" font-size="9" font-family="sans-serif" text-anchor="middle" font-weight="bold">نقطة الفصل</text>
+                        <text x="346" y="130" fill="#64748B" font-size="8" font-family="sans-serif" text-anchor="middle">توقف التايمر</text>
+                    </svg>
+                </div>
+
+                <!-- Step by Step Instructions -->
+                <div class="space-y-3 text-xs sm:text-sm">
+                    <div class="bg-sky-50 border border-sky-200 rounded-xl p-3.5">
+                        <h4 data-i18n="procColdTitle" class="font-extrabold text-sky-900 mb-1">1. إزاي تختبر الأوفرلود (على البارد - Cold)؟</h4>
+                        <p data-i18n="procColdDesc" class="text-sky-800 text-xs leading-relaxed">تأكد إن الأوفرلود بارد تماماً ومفصول عنه التيار لمدة نص ساعة على الأقل. اضبط أمبير الاختبار المطلوب (مثلاً 3 أضعاف التدريج) واحقن التيار مباشرة وقيس وقت الفصل حتى تفتح النقطة 95-96.</p>
+                    </div>
+
+                    <div class="bg-orange-50 border border-orange-200 rounded-xl p-3.5">
+                        <h4 data-i18n="procHotTitle" class="font-extrabold text-orange-900 mb-1">2. إزاي تختبر الأوفرلود (على الساخن - Hot)؟</h4>
+                        <p data-i18n="procHotDesc" class="text-orange-800 text-xs leading-relaxed">احقن أولاً تيار يساوي 100% من ضبط التدريج (1.0 × Ir) واتركه يسخن حتى يستقر حرارياً (حوالي 30 دقيقة للأوفرلود الحراري)، ثم ارفع التيار فوراً لقيمة الاختبار وشغل التايمر. هتلاحظ إن وقت الفصل على الساخن أسرع بحوالي الثلث عن البارد.</p>
+                    </div>
+
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3.5">
+                        <h4 data-i18n="procPhaseTitle" class="font-extrabold text-emerald-900 mb-1">3. اختبار سقوط الفازة (Differential / Phase Loss):</h4>
+                        <p data-i18n="procPhaseDesc" class="text-emerald-800 text-xs leading-relaxed">في أوفرلود ABB (مثل TF42) وشنايدر (مثل LRD)، لو وصلت قطبين فقط توالي وتركت الفازة الثالثة بدون تيار، ميكانيزم الـ Differential هيحس بعدم الاتزان ويفصل أسرع لحماية الموتور من الاحتراق.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end pt-3 border-t border-slate-200">
+                <button onclick="toggleWiringModal(false)" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-blue-600 hover:bg-blue-700 text-white transition">
+                    <span data-i18n="closeBtn">فهمت، إغلاق النافذة</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application Script -->
+    <script>
+        // =========================================================================
+        // 1. RELAY MODELS DATABASE (ABB & SCHNEIDER ELECTRIC)
+        // =========================================================================
+        const RELAY_MODELS = {
+            ABB: [
+                {
+                    id: 'ABB_TF',
+                    nameAr: 'ABB TF42 / TF65 / TF96 / TF140 (حراري - Class 10)',
+                    nameEn: 'ABB TF42 / TF65 / TF96 / TF140 (Thermal - Class 10)',
+                    tripClass: '10',
+                    typeAr: 'أوفرلود حراري ثنائي المعدن (Bimetallic) حساس لسقوط الفازة',
+                    typeEn: 'Bimetallic Thermal Overload with Phase-Loss Sensitivity',
+                    hasDiff: true
+                },
+                {
+                    id: 'ABB_TA',
+                    nameAr: 'ABB TA25DU / TA42DU / TA75DU (حراري - Class 10A)',
+                    nameEn: 'ABB TA25DU / TA42DU / TA75DU (Thermal - Class 10A)',
+                    tripClass: '10A',
+                    typeAr: 'أوفرلود حراري فئة 10A سريع الاستجابة',
+                    typeEn: 'Bimetallic Thermal Overload Class 10A',
+                    hasDiff: true
+                },
+                {
+                    id: 'ABB_EF10',
+                    nameAr: 'ABB EF19 / EF45 / EF65 / EF96 (إلكتروني - Class 10E)',
+                    nameEn: 'ABB EF19 / EF45 / EF65 / EF96 (Electronic - Class 10E)',
+                    tripClass: '10',
+                    typeAr: 'أوفرلود إلكتروني دقيق بمدى واسع (قابل للضبط Class 10/20/30)',
+                    typeEn: 'Wide-range Electronic Overload Relay (Class 10E)',
+                    hasDiff: true
+                },
+                {
+                    id: 'ABB_EF20',
+                    nameAr: 'ABB EF19 / EF45 / EF65 / EF96 (إلكتروني - Class 20E)',
+                    nameEn: 'ABB EF19 / EF45 / EF65 / EF96 (Electronic - Class 20E)',
+                    tripClass: '20',
+                    typeAr: 'أوفرلود إلكتروني للأحمال ذات زمن البدء الطويل (Class 20E)',
+                    typeEn: 'Electronic Overload set to Heavy-Duty Class 20E',
+                    hasDiff: true
+                },
+                {
+                    id: 'ABB_EF30',
+                    nameAr: 'ABB EF19 / EF45 / EF65 / EF96 (إلكتروني - Class 30E)',
+                    nameEn: 'ABB EF19 / EF45 / EF65 / EF96 (Electronic - Class 30E)',
+                    tripClass: '30',
+                    typeAr: 'أوفرلود إلكتروني للمراوح والطلمبات ذات القصور الذاتي العالي (Class 30E)',
+                    typeEn: 'Electronic Overload set to High-Inertia Class 30E',
+                    hasDiff: true
+                }
+            ],
+            SCHNEIDER: [
+                {
+                    id: 'SCH_LRD',
+                    nameAr: 'Schneider TeSys LRD (LRD01 ~ LRD365) (حراري - Class 10A)',
+                    nameEn: 'Schneider TeSys Deca LRD (LRD01 ~ LRD365) (Thermal - Class 10A)',
+                    tripClass: '10A',
+                    typeAr: 'الأكثر انتشاراً من شنايدر — حراري تفاضلي حساس لسقوط الفازة (Class 10A)',
+                    typeEn: 'Standard Differential Thermal Overload Relay (Class 10A)',
+                    hasDiff: true
+                },
+                {
+                    id: 'SCH_LRE',
+                    nameAr: 'Schneider EasyPact TVS LRE (LRE01 ~ LRE365) (حراري - Class 10A)',
+                    nameEn: 'Schneider EasyPact TVS LRE (LRE01 ~ LRE365) (Thermal - Class 10A)',
+                    tripClass: '10A',
+                    typeAr: 'سلسلة EasyPact الحرارية التفاضلية (Class 10A)',
+                    typeEn: 'EasyPact Differential Thermal Overload Relay (Class 10A)',
+                    hasDiff: true
+                },
+                {
+                    id: 'SCH_LR9D10',
+                    nameAr: 'Schneider TeSys LR9D / LR9F (إلكتروني - Class 10)',
+                    nameEn: 'Schneider TeSys LR9D / LR9F (Electronic - Class 10)',
+                    tripClass: '10',
+                    typeAr: 'أوفرلود شنايدر إلكتروني مضبوط على الفئة Class 10',
+                    typeEn: 'TeSys Electronic Overload Relay set to Class 10',
+                    hasDiff: true
+                },
+                {
+                    id: 'SCH_LR9D20',
+                    nameAr: 'Schneider TeSys LR9D / LR9F (إلكتروني - Class 20)',
+                    nameEn: 'Schneider TeSys LR9D / LR9F (Electronic - Class 20)',
+                    tripClass: '20',
+                    typeAr: 'أوفرلود شنايدر إلكتروني للأحمال الثقيلة مضبوط على Class 20',
+                    typeEn: 'TeSys Electronic Overload Relay set to Class 20',
+                    hasDiff: true
+                },
+                {
+                    id: 'SCH_LR9G',
+                    nameAr: 'Schneider TeSys Giga LR9G (إلكتروني - Class 10E/20E/30E)',
+                    nameEn: 'Schneider TeSys Giga LR9G (Electronic - Selectable Class)',
+                    tripClass: '10',
+                    typeAr: 'أوفرلود شنايدر جيجا الإلكتروني للقدرات الكبيرة',
+                    typeEn: 'TeSys Giga High-Current Electronic Overload Relay',
+                    hasDiff: true
+                }
+            ]
+        };
+
+        // =========================================================================
+        // 2. BILINGUAL DICTIONARY (ARABIC / ENGLISH)
+        // =========================================================================
+        const I18N = {
+            ar: {
+                appTitle: 'دليل ومنحنيات اختبار الأوفرلود (البارد والساخن)',
+                appSubtitle: 'حاسبة سريعة للفنيين ومنحنيات الفصل الحراري والإلكتروني لماركات ABB و Schneider',
+                langBtnText: 'English',
+                wiringBtn: 'طريقة التوصيل والاختبار',
+                downloadHtmlBtn: 'تحميل ملف GitHub',
+                step1Title: 'اختر الماركة والموديل وحالة الاختبار',
+                selectBrandLabel: 'ماركة الأوفرلود (Brand):',
+                abbDesc: 'سلسلة TF / TA / EF',
+                schDesc: 'سلسلة LRD / LR9D / LRE',
+                selectModelLabel: 'موديل الأوفرلود (Model):',
+                tripClassLabel: 'فئة الفصل (Trip Class):',
+                wiringModeLabel: 'توصيلة الأقطاب (الفازات):',
+                phase3Option: '3 فاز متزن (3 أقطاب توالي)',
+                phase2Option: 'سقوط فازة (قطبين فقط توالي)',
+                thermalStateLabel: 'حالة الأوفرلود قبل الاختبار (بارد أم ساخن؟):',
+                coldBtn: 'على البارد (Cold)',
+                hotBtn: 'على الساخن (Hot)',
+                bothBtn: 'البارد والساخن معاً',
+                step2Title: 'ضبط تدريج الأمبير وحساب تيار الحقن',
+                step2Badge: 'حساب تلقائي',
+                irLabel: 'تدريج الأوفرلود المضبوط (Ir):',
+                injectedAmpsLabel: 'التيار المطلوب حقنه بالجهاز (Itest):',
+                quickMultLabel: 'اختر نسبة تيار الاختبار السريعة (أضعاف تدريج الأوفرلود):',
+                m105: 'لا يفصل',
+                m120: 'بداية الفصل',
+                m150: 'اختبار ساخن',
+                m300: 'شائع بالموقع',
+                m500: 'تيار عالي',
+                m720: 'قفشة الموتور',
+                fineMultLabel: 'ضبط دقيق للنسبة:',
+                coldExpectTitle: 'زمن الفصل (على البارد)',
+                hotExpectTitle: 'زمن الفصل (على الساخن)',
+                step3Title: 'ساعة الإيقاف ونتيجة الاختبار',
+                step3Sub: 'سجل زمن الفصل الفعلي',
+                measuredTimeLabel: 'زمن الفصل الفعلي المقاس (بالثواني) — أدخله يدوياً أو شغل التايمر:',
+                secUnit: 'ثانية (s)',
+                startTimer: 'تشغيل التايمر',
+                stopTimer: 'إيقاف (فصل!)',
+                motorPlaceholder: 'اسم المحرك أو اللوحة (مثال: طلمبة مياه 1)',
+                addLogBtn: 'تسجيل في جدول التقرير',
+                chartTitle: 'منحنى الفصل الحراري (الوقت مع التيار TCC Curve)',
+                chartSub: 'اضغط في أي مكان على المنحنى أو حرك الماوس لقراءة زمن الفصل على البارد والساخن مباشرة',
+                axisMult: 'الأضعاف (×Ir)',
+                axisAmps: 'الأمبير (Amps)',
+                showBandLabel: 'نطاق السماحية',
+                legendCold: 'كيرف البارد (Cold)',
+                legendHot: 'كيرف الساخن (Hot)',
+                legendPoint: 'نقطة الاختبار الحالية',
+                hoverDefault: 'حرك الماوس على الرسم لقراءة الوقت',
+                stdPointsTitle: 'نقاط الفحص القياسية للأوفرلود (اضغط على أي بطاقة لتجربتها على الكيرف):',
+                coldTag: 'بارد',
+                coldTag2: 'بارد',
+                hotTag: 'ساخن',
+                hotTag2: 'ساخن',
+                cardADesc: 'تيار عدم الفصل: يجب أن <strong>يتحمل ولا يفصل</strong> لمدة ساعتين على الأقل.',
+                cardBDesc: 'بداية الفصل الحراري: <strong>يجب أن يفصل</strong> خلال أقل من ساعتين.',
+                tableTitle: 'جدول نتائج فحص الأوفرلود (تقرير الفحص الميداني)',
+                tableSub: 'يمكنك تسجيل أكثر من أوفرلود ومقارنتها وطباعة التقرير أو تصديره لملف إكسيل',
+                sampleBtn: 'تحميل أمثلة جاهزة',
+                excelBtn: 'تصدير إكسيل (CSV)',
+                printBtn: 'طباعة التقرير',
+                clearBtn: 'مسح الجدول',
+                thTag: 'المعدة / المحرك',
+                thModel: 'الماركة والموديل',
+                thState: 'حالة الاختبار',
+                thPoles: 'التوصيل',
+                thIr: 'تدريج Ir',
+                thItest: 'تيار الحقن',
+                thWindow: 'الزمن المسموح',
+                thMeas: 'الزمن الفعلي',
+                thResult: 'النتيجة',
+                thDel: 'حذف',
+                modalTitle: 'طريقة توصيل جهاز حقن التيار وإجراء الاختبار (البارد والساخن)',
+                modalDiagTitle: 'رسمة توصيل الـ 3 فاز توالي (بجهاز حقن أحادي الوجه):',
+                modalDiagDesc: 'لضمان مرور نفس الأمبير في الثلاث فازات، قم بعمل كوبري (جمبر) من خروج الفازة الأولى (2T1) إلى دخول الثانية (3L2)، ومن خروج الثانية (4T2) إلى دخول الثالثة (5L3)، ووصل ريشة الفصل المغلقة NC (95-96) لإيقاف التايمر:',
+                procColdTitle: '1. إزاي تختبر الأوفرلود (على البارد - Cold)؟',
+                procColdDesc: 'تأكد إن الأوفرلود بارد تماماً ومفصول عنه التيار لمدة نص ساعة على الأقل. اضبط أمبير الاختبار المطلوب (مثلاً 3 أضعاف التدريج) واحقن التيار مباشرة وقيس وقت الفصل حتى تفتح النقطة 95-96.',
+                procHotTitle: '2. إزاي تختبر الأوفرلود (على الساخن - Hot)؟',
+                procHotDesc: 'احقن أولاً تيار يساوي 100% من ضبط التدريج (1.0 × Ir) واتركه يسخن حتى يستقر حرارياً (حوالي 30 دقيقة للأوفرلود الحراري)، ثم ارفع التيار فوراً لقيمة الاختبار وشغل التايمر. هتلاحظ إن وقت الفصل على الساخن أسرع بحوالي الثلث عن البارد.',
+                procPhaseTitle: '3. اختبار سقوط الفازة (Differential / Phase Loss):',
+                procPhaseDesc: 'في أوفرلود ABB (مثل TF42) وشنايدر (مثل LRD)، لو وصلت قطبين فقط توالي وتركت الفازة الثالثة بدون تيار، ميكانيزم الـ Differential هيحس بعدم الاتزان ويفصل أسرع لحماية الموتور من الاحتراق.',
+                closeBtn: 'فهمت، إغلاق النافذة'
+            },
+            en: {
+                appTitle: 'Overload Relay Testing & Curve Analyzer (Cold & Hot)',
+                appSubtitle: 'Technician-friendly calculator & TCC curve plotter for ABB and Schneider Electric relays',
+                langBtnText: 'عربي',
+                wiringBtn: 'Wiring & Test Guide',
+                downloadHtmlBtn: 'Download for GitHub',
+                step1Title: 'Select Brand, Model & Test Condition',
+                selectBrandLabel: 'Overload Relay Brand:',
+                abbDesc: 'TF / TA / EF Series',
+                schDesc: 'LRD / LR9D / LRE Series',
+                selectModelLabel: 'Overload Relay Model:',
+                tripClassLabel: 'IEC Trip Class:',
+                wiringModeLabel: 'Pole / Phase Wiring:',
+                phase3Option: '3-Pole Balanced (All 3 in Series)',
+                phase2Option: 'Phase Loss (2 Poles in Series, 1 Open)',
+                thermalStateLabel: 'Starting Thermal State (Cold vs Hot):',
+                coldBtn: 'Cold Start',
+                hotBtn: 'Hot State',
+                bothBtn: 'Compare Both',
+                step2Title: 'Set Dial Current & Injection Calculator',
+                step2Badge: 'Auto-Calculated',
+                irLabel: 'Relay Dial Setting (Ir):',
+                injectedAmpsLabel: 'Required Injection Current (Itest):',
+                quickMultLabel: 'Quick Test Current Multipliers (× Ir):',
+                m105: 'Hold (No Trip)',
+                m120: 'Min Trip',
+                m150: 'Hot Check',
+                m300: 'Field Standard',
+                m500: 'High Current',
+                m720: 'Locked Rotor',
+                fineMultLabel: 'Fine Multiplier:',
+                coldExpectTitle: 'Expected Time (Cold)',
+                hotExpectTitle: 'Expected Time (Hot)',
+                step3Title: 'Stopwatch & Pass/Fail Result',
+                step3Sub: 'Verify Measured Trip Time',
+                measuredTimeLabel: 'Measured Trip Time (Seconds) — Enter manually or use timer:',
+                secUnit: 'sec (s)',
+                startTimer: 'Start Timer',
+                stopTimer: 'Stop (Trip!)',
+                motorPlaceholder: 'Motor / Panel Tag (e.g., Cooling Pump #1)',
+                addLogBtn: 'Add to Test Report',
+                chartTitle: 'Time-Current Characteristic (TCC) Curve',
+                chartSub: 'Click anywhere on the curve or hover your mouse to read exact Cold & Hot trip times',
+                axisMult: 'Multiple (×Ir)',
+                axisAmps: 'Current (Amps)',
+                showBandLabel: 'Tolerance Band',
+                legendCold: 'Cold Curve',
+                legendHot: 'Hot Curve',
+                legendPoint: 'Active Test Point',
+                hoverDefault: 'Hover chart to inspect trip times',
+                stdPointsTitle: 'Standard IEC Checkpoints (Click any card to simulate on the curve):',
+                coldTag: 'Cold',
+                coldTag2: 'Cold',
+                hotTag: 'Hot',
+                hotTag2: 'Hot',
+                cardADesc: 'Non-tripping current: Must <strong>HOLD without tripping</strong> for at least 2 hours.',
+                cardBDesc: 'Thermal pickup: <strong>Must trip</strong> within less than 2 hours.',
+                tableTitle: 'Field Test Sheet & Verification Log',
+                tableSub: 'Record multiple overload relays, print your commissioning sheet, or export to Excel (CSV)',
+                sampleBtn: 'Load Sample Data',
+                excelBtn: 'Export Excel (CSV)',
+                printBtn: 'Print Report',
+                clearBtn: 'Clear Table',
+                thTag: 'Motor / Equipment',
+                thModel: 'Brand & Model',
+                thState: 'Test State',
+                thPoles: 'Wiring',
+                thIr: 'Dial Ir',
+                thItest: 'Injected I',
+                thWindow: 'Allowed Range',
+                thMeas: 'Measured Time',
+                thResult: 'Verdict',
+                thDel: 'Delete',
+                modalTitle: 'Secondary Injection Wiring & Cold/Hot Test Procedure',
+                modalDiagTitle: '3-Pole Series Connection (Single-Phase Test Set):',
+                modalDiagDesc: 'Connect all 3 poles in series (jumper 2T1 to 3L2, and 4T2 to 5L3) so the exact same current flows through all 3 heaters/CTs. Connect NC contact 95-96 to stop the timer:',
+                procColdTitle: '1. How to Perform a COLD Test:',
+                procColdDesc: 'Ensure the relay is at ambient temperature with zero current for at least 30 minutes. Set the test current (e.g., 3.0 × Ir), inject directly, and measure the time until NC 95-96 opens.',
+                procHotTitle: '2. How to Perform a HOT Test:',
+                procHotDesc: 'Inject 100% of the dial setting (1.0 × Ir) continuously until thermal equilibrium is reached (~30 mins for bimetallic relays), then immediately step up to the test current and start the timer.',
+                procPhaseTitle: '3. Phase-Loss / Differential Test (2-Pole):',
+                procPhaseDesc: 'For ABB (TF/TA) and Schneider (LRD/LRE) differential relays, energizing only 2 poles in series while leaving the 3rd pole at 0A activates the differential bar and accelerates tripping.',
+                closeBtn: 'Got It, Close Guide'
+            }
+        };
+
+        // =========================================================================
+        // 3. APPLICATION STATE
+        // =========================================================================
+        const state = {
+            lang: 'ar',
+            brand: 'ABB',           // 'ABB' or 'SCHNEIDER'
+            modelId: 'ABB_TF',
+            tripClass: '10',        // '10A', '10', '20', '30'
+            thermalState: 'BOTH',   // 'COLD', 'HOT', 'BOTH'
+            phaseMode: '3P',        // '3P' or '2P'
+            ir: 10.0,
+            testMult: 3.00,
+            measuredTime: 25.0,
+            xAxisMode: 'MULT',
+            hoverMult: null,
+            stopwatchRunning: false,
+            stopwatchStart: 0,
+            stopwatchInterval: null,
+            testLog: []
+        };
+
+        // =========================================================================
+        // 4. MATHEMATICAL MODEL FOR ABB & SCHNEIDER CURVES (IEC 60947-4-1)
+        // =========================================================================
+        function calculateTripTimes(tripClass, thermal, phaseMode, m) {
+            const phaseFactor = (phaseMode === '2P') ? 0.72 : 1.0;
+            const pickupAsymptote = (phaseMode === '2P') ? 1.01 : 1.05;
+
+            if (m <= pickupAsymptote) {
+                return { min: Infinity, typ: Infinity, max: Infinity };
+            }
+
+            // Calibrated parameters at 7.2 x Ir (Cold State):
+            // Schneider LRD / ABB TA (Class 10A): 2s - 10s (Typical ~ 4.8s)
+            // ABB TF / Electronic Class 10: 4s - 10s (Typical ~ 6.4s)
+            // Class 20: 6s - 20s (Typical ~ 12.2s)
+            // Class 30: 9s - 30s (Typical ~ 18.5s)
+            const classParams = {
+                '10A': { t72Typ: 4.8,  t72Min: 2.0, t72Max: 10.0, p: 1.88 },
+                '10':  { t72Typ: 6.4,  t72Min: 4.0, t72Max: 10.0, p: 1.85 },
+                '20':  { t72Typ: 12.2, t72Min: 6.0, t72Max: 20.0, p: 1.85 },
+                '30':  { t72Typ: 18.5, t72Min: 9.0, t72Max: 30.0, p: 1.85 }
+            };
+
+            const cfg = classParams[tripClass] || classParams['10'];
+            const p = cfg.p;
+
+            const norm72 = Math.pow(7.2, p) - Math.pow(pickupAsymptote, p);
+            const denom = Math.pow(m, p) - Math.pow(pickupAsymptote, p);
+            const kneeBoost = 1 + 0.32 * Math.exp(-1.4 * (m - 1.05));
+
+            let coldTyp = cfg.t72Typ * (norm72 / denom) * kneeBoost * phaseFactor;
+            let coldMin = cfg.t72Min * (norm72 / denom) * (kneeBoost * 0.92) * phaseFactor;
+            let coldMax = cfg.t72Max * (norm72 / denom) * (kneeBoost * 1.08) * phaseFactor;
+
+            if (thermal === 'COLD') {
+                return {
+                    min: Math.max(0.4, coldMin),
+                    typ: Math.max(0.5, coldTyp),
+                    max: Math.min(15000, coldMax)
+                };
+            }
+
+            // Hot State (~25% to 35% of Cold State time)
+            const hotRatio = 0.25 + 0.09 * Math.min(1, (m - 1.05) / 6.15);
+            let hotTyp = coldTyp * hotRatio;
+            let hotMin = coldMin * (hotRatio * 0.90);
+            let hotMax = coldMax * (hotRatio * 1.05);
+
+            return {
+                min: Math.max(0.25, hotMin),
+                typ: Math.max(0.35, hotTyp),
+                max: Math.min(15000, hotMax)
+            };
+        }
+
+        // =========================================================================
+        // 5. LANGUAGE SWITCHER & UI UPDATES
+        // =========================================================================
+        function toggleLanguage() {
+            state.lang = (state.lang === 'ar') ? 'en' : 'ar';
+            const htmlEl = document.documentElement;
+            htmlEl.lang = state.lang;
+            htmlEl.dir = (state.lang === 'ar') ? 'rtl' : 'ltr';
+            applyTranslations();
+            populateModelDropdown();
+            updateAll();
+            renderTestLogTable();
+        }
+
+        function applyTranslations() {
+            const dict = I18N[state.lang];
+            document.getElementById('appTitle').textContent = dict.appTitle;
+            document.getElementById('appSubtitle').textContent = dict.appSubtitle;
+            document.getElementById('langBtnText').textContent = dict.langBtnText;
+            document.getElementById('motorTagInput').placeholder = dict.motorPlaceholder;
+
+            if (!state.stopwatchRunning) {
+                document.getElementById('stopwatchBtnText').textContent = dict.startTimer;
+            } else {
+                document.getElementById('stopwatchBtnText').textContent = dict.stopTimer;
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    if (key === 'cardADesc' || key === 'cardBDesc') {
+                        el.innerHTML = dict[key];
+                    } else {
+                        el.textContent = dict[key];
+                    }
+                }
+            });
+        }
+
+        function selectBrand(brand) {
+            state.brand = brand;
+            const btnABB = document.getElementById('brandBtnABB');
+            const btnSCH = document.getElementById('brandBtnSCH');
+
+            if (brand === 'ABB') {
+                btnABB.className = "p-3 rounded-xl border-2 border-[#E30613] bg-red-50/60 transition flex items-center justify-between shadow-sm";
+                btnSCH.className = "p-3 rounded-xl border-2 border-slate-200 bg-slate-50/60 opacity-75 hover:opacity-100 transition flex items-center justify-between";
+            } else {
+                btnSCH.className = "p-3 rounded-xl border-2 border-[#009530] bg-emerald-50/60 transition flex items-center justify-between shadow-sm";
+                btnABB.className = "p-3 rounded-xl border-2 border-slate-200 bg-slate-50/60 opacity-75 hover:opacity-100 transition flex items-center justify-between";
+            }
+
+            populateModelDropdown();
+            handleModelChange();
+        }
+
+        function populateModelDropdown() {
+            const select = document.getElementById('modelSelect');
+            const models = RELAY_MODELS[state.brand];
+            select.innerHTML = models.map(m => {
+                const label = (state.lang === 'ar') ? m.nameAr : m.nameEn;
+                return `<option value="${m.id}">${label}</option>`;
+            }).join('');
+        }
+
+        function handleModelChange() {
+            const select = document.getElementById('modelSelect');
+            state.modelId = select.value;
+            const models = RELAY_MODELS[state.brand];
+            const found = models.find(m => m.id === state.modelId) || models[0];
+
+            state.tripClass = found.tripClass;
+            document.getElementById('tripClassSelect').value = found.tripClass;
+            document.getElementById('modelHelperText').textContent = (state.lang === 'ar') ? found.typeAr : found.typeEn;
+
+            // Update typical time for current multiple so user sees a realistic pass value immediately
+            const evalState = (state.thermalState === 'HOT') ? 'HOT' : 'COLD';
+            const res = calculateTripTimes(state.tripClass, evalState, state.phaseMode, state.testMult);
+            if (isFinite(res.typ)) {
+                state.measuredTime = parseFloat(res.typ.toFixed(1));
+                document.getElementById('measuredTimeInput').value = state.measuredTime;
+            }
+
+            updateAll();
+        }
+
+        function setThermalState(newState) {
+            state.thermalState = newState;
+            const btnCold = document.getElementById('btnStateCold');
+            const btnHot = document.getElementById('btnStateHot');
+            const btnBoth = document.getElementById('btnStateBoth');
+
+            const base = "py-2.5 px-2 rounded-lg text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5 ";
+            btnCold.className = base + (newState === 'COLD'
+                ? "bg-white text-sky-700 shadow-sm border border-sky-200"
+                : "text-slate-600 hover:text-slate-900");
+            btnHot.className = base + (newState === 'HOT'
+                ? "bg-white text-orange-700 shadow-sm border border-orange-200"
+                : "text-slate-600 hover:text-slate-900");
+            btnBoth.className = base + (newState === 'BOTH'
+                ? "bg-white text-indigo-700 shadow-sm border border-indigo-200"
+                : "text-slate-600 hover:text-slate-900");
+
+            updateAll();
+        }
+
+        function handlePhaseSelect() {
+            state.phaseMode = document.getElementById('phaseModeSelect').value;
+            updateAll();
+        }
+
+        function handleIrChange() {
+            const val = parseFloat(document.getElementById('irInput').value);
+            if (!isNaN(val) && val > 0) {
+                state.ir = val;
+                document.getElementById('testAmpsInput').value = (state.ir * state.testMult).toFixed(2);
+                updateAll();
+            }
+        }
+
+        function handleMultInput() {
+            const mult = parseFloat(document.getElementById('testMultInput').value);
+            if (!isNaN(mult) && mult >= 1.0) {
+                state.testMult = mult;
+                document.getElementById('multSlider').value = Math.min(10, Math.max(1.05, mult));
+                document.getElementById('testAmpsInput').value = (state.ir * mult).toFixed(2);
+                updateAll();
+            }
+        }
+
+        function handleSliderInput() {
+            const mult = parseFloat(document.getElementById('multSlider').value);
+            state.testMult = mult;
+            document.getElementById('testMultInput').value = mult.toFixed(2);
+            document.getElementById('testAmpsInput').value = (state.ir * mult).toFixed(2);
+            updateAll();
+        }
+
+        function handleAmpsInput() {
+            const amps = parseFloat(document.getElementById('testAmpsInput').value);
+            if (!isNaN(amps) && amps > 0 && state.ir > 0) {
+                const mult = amps / state.ir;
+                state.testMult = Math.max(1.0, Math.min(10.0, mult));
+                document.getElementById('testMultInput').value = state.testMult.toFixed(2);
+                document.getElementById('multSlider').value = state.testMult;
+                updateAll();
+            }
+        }
+
+        function setQuickMultiple(mult) {
+            state.testMult = mult;
+            document.getElementById('testMultInput').value = mult.toFixed(2);
+            document.getElementById('multSlider').value = mult;
+            document.getElementById('testAmpsInput').value = (state.ir * mult).toFixed(2);
+
+            const evalState = (state.thermalState === 'HOT') ? 'HOT' : 'COLD';
+            const res = calculateTripTimes(state.tripClass, evalState, state.phaseMode, mult);
+            if (isFinite(res.typ)) {
+                state.measuredTime = parseFloat(res.typ.toFixed(1));
+                document.getElementById('measuredTimeInput').value = state.measuredTime;
+            }
+            updateAll();
+        }
+
+        function setXAxisMode(mode) {
+            state.xAxisMode = mode;
+            const multBtn = document.getElementById('axisMultBtn');
+            const ampsBtn = document.getElementById('axisAmpsBtn');
+            if (mode === 'MULT') {
+                multBtn.className = "px-3 py-1 rounded-lg text-xs font-bold bg-white text-blue-700 shadow-sm transition";
+                ampsBtn.className = "px-3 py-1 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-900 transition";
+            } else {
+                ampsBtn.className = "px-3 py-1 rounded-lg text-xs font-bold bg-white text-blue-700 shadow-sm transition";
+                multBtn.className = "px-3 py-1 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-900 transition";
+            }
+            drawTCCChart();
+        }
+
+        function formatTimeFriendly(sec) {
+            const isAr = (state.lang === 'ar');
+            if (!isFinite(sec) || sec > 10000) {
+                return isAr ? "لا يفصل (> ساعتين)" : "No Trip (> 2h)";
+            }
+            if (sec >= 120) {
+                const mins = (sec / 60).toFixed(1);
+                return isAr ? `${sec.toFixed(0)} ث (${mins} دقيقة)` : `${sec.toFixed(0)}s (${mins}m)`;
+            }
+            return isAr ? `${sec.toFixed(1)} ثانية` : `${sec.toFixed(1)} sec`;
+        }
+
+        // =========================================================================
+        // 6. STOPWATCH TIMER
+        // =========================================================================
+        function toggleStopwatch() {
+            const btn = document.getElementById('stopwatchBtn');
+            const txt = document.getElementById('stopwatchBtnText');
+            const dict = I18N[state.lang];
+
+            if (!state.stopwatchRunning) {
+                state.stopwatchRunning = true;
+                state.stopwatchStart = performance.now();
+                btn.className = "px-4 py-3 rounded-xl text-xs sm:text-sm font-bold bg-red-600 hover:bg-red-700 text-white transition flex items-center justify-center gap-2 shrink-0 shadow-sm animate-pulse";
+                txt.textContent = dict.stopTimer;
+                state.stopwatchInterval = setInterval(() => {
+                    const elapsed = (performance.now() - state.stopwatchStart) / 1000;
+                    document.getElementById('measuredTimeInput').value = elapsed.toFixed(1);
+                    state.measuredTime = elapsed;
+                    updateVerdictAndDisplays();
+                    drawTCCChart();
+                }, 80);
+            } else {
+                state.stopwatchRunning = false;
+                clearInterval(state.stopwatchInterval);
+                btn.className = "px-4 py-3 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition flex items-center justify-center gap-2 shrink-0 shadow-sm";
+                txt.textContent = dict.startTimer;
+                updateAll();
+            }
+        }
+
+        function resetStopwatch() {
+            if (state.stopwatchRunning) toggleStopwatch();
+            state.measuredTime = 0.0;
+            document.getElementById('measuredTimeInput').value = "0.0";
+            updateAll();
+        }
+
+        // =========================================================================
+        // 7. UPDATE CALCULATIONS & PASS/FAIL VERDICT
+        // =========================================================================
+        function updateVerdictAndDisplays() {
+            const isAr = (state.lang === 'ar');
+            state.tripClass = document.getElementById('tripClassSelect').value;
+            const m = parseFloat(document.getElementById('testMultInput').value) || 1.0;
+            const tMeas = parseFloat(document.getElementById('measuredTimeInput').value) || 0.1;
+            state.testMult = m;
+            state.measuredTime = tMeas;
+
+            document.getElementById('currentMultBadge').textContent = `${m.toFixed(2)} × Ir`;
+            document.getElementById('relayClassBadge').textContent = `${state.brand} • Class ${state.tripClass}`;
+
+            const coldRes = calculateTripTimes(state.tripClass, 'COLD', state.phaseMode, m);
+            const hotRes = calculateTripTimes(state.tripClass, 'HOT', state.phaseMode, m);
+
+            // Cold & Hot Expected Cards
+            document.getElementById('coldExpectedTyp').textContent = formatTimeFriendly(coldRes.typ);
+            document.getElementById('coldExpectedRange').textContent = isFinite(coldRes.min)
+                ? (isAr ? `المسموح: ${coldRes.min.toFixed(1)} إلى ${coldRes.max.toFixed(1)} ث` : `Allowed: ${coldRes.min.toFixed(1)}s – ${coldRes.max.toFixed(1)}s`)
+                : (isAr ? `منطقة عدم فصل (< 1.05×)` : `Hold Zone (< 1.05×)`);
+
+            document.getElementById('hotExpectedTyp').textContent = formatTimeFriendly(hotRes.typ);
+            document.getElementById('hotExpectedRange').textContent = isFinite(hotRes.min)
+                ? (isAr ? `المسموح: ${hotRes.min.toFixed(1)} إلى ${hotRes.max.toFixed(1)} ث` : `Allowed: ${hotRes.min.toFixed(1)}s – ${hotRes.max.toFixed(1)}s`)
+                : (isAr ? `منطقة عدم فصل (< 1.05×)` : `Hold Zone (< 1.05×)`);
+
+            // Evaluate Pass/Fail
+            const evalMode = (state.thermalState === 'HOT') ? 'HOT' : 'COLD';
+            const targetBand = (evalMode === 'HOT') ? hotRes : coldRes;
+
+            const banner = document.getElementById('verdictBanner');
+            const evalLabel = document.getElementById('verdictEvalState');
+            const title = document.getElementById('verdictTitle');
+            const badge = document.getElementById('verdictBadge');
+
+            const stateNameAr = (evalMode === 'HOT') ? 'على الساخن' : 'على البارد';
+            evalLabel.textContent = isAr
+                ? `التقييم حسب كيرف الاختبار (${stateNameAr}) عند ${m.toFixed(2)}×Ir`
+                : `Evaluated against ${evalMode} Curve at ${m.toFixed(2)}×Ir`;
+
+            let isPass = false;
+            if (!isFinite(targetBand.min)) {
+                isPass = tMeas >= 7200;
+                title.textContent = isPass
+                    ? (isAr ? "سليم — الأوفرلود صمد ولم يفصل كما هو مطلوب" : "PASS — Relay held without tripping")
+                    : (isAr ? `تالف — فصل مبكراً عند تيار حمل طبيعي (${tMeas.toFixed(1)} ث)` : `FAIL — Premature trip at ${tMeas.toFixed(1)}s`);
+            } else {
+                isPass = (tMeas >= targetBand.min && tMeas <= targetBand.max);
+                if (isPass) {
+                    title.textContent = isAr
+                        ? `سليم ومطابق — فصل في الوقت المسموح (${targetBand.min.toFixed(1)} - ${targetBand.max.toFixed(1)} ث)`
+                        : `PASS — Tripped within allowed window (${targetBand.min.toFixed(1)}s – ${targetBand.max.toFixed(1)}s)`;
+                } else if (tMeas < targetBand.min) {
+                    title.textContent = isAr
+                        ? `غير مطابق (فصل سريع جداً) — أقل من الحد الأدنى (${targetBand.min.toFixed(1)} ث)`
+                        : `FAIL (Fast Trip) — Below min limit of ${targetBand.min.toFixed(1)}s`;
+                } else {
+                    title.textContent = isAr
+                        ? `غير مطابق (تأخر في الفصل) — تجاوز الحد الأقصى (${targetBand.max.toFixed(1)} ث)`
+                        : `FAIL (Slow Trip) — Exceeded max limit of ${targetBand.max.toFixed(1)}s`;
+                }
+            }
+
+            if (isPass) {
+                banner.className = "rounded-2xl p-4 border-2 border-emerald-300 bg-emerald-50 text-emerald-950 mb-4 flex items-center justify-between gap-3 transition";
+                badge.className = "px-4 py-2 rounded-xl text-sm font-black tracking-wide shrink-0 shadow-sm bg-emerald-600 text-white";
+                badge.textContent = isAr ? "ناجح PASS ✓" : "PASS ✓";
+            } else {
+                banner.className = "rounded-2xl p-4 border-2 border-red-300 bg-red-50 text-red-950 mb-4 flex items-center justify-between gap-3 transition";
+                badge.className = "px-4 py-2 rounded-xl text-sm font-black tracking-wide shrink-0 shadow-sm bg-red-600 text-white";
+                badge.textContent = isAr ? "راسب FAIL ✕" : "FAIL ✕";
+            }
+
+            // Update Chart Title Badge & Bottom Cards
+            document.getElementById('activeCurveTitleBadge').textContent = `${state.brand} • Class ${state.tripClass} • Ir = ${state.ir}A`;
+            document.getElementById('iecPhaseSummary').textContent = (state.phaseMode === '3P')
+                ? (isAr ? 'توصيل 3 فاز طبيعي' : '3-Pole Balanced Mode')
+                : (isAr ? 'اختبار سقوط فازة (قطبين)' : '2-Pole Phase-Loss Mode');
+
+            document.getElementById('iecCardAAmps').textContent = `${(state.ir * 1.05).toFixed(2)} A`;
+            document.getElementById('iecCardBAmps').textContent = `${(state.ir * 1.20).toFixed(2)} A`;
+            document.getElementById('iecCardCAmps').textContent = `${(state.ir * 1.50).toFixed(2)} A`;
+            document.getElementById('iecCardDAmps').textContent = `${(state.ir * 7.20).toFixed(2)} A`;
+
+            const cLimit = { '10A': 120, '10': 120, '20': 240, '30': 480 }[state.tripClass];
+            const dBounds = {
+                '10A': { min: 2, max: 10 },
+                '10': { min: 4, max: 10 },
+                '20': { min: 6, max: 20 },
+                '30': { min: 9, max: 30 }
+            }[state.tripClass];
+
+            document.getElementById('iecCardCDesc').innerHTML = isAr
+                ? `يفصل في أقل من <strong>${cLimit} ثانية</strong> وهو ساخن.`
+                : `Must trip within <strong>≤ ${cLimit} sec</strong> from Hot state.`;
+
+            document.getElementById('iecCardDDesc').innerHTML = isAr
+                ? `اختبار قفشة المحرك (بارد): يفصل بين <strong>${dBounds.min} إلى ${dBounds.max} ثواني</strong>.`
+                : `Locked-rotor (Cold): Must trip between <strong>${dBounds.min}s – ${dBounds.max}s</strong>.`;
+        }
+
+        function updateAll() {
+            updateVerdictAndDisplays();
+            drawTCCChart();
+        }
+
+        // =========================================================================
+        // 8. BRIGHT INTERACTIVE LOG-LOG TCC CHART
+        // =========================================================================
+        const canvas = document.getElementById('tccCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const MIN_M = 1.0;
+        const MAX_M = 10.0;
+        const MIN_T = 0.5;
+        const MAX_T = 10000;
+
+        function getPlotRect(width, height) {
+            return {
+                left: 62,
+                right: width - 26,
+                top: 24,
+                bottom: height - 46,
+                w: width - 88,
+                h: height - 70
+            };
+        }
+
+        function multToX(m, rect) {
+            const ratio = (Math.log10(m) - Math.log10(MIN_M)) / (Math.log10(MAX_M) - Math.log10(MIN_M));
+            return rect.left + ratio * rect.w;
+        }
+
+        function xToMult(x, rect) {
+            const ratio = Math.max(0, Math.min(1, (x - rect.left) / rect.w));
+            return Math.pow(10, Math.log10(MIN_M) + ratio * (Math.log10(MAX_M) - Math.log10(MIN_M)));
+        }
+
+        function timeToY(t, rect) {
+            const clamped = Math.max(MIN_T, Math.min(MAX_T, t));
+            const ratio = (Math.log10(clamped) - Math.log10(MIN_T)) / (Math.log10(MAX_T) - Math.log10(MIN_T));
+            return rect.bottom - ratio * rect.h;
+        }
+
+        function yToTime(y, rect) {
+            const ratio = Math.max(0, Math.min(1, (rect.bottom - y) / rect.h));
+            return Math.pow(10, Math.log10(MIN_T) + ratio * (Math.log10(MAX_T) - Math.log10(MIN_T)));
+        }
+
+        function drawTCCChart() {
+            const dpr = window.devicePixelRatio || 1;
+            const clientW = canvas.clientWidth;
+            const clientH = canvas.clientHeight;
+            if (clientW === 0 || clientH === 0) return;
+
+            canvas.width = clientW * dpr;
+            canvas.height = clientH * dpr;
+            ctx.save();
+            ctx.scale(dpr, dpr);
+
+            const rect = getPlotRect(clientW, clientH);
+
+            // 1. Clean Bright White/Slate Canvas Background
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, clientW, clientH);
+
+            ctx.fillStyle = '#F8FAFC';
+            ctx.fillRect(rect.left, rect.top, rect.w, rect.h);
+
+            // 2. Grid Lines
+            const xTicks = [1.0, 1.2, 1.5, 2.0, 2.5, 3.0, 4.0, 5.0, 6.0, 7.2, 8.0, 10.0];
+            const yTicks = [0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000];
+
+            ctx.lineWidth = 1;
+            for (let m = 1.0; m <= 10.0; m += 0.2) {
+                const x = multToX(m, rect);
+                ctx.strokeStyle = '#F1F5F9';
+                ctx.beginPath();
+                ctx.moveTo(x, rect.top);
+                ctx.lineTo(x, rect.bottom);
+                ctx.stroke();
+            }
+
+            ctx.font = 'bold 11px "JetBrains Mono", monospace';
+            ctx.textAlign = 'center';
+            xTicks.forEach(m => {
+                const x = multToX(m, rect);
+                ctx.strokeStyle = (m === 7.2 || m === 3.0) ? '#CBD5E1' : '#E2E8F0';
+                ctx.beginPath();
+                ctx.moveTo(x, rect.top);
+                ctx.lineTo(x, rect.bottom);
+                ctx.stroke();
+
+                ctx.fillStyle = (m === 7.2) ? '#D97706' : '#475569';
+                if (state.xAxisMode === 'MULT') {
+                    ctx.fillText(`${m}x`, x, rect.bottom + 18);
+                } else {
+                    const ampsVal = m * state.ir;
+                    ctx.fillText(ampsVal >= 100 ? `${ampsVal.toFixed(0)}A` : `${ampsVal.toFixed(1)}A`, x, rect.bottom + 18);
+                }
+            });
+
+            // X-axis label
+            ctx.fillStyle = '#334155';
+            ctx.font = 'bold 12px "Cairo", "Inter", sans-serif';
+            const xTitle = (state.lang === 'ar')
+                ? (state.xAxisMode === 'MULT' ? 'أضعاف تيار الضبط (I / Ir)' : `التيار الفعلي بالأمبير (Ir = ${state.ir} A)`)
+                : (state.xAxisMode === 'MULT' ? 'Multiple of Setting Current (I / Ir)' : `Injected Current in Amps (Ir = ${state.ir} A)`);
+            ctx.fillText(xTitle, rect.left + rect.w / 2, clientH - 7);
+
+            // Horizontal Y grid
+            ctx.textAlign = 'right';
+            ctx.font = 'bold 11px "JetBrains Mono", monospace';
+            yTicks.forEach(t => {
+                const y = timeToY(t, rect);
+                ctx.strokeStyle = (t === 1 || t === 10 || t === 100 || t === 1000) ? '#CBD5E1' : '#E2E8F0';
+                ctx.beginPath();
+                ctx.moveTo(rect.left, y);
+                ctx.lineTo(rect.right, y);
+                ctx.stroke();
+
+                ctx.fillStyle = '#475569';
+                let label = `${t}s`;
+                if (t >= 1000) label = `${(t / 1000).toFixed(0)}ks`;
+                ctx.fillText(label, rect.left - 8, y + 4);
+            });
+
+            // Y-axis label
+            ctx.save();
+            ctx.translate(16, rect.top + rect.h / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#334155';
+            ctx.font = 'bold 12px "Cairo", "Inter", sans-serif';
+            ctx.fillText(state.lang === 'ar' ? 'زمن الفصل (ثانية)' : 'Tripping Time (seconds)', 0, 0);
+            ctx.restore();
+
+            // Clip inside chart
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(rect.left, rect.top, rect.w, rect.h);
+            ctx.clip();
+
+            // 1.05x Hold line
+            const x105 = multToX(1.05, rect);
+            ctx.strokeStyle = '#F59E0B';
+            ctx.lineWidth = 1.5;
+            ctx.setLineDash([5, 4]);
+            ctx.beginPath();
+            ctx.moveTo(x105, rect.top);
+            ctx.lineTo(x105, rect.bottom);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            const showBands = document.getElementById('showBandToggle').checked;
+
+            function plotCurveFamily(thermalMode, mainColor, bandColor) {
+                const samples = [];
+                const startM = (state.phaseMode === '2P') ? 1.02 : 1.055;
+                for (let m = startM; m <= 10.0; m += 0.04) {
+                    const res = calculateTripTimes(state.tripClass, thermalMode, state.phaseMode, m);
+                    if (isFinite(res.typ)) samples.push({ m, ...res });
+                }
+                if (samples.length === 0) return;
+
+                if (showBands) {
+                    ctx.fillStyle = bandColor;
+                    ctx.beginPath();
+                    samples.forEach((pt, idx) => {
+                        const x = multToX(pt.m, rect);
+                        const y = timeToY(pt.max, rect);
+                        if (idx === 0) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
+                    });
+                    for (let i = samples.length - 1; i >= 0; i--) {
+                        const pt = samples[i];
+                        ctx.lineTo(multToX(pt.m, rect), timeToY(pt.min, rect));
+                    }
+                    ctx.closePath();
+                    ctx.fill();
+                }
+
+                // Main Typical Curve
+                ctx.strokeStyle = mainColor;
+                ctx.lineWidth = 3.2;
+                ctx.beginPath();
+                samples.forEach((pt, idx) => {
+                    const x = multToX(pt.m, rect);
+                    const y = timeToY(pt.typ, rect);
+                    if (idx === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                });
+                ctx.stroke();
+            }
+
+            if (state.thermalState === 'COLD' || state.thermalState === 'BOTH') {
+                plotCurveFamily('COLD', '#0284C7', 'rgba(2, 132, 199, 0.12)');
+            }
+            if (state.thermalState === 'HOT' || state.thermalState === 'BOTH') {
+                plotCurveFamily('HOT', '#EA580C', 'rgba(234, 88, 12, 0.12)');
+            }
+
+            // Plot Active Test Point
+            const activeX = multToX(state.testMult, rect);
+            const activeY = timeToY(state.measuredTime, rect);
+
+            const evalMode = (state.thermalState === 'HOT') ? 'HOT' : 'COLD';
+            const band = calculateTripTimes(state.tripClass, evalMode, state.phaseMode, state.testMult);
+            const isPass = !isFinite(band.min)
+                ? state.measuredTime >= 7200
+                : (state.measuredTime >= band.min && state.measuredTime <= band.max);
+
+            const markerColor = isPass ? '#059669' : '#DC2626';
+
+            ctx.strokeStyle = markerColor;
+            ctx.lineWidth = 1.5;
+            ctx.setLineDash([4, 4]);
+            ctx.beginPath();
+            ctx.moveTo(activeX, rect.bottom);
+            ctx.lineTo(activeX, activeY);
+            ctx.lineTo(rect.left, activeY);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Outer Halo
+            ctx.fillStyle = isPass ? 'rgba(16, 185, 129, 0.22)' : 'rgba(220, 38, 38, 0.22)';
+            ctx.beginPath();
+            ctx.arc(activeX, activeY, 12, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Center Dot
+            ctx.fillStyle = markerColor;
+            ctx.strokeStyle = '#FFFFFF';
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            ctx.arc(activeX, activeY, 6, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            // Floating Label Pill
+            const pillText = `${state.testMult.toFixed(2)}x (${(state.testMult * state.ir).toFixed(1)}A) • ${state.measuredTime.toFixed(1)}s`;
+            ctx.font = 'bold 11px "JetBrains Mono", monospace';
+            const textW = ctx.measureText(pillText).width + 16;
+            const pillX = (activeX + textW + 15 > rect.right) ? activeX - textW - 10 : activeX + 10;
+            const pillY = Math.max(rect.top + 18, activeY - 14);
+
+            ctx.fillStyle = '#FFFFFF';
+            ctx.strokeStyle = markerColor;
+            ctx.lineWidth = 1.8;
+            ctx.beginPath();
+            ctx.roundRect(pillX, pillY - 13, textW, 22, 6);
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.fillStyle = '#0F172A';
+            ctx.textAlign = 'left';
+            ctx.fillText(pillText, pillX + 8, pillY + 2);
+
+            // Hover Cursor Line
+            if (state.hoverMult !== null) {
+                const hx = multToX(state.hoverMult, rect);
+                ctx.strokeStyle = '#64748B';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(hx, rect.top);
+                ctx.lineTo(hx, rect.bottom);
+                ctx.stroke();
+            }
+
+            ctx.restore();
+
+            ctx.strokeStyle = '#CBD5E1';
+            ctx.lineWidth = 1.5;
+            ctx.strokeRect(rect.left, rect.top, rect.w, rect.h);
+            ctx.restore();
+        }
+
+        // Canvas Mouse Events
+        canvas.addEventListener('mousemove', (e) => {
+            const bounds = canvas.getBoundingClientRect();
+            const x = e.clientX - bounds.left;
+            const y = e.clientY - bounds.top;
+            const rect = getPlotRect(bounds.width, bounds.height);
+
+            if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+                const m = xToMult(x, rect);
+                state.hoverMult = m;
+                const amps = m * state.ir;
+                const cRes = calculateTripTimes(state.tripClass, 'COLD', state.phaseMode, m);
+                const hRes = calculateTripTimes(state.tripClass, 'HOT', state.phaseMode, m);
+
+                const cStr = isFinite(cRes.typ) ? `${cRes.typ.toFixed(1)}s` : '∞';
+                const hStr = isFinite(hRes.typ) ? `${hRes.typ.toFixed(1)}s` : '∞';
+
+                document.getElementById('cursorReadout').innerHTML =
+                    `<span class="text-slate-900">${m.toFixed(2)}×Ir (${amps.toFixed(1)}A)</span> | ` +
+                    `<span class="text-sky-700">Cold: ${cStr}</span> | ` +
+                    `<span class="text-orange-700">Hot: ${hStr}</span>`;
+                drawTCCChart();
+            } else {
+                state.hoverMult = null;
+                drawTCCChart();
+            }
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            state.hoverMult = null;
+            document.getElementById('cursorReadout').textContent = I18N[state.lang].hoverDefault;
+            drawTCCChart();
+        });
+
+        canvas.addEventListener('click', (e) => {
+            const bounds = canvas.getBoundingClientRect();
+            const x = e.clientX - bounds.left;
+            const y = e.clientY - bounds.top;
+            const rect = getPlotRect(bounds.width, bounds.height);
+
+            if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+                state.testMult = parseFloat(xToMult(x, rect).toFixed(2));
+                state.measuredTime = parseFloat(yToTime(y, rect).toFixed(1));
+
+                document.getElementById('testMultInput').value = state.testMult.toFixed(2);
+                document.getElementById('multSlider').value = state.testMult;
+                document.getElementById('testAmpsInput').value = (state.ir * state.testMult).toFixed(2);
+                document.getElementById('measuredTimeInput').value = state.measuredTime.toFixed(1);
+                updateAll();
+            }
+        });
+
+        // =========================================================================
+        // 9. TEST LOG TABLE, CSV EXPORT & DIRECT GITHUB FILE DOWNLOAD
+        // =========================================================================
+        function logCurrentTestPoint() {
+            const evalState = (state.thermalState === 'HOT') ? 'HOT' : 'COLD';
+            const band = calculateTripTimes(state.tripClass, evalState, state.phaseMode, state.testMult);
+            const isPass = !isFinite(band.min)
+                ? state.measuredTime >= 7200
+                : (state.measuredTime >= band.min && state.measuredTime <= band.max);
+
+            const select = document.getElementById('modelSelect');
+            const relayText = select.options[select.selectedIndex].text.split('(')[0].trim();
+            const tagInput = document.getElementById('motorTagInput').value.trim();
+            const defaultTag = (state.lang === 'ar') ? `محرك #${state.testLog.length + 1}` : `Motor #${state.testLog.length + 1}`;
+
+            state.testLog.push({
+                id: Date.now(),
+                tag: tagInput || defaultTag,
+                brand: state.brand,
+                relay: relayText,
+                tripClass: state.tripClass,
+                thermalState: evalState,
+                phaseMode: state.phaseMode,
+                ir: state.ir,
+                amps: state.ir * state.testMult,
+                mult: state.testMult,
+                expectedWindow: isFinite(band.min) ? `${band.min.toFixed(1)}s – ${band.max.toFixed(1)}s` : '> 7200s',
+                measuredTime: state.measuredTime,
+                pass: isPass
+            });
+
+            document.getElementById('motorTagInput').value = '';
+            renderTestLogTable();
+            drawTCCChart();
+        }
+
+        function removeLogEntry(id) {
+            state.testLog = state.testLog.filter(item => item.id !== id);
+            renderTestLogTable();
+            drawTCCChart();
+        }
+
+        function clearTestLog() {
+            state.testLog = [];
+            renderTestLogTable();
+            drawTCCChart();
+        }
+
+        function renderTestLogTable() {
+            const tbody = document.getElementById('testLogBody');
+            const isAr = (state.lang === 'ar');
+
+            if (state.testLog.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="11" class="py-8 text-center text-slate-400 font-bold">
+                            ${isAr ? 'لا توجد نقاط مسجلة بعد. اضغط على "تسجيل في جدول التقرير" أو "تحميل أمثلة جاهزة".' : 'No test points logged yet. Click "Add to Test Report" or "Load Sample Data".'}
+                        </td>
+                    </tr>`;
+                return;
+            }
+
+            tbody.innerHTML = state.testLog.map((item, idx) => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="py-3 px-3 font-mono text-slate-500">#${idx + 1}</td>
+                    <td class="py-3 px-3 font-bold text-slate-800">${item.tag}</td>
+                    <td class="py-3 px-3">
+                        <span class="font-bold ${item.brand === 'ABB' ? 'text-[#E30613]' : 'text-[#009530]'}">${item.relay}</span>
+                        <span class="text-xs font-mono text-slate-500">(Cl.${item.tripClass})</span>
+                    </td>
+                    <td class="py-3 px-3">
+                        <span class="px-2.5 py-0.5 rounded-full text-xs font-bold ${item.thermalState === 'COLD' ? 'bg-sky-100 text-sky-800' : 'bg-orange-100 text-orange-800'}">
+                            ${item.thermalState === 'COLD' ? (isAr ? 'بارد Cold' : 'Cold') : (isAr ? 'ساخن Hot' : 'Hot')}
+                        </span>
+                    </td>
+                    <td class="py-3 px-3 font-mono text-slate-700">${item.phaseMode}</td>
+                    <td class="py-3 px-3 font-mono font-bold text-slate-800">${item.ir.toFixed(1)} A</td>
+                    <td class="py-3 px-3 font-mono font-bold text-blue-700">${item.amps.toFixed(2)} A (${item.mult.toFixed(2)}×)</td>
+                    <td class="py-3 px-3 font-mono text-slate-600">${item.expectedWindow}</td>
+                    <td class="py-3 px-3 font-mono font-black text-slate-900">${item.measuredTime.toFixed(1)} s</td>
+                    <td class="py-3 px-3">
+                        <span class="px-2.5 py-1 rounded-lg text-xs font-extrabold ${item.pass ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'}">
+                            ${item.pass ? (isAr ? 'ناجح PASS' : 'PASS') : (isAr ? 'راسب FAIL' : 'FAIL')}
+                        </span>
+                    </td>
+                    <td class="py-3 px-3 text-center no-print">
+                        <button onclick="removeLogEntry(${item.id})" class="text-slate-400 hover:text-red-600 font-bold px-2 py-1">✕</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function loadDemoLog() {
+            const isAr = (state.lang === 'ar');
+            state.testLog = [
+                {
+                    id: 1,
+                    tag: isAr ? 'طلمبة مياه التبريد #1' : 'Cooling Pump #1',
+                    brand: 'ABB',
+                    relay: 'ABB TF42 / TF65',
+                    tripClass: '10',
+                    thermalState: 'COLD',
+                    phaseMode: '3P',
+                    ir: 10.0,
+                    amps: 30.0,
+                    mult: 3.00,
+                    expectedWindow: '18.2s – 48.5s',
+                    measuredTime: 28.5,
+                    pass: true
+                },
+                {
+                    id: 2,
+                    tag: isAr ? 'مروحة التهوية الرئيسية' : 'Main Exhaust Fan',
+                    brand: 'SCHNEIDER',
+                    relay: 'Schneider TeSys LRD',
+                    tripClass: '10A',
+                    thermalState: 'HOT',
+                    phaseMode: '3P',
+                    ir: 15.0,
+                    amps: 22.5,
+                    mult: 1.50,
+                    expectedWindow: '11.2s – 64.0s',
+                    measuredTime: 31.0,
+                    pass: true
+                },
+                {
+                    id: 3,
+                    tag: isAr ? 'كمبريسور الهواء #2' : 'Air Compressor #2',
+                    brand: 'SCHNEIDER',
+                    relay: 'Schneider TeSys LRD',
+                    tripClass: '10A',
+                    thermalState: 'COLD',
+                    phaseMode: '3P',
+                    ir: 20.0,
+                    amps: 144.0,
+                    mult: 7.20,
+                    expectedWindow: '2.0s – 10.0s',
+                    measuredTime: 4.9,
+                    pass: true
+                }
+            ];
+            renderTestLogTable();
+            drawTCCChart();
+        }
+
+        function exportCSV() {
+            if (state.testLog.length === 0) loadDemoLog();
+            const headers = ["#", "Equipment Tag", "Brand", "Relay Model", "Class", "State", "Poles", "Dial Ir (A)", "Injected Current (A)", "Multiple", "Allowed Window (s)", "Measured Time (s)", "Result"];
+            const rows = state.testLog.map((r, i) => [
+                i + 1,
+                `"${r.tag}"`,
+                r.brand,
+                `"${r.relay}"`,
+                `Class ${r.tripClass}`,
+                r.thermalState,
+                r.phaseMode,
+                r.ir.toFixed(2),
+                r.amps.toFixed(2),
+                r.mult.toFixed(2),
+                `"${r.expectedWindow}"`,
+                r.measuredTime.toFixed(2),
+                r.pass ? "PASS" : "FAIL"
+            ]);
+            const csv = "\uFEFF" + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "Overload_Test_Report_ABB_Schneider.csv";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function downloadThisApp() {
+            const fullHtml = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function toggleWiringModal(show) {
+            const modal = document.getElementById('wiringModal');
+            if (show) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            } else {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        window.addEventListener('resize', drawTCCChart);
+
+        window.onload = function () {
+            applyTranslations();
+            selectBrand('ABB');
+            setThermalState('BOTH');
+            loadDemoLog();
+            setQuickMultiple(3.00);
+        };
+    </script>
+
+</body></html>
